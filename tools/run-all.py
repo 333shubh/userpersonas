@@ -18,6 +18,8 @@ CHECKS = [
     ("check-cvd", "Colour-blind simulation"),
     ("check-names", "File naming + folder structure"),
     ("check-rig", "Rig spec"),
+    ("check-silhouettes", "Silhouette lineup (Gate 1 A)"),
+    ("check-glyphs", "'2' glyphs (Gate 1 B)"),
 ]
 
 
