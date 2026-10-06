@@ -176,11 +176,11 @@ The full contract is in `system/rig-spec.md`, with machine rules in `system/rig-
 
 | Mascot | Height × width | Base shape | Silhouette hook | Eye Ø / spacing / height | Signature props |
 |---|---|---|---|---|---|
-| Cram | 630 × 360 | cylinder cup, rim ellipse ry 40 | headphone band (arc r 200, apex +60 above rim) + upright fork 220 tall | 56 / 120 / 40% | headphones, backpack, fork, phone timer |
+| Cram | 630 × 360 | cylinder cup, rim ellipse ry 40 | headphone band (arc r 200, apex +60 above rim) + upright fork 220 tall in the left hand (sachet alone in the right) | 56 / 120 / 40% | headphones, backpack, fork, phone timer |
 | Riot | 691 × 420 | teardrop, point up, widest at 35% | 3-point flame crown (160 / 220 / 140), leaning 12° right | 48 + 72 (deliberately mismatched) / 150 / 45% | flame hair, stickers, chili, chili-oil bottle, phone |
-| Nest | 538 × 620 | dome, height:width 0.65 | apron-bow loops (2 × 120 wide) behind the dome at 60% height | 52 / 160 / 42% | apron, wooden spoon, kettle, small bowl |
+| Nest | 538 × 620 | dome, height:width 0.87 | apron-bow loops (2 × 120 wide) behind the dome, showing at both sides at 60% height (never on top) | 52 / 160 / 42% | apron, wooden spoon, kettle, small bowl |
 | Sprig | 660 × 440 | shallow bowl 440 × 220 + head dome | leaf pair on a 120 stem, 280 above the head, leaves 140 × 70 at ±35° | 44 / 110 / 55% | sprout leaves, lemon wedge, greens, half-sachet |
-| Lull | 568 × 480 | round bowl, head r 200 | crescent notch (0.6r circle offset 0.35r up-right) + 3 steam stars Ø 36 | 60 / 140 / 48% | steam stars, blanket, mug-lamp |
+| Lull | 568 × 480 | round bowl, head r 200 | crescent notch (0.6r circle centred 0.65r from the head centre, 45° up-right, biting the edge) + 3 steam stars Ø 36 | 60 / 140 / 48% | steam stars, blanket, mug-lamp |
 | Stack | 730 × 420 | 3 stepped blocks 420 / 360 / 300 wide | stepped outline + price-tag flag 120 × 70 on a 60-unit string | 48 / 130 / 30% | multipack, calendar, rubber stamp, price tag |
 | Mise | 768 × 300 | slim bowl on a 140-wide foot | crossed chopsticks 520 long at 30°, crossing 120 above the rim | 40 / 100 / 38% | chopsticks, finishing-oil sachet, garnish, napkin |
 
