@@ -1,0 +1,1247 @@
+{
+  "$description": "GENERATED from system/tokens/tokens.json by tools/build-tokens.py. Do not edit. Fully resolved tokens for Riot (Maximalist Foodie).",
+  "meta": {
+    "source": "system/tokens/tokens.json",
+    "sourceVersion": "0.1.0",
+    "gate": 1,
+    "status": "proposed",
+    "persona": "riot"
+  },
+  "brand": {
+    "$description": "Shared constants. Personas re-render these through their own constraint; they never redefine them (Section 6, 9).",
+    "color": {
+      "red": {
+        "$type": "color",
+        "$value": "#D42A1E",
+        "$description": "Maggi-inspired red energy. Inspired, not sampled from real packaging."
+      },
+      "yellow": {
+        "$type": "color",
+        "$value": "#FFC20E",
+        "$description": "Maggi-inspired yellow energy."
+      },
+      "ink": {
+        "$type": "color",
+        "$value": "#1C1410",
+        "$description": "Warm near-black for shared system text."
+      },
+      "paper": {
+        "$type": "color",
+        "$value": "#FFF8EC",
+        "$description": "Warm off-white shared surface."
+      },
+      "heritage-thread": {
+        "$type": "string",
+        "$value": "red-over-yellow",
+        "$description": "Two-band rule, red above yellow, each band = 1 persona stroke width, 1:1 ratio. At most once per layout. Never a flag motif (Section 6)."
+      }
+    },
+    "contrast": {
+      "level": "AA",
+      "pairs": [
+        {
+          "fg": "#1C1410",
+          "bg": "#FFF8EC",
+          "use": "body",
+          "where": "system docs, overview strip"
+        },
+        {
+          "fg": "#D42A1E",
+          "bg": "#FFF8EC",
+          "use": "body",
+          "where": "red headings on paper"
+        },
+        {
+          "fg": "#FFF8EC",
+          "bg": "#D42A1E",
+          "use": "body",
+          "where": "reversed red band"
+        },
+        {
+          "fg": "#1C1410",
+          "bg": "#FFC20E",
+          "use": "body",
+          "where": "text on yellow band"
+        }
+      ],
+      "distinguish": [
+        {
+          "a": "#D42A1E",
+          "b": "#FFC20E",
+          "why": "sachet halves and heritage thread"
+        }
+      ]
+    },
+    "space": {
+      "$description": "4-point base spacing scale shared by every persona. Stack may only use the 8-multiples.",
+      "unit": {
+        "$type": "dimension",
+        "$value": "4px"
+      },
+      "scale": {
+        "$type": "dimension",
+        "$value": [
+          "0px",
+          "4px",
+          "8px",
+          "12px",
+          "16px",
+          "24px",
+          "32px",
+          "48px",
+          "64px",
+          "96px",
+          "128px"
+        ]
+      }
+    },
+    "grid": {
+      "columns": {
+        "$type": "number",
+        "$value": 12
+      },
+      "gutter": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "margin": {
+        "$type": "dimension",
+        "$value": "48px"
+      },
+      "baseline": {
+        "$type": "dimension",
+        "$value": "8px"
+      }
+    },
+    "type": {
+      "fallback": {
+        "sans": {
+          "$type": "fontFamily",
+          "$value": [
+            "system-ui",
+            "-apple-system",
+            "Segoe UI",
+            "Roboto",
+            "Noto Sans",
+            "Arial",
+            "sans-serif"
+          ]
+        },
+        "serif": {
+          "$type": "fontFamily",
+          "$value": [
+            "Georgia",
+            "Noto Serif",
+            "Times New Roman",
+            "serif"
+          ]
+        },
+        "mono": {
+          "$type": "fontFamily",
+          "$value": [
+            "ui-monospace",
+            "Consolas",
+            "Menlo",
+            "Noto Sans Mono",
+            "monospace"
+          ]
+        }
+      },
+      "base-size": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "min-size": {
+        "$description": "Minimum type size per medium (Section 21). Packaging minimums must also meet local labelling law.",
+        "web-body": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "web-caption": {
+          "$type": "dimension",
+          "$value": "14px"
+        },
+        "app-body": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "print-body": {
+          "$type": "dimension",
+          "$value": "9pt"
+        },
+        "print-caption": {
+          "$type": "dimension",
+          "$value": "7pt"
+        },
+        "packaging-copy": {
+          "$type": "dimension",
+          "$value": "7pt"
+        },
+        "motion-1080p": {
+          "$type": "dimension",
+          "$value": "48px"
+        },
+        "sticker-512": {
+          "$type": "dimension",
+          "$value": "48px"
+        }
+      },
+      "line-height": {
+        "$description": "Defaults; personas override. Text line-height >= 1.5 satisfies WCAG 1.4.12.",
+        "display": {
+          "$type": "number",
+          "$value": 1.1
+        },
+        "text": {
+          "$type": "number",
+          "$value": 1.5
+        }
+      }
+    },
+    "touch-target": {
+      "$type": "dimension",
+      "$value": "44px",
+      "$description": "WCAG 2.5.5 target size. Nest raises this to 56px."
+    },
+    "scale-tests": {
+      "$type": "dimension",
+      "$value": [
+        "16px",
+        "32px",
+        "64px",
+        "512px"
+      ],
+      "$description": "Section 18.15 mandatory render sizes."
+    },
+    "sachet": {
+      "$description": "Shared prop (Section 18.3). Constant geometry in every world, in rig units on the 1024 canvas. Colour comes from each persona's role.sachet-red / role.sachet-yellow.",
+      "width": {
+        "$type": "dimension",
+        "$value": "160px",
+        "$description": "rig units"
+      },
+      "height": {
+        "$type": "dimension",
+        "$value": "240px",
+        "$description": "rig units; aspect 1.5"
+      },
+      "corner-radius": {
+        "$type": "dimension",
+        "$value": "8px",
+        "$description": "rig units"
+      },
+      "crimp": {
+        "$type": "string",
+        "$value": "12-unit band at top and bottom edges, serrated with 8-unit teeth"
+      },
+      "split": {
+        "$type": "string",
+        "$value": "Straight line from the left edge at 70% height to the right edge at 30% height. Upper-left region = sachet-red, lower-right = sachet-yellow."
+      },
+      "tear-notch": {
+        "$type": "string",
+        "$value": "Isosceles triangle, 16 units wide, 12 deep, cut into the right edge 24 units below the top crimp"
+      },
+      "mark": {
+        "$type": "string",
+        "$value": "Persona '2' glyph centred on the yellow region, glyph height = 40% of sachet width"
+      }
+    },
+    "two-mark": {
+      "$description": "The shared '2' convenience mark. Each persona draws its own glyph (Section 18.6) inside this construction box.",
+      "box": {
+        "$type": "string",
+        "$value": "width:height = 1:1.25, baseline at box bottom, cap height = 80% of box height"
+      },
+      "min-stroke": {
+        "$type": "number",
+        "$value": 0.125,
+        "$description": "Minimum stroke as a fraction of glyph height (= 2px at 16px)."
+      },
+      "min-counter": {
+        "$type": "number",
+        "$value": 0.25,
+        "$description": "Minimum open counter (the bowl of the 2) as a fraction of glyph width."
+      },
+      "min-legible": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$description": "Every persona '2' must read as a 2 at 16px."
+      },
+      "meaning": {
+        "$type": "string",
+        "$value": "Felt time, not a cook-time claim (Section 18.2). Any copy stating actual vs felt cook time needs Nestle review."
+      }
+    },
+    "steam-curl": {
+      "$description": "Constant across all seven worlds (Section 18.1). Sizes relative to the vessel rim width W.",
+      "wisps": {
+        "$type": "number",
+        "$value": 3
+      },
+      "heights": {
+        "$type": "string",
+        "$value": "left 0.45W, middle 0.60W, right 0.40W"
+      },
+      "spacing": {
+        "$type": "string",
+        "$value": "0.18W between wisp bases, group centred on the rim"
+      },
+      "shape": {
+        "$type": "string",
+        "$value": "S-curve with exactly 2 inflections, rising vertically, tips taper to 0"
+      },
+      "stroke": {
+        "$type": "string",
+        "$value": "persona shape.stroke with round caps (Lull: filled shapes, no stroke)"
+      }
+    },
+    "layout": {
+      "lockup-slot": {
+        "$description": "Reserved for the brand team; left empty in all work (Section 22).",
+        "position": {
+          "$type": "string",
+          "$value": "top-left, inside the grid margin"
+        },
+        "width": {
+          "$type": "string",
+          "$value": "3 of 12 grid columns"
+        },
+        "height": {
+          "$type": "string",
+          "$value": "0.5 x slot width"
+        },
+        "clear-space": {
+          "$type": "string",
+          "$value": "0.25 x slot height on all four sides"
+        }
+      }
+    },
+    "noodle-thread": {
+      "$description": "Continuous overview connector (Section 18.4).",
+      "entry-height": {
+        "$type": "number",
+        "$value": 0.62,
+        "$description": "Fraction of panel height from the top, identical at left and right edges of every panel, so panels reorder freely."
+      },
+      "stroke": {
+        "$type": "number",
+        "$value": 0.00625,
+        "$description": "Fraction of panel height (12px at 1920px)."
+      },
+      "entry-angle": {
+        "$type": "number",
+        "$value": 0,
+        "$description": "Degrees. The thread is horizontal for the first and last 4% of panel width."
+      }
+    },
+    "border-width": {
+      "hairline": {
+        "$type": "dimension",
+        "$value": "1px"
+      },
+      "ui": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "focus": {
+        "$type": "dimension",
+        "$value": "3px"
+      }
+    },
+    "focus": {
+      "$description": "WCAG 2.4.7 / 2.4.11. Every persona role.focus must reach 3:1 against role.bg and role.surface.",
+      "width": {
+        "$type": "dimension",
+        "$value": "3px"
+      },
+      "offset": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "style": {
+        "$type": "string",
+        "$value": "solid outline following the element radius"
+      }
+    },
+    "breakpoint": {
+      "$description": "For web/ (Gate 5).",
+      "mobile-max": {
+        "$type": "dimension",
+        "$value": "599px"
+      },
+      "tablet-min": {
+        "$type": "dimension",
+        "$value": "600px"
+      },
+      "desktop-min": {
+        "$type": "dimension",
+        "$value": "1024px"
+      }
+    },
+    "density": {
+      "$description": "Meaning of persona density 1-5 in a static scene: maximum distinct props and minimum negative space (fraction of frame left as plain background).",
+      "1": {
+        "maxProps": 3,
+        "minNegativeSpace": 0.6
+      },
+      "2": {
+        "maxProps": 5,
+        "minNegativeSpace": 0.5
+      },
+      "3": {
+        "maxProps": 8,
+        "minNegativeSpace": 0.4
+      },
+      "4": {
+        "maxProps": 12,
+        "minNegativeSpace": 0.3
+      },
+      "5": {
+        "maxProps": 20,
+        "minNegativeSpace": 0.15
+      }
+    }
+  },
+  "motion": {
+    "$description": "Shared motion grid (Section 20). Personas may change timing and amplitude, never the token names.",
+    "clock": {
+      "bpm": {
+        "$type": "number",
+        "$value": 120
+      },
+      "beats-per-bar": {
+        "$type": "number",
+        "$value": 4
+      },
+      "beat": {
+        "$type": "duration",
+        "$value": "500ms"
+      },
+      "bar": {
+        "$type": "duration",
+        "$value": "2000ms",
+        "$description": "One bar = the felt two minutes, compressed to 2 s."
+      }
+    },
+    "frame-rate": {
+      "primary": {
+        "$type": "number",
+        "$value": 24
+      },
+      "platform-fallback": {
+        "$type": "number",
+        "$value": 30,
+        "$description": "Only when a platform requires it."
+      },
+      "frames-per-beat": {
+        "$type": "number",
+        "$value": 12
+      },
+      "frames-per-bar": {
+        "$type": "number",
+        "$value": 48
+      }
+    },
+    "easing": {
+      "ease-in-soft": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.42,
+          0,
+          1,
+          1
+        ],
+        "$description": "Anticipation and wind-up."
+      },
+      "ease-out-pop": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ],
+        "$description": "Release with slight overshoot."
+      },
+      "ease-settle": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.22,
+          1,
+          0.36,
+          1
+        ],
+        "$description": "Damped landing. Spring equivalent in motion.spring.ease-settle for engines that support springs."
+      },
+      "ease-linear-steam": {
+        "$type": "cubicBezier",
+        "$value": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "$description": "Steam, drift, continuous rotation."
+      }
+    },
+    "spring": {
+      "ease-settle": {
+        "$type": "string",
+        "$value": "stiffness 180, damping 18, mass 1",
+        "$description": "Optional spring form of ease-settle."
+      }
+    },
+    "duration": {
+      "$description": "All clip lengths are whole bars (Section 20).",
+      "idle-loop": {
+        "$type": "duration",
+        "$value": [
+          "2000ms",
+          "4000ms"
+        ]
+      },
+      "reaction-loop": {
+        "$type": "duration",
+        "$value": "2000ms"
+      },
+      "micro-animation": {
+        "$type": "duration",
+        "$value": [
+          "1000ms",
+          "2000ms"
+        ]
+      },
+      "consumption-scene": {
+        "$type": "duration",
+        "$value": "8000ms"
+      },
+      "sound-signature": {
+        "$type": "duration",
+        "$value": "2000ms"
+      }
+    },
+    "layer-order": {
+      "$type": "string",
+      "$value": [
+        "background",
+        "environment",
+        "body",
+        "face",
+        "limbs",
+        "props",
+        "noodles-steam",
+        "foreground-type"
+      ],
+      "$description": "Back to front. SVG document order must match (see system/rig-spec.json)."
+    },
+    "safety": {
+      "max-flashes-per-second": {
+        "$type": "number",
+        "$value": 3,
+        "$description": "Hard ceiling (Section 20). Validators reject persona pulse rates at or above this."
+      },
+      "reduced-motion": {
+        "$description": "prefers-reduced-motion behaviour and the reduced variant of every clip. No autoplay with sound.",
+        "mode": {
+          "$type": "string",
+          "$value": "poster frame + opacity cross-fades only; no translate, scale, rotate, squash or parallax"
+        },
+        "crossfade": {
+          "$type": "duration",
+          "$value": "500ms"
+        },
+        "max-crossfades-per-bar": {
+          "$type": "number",
+          "$value": 1
+        }
+      },
+      "max-flash-area": {
+        "$type": "number",
+        "$value": 0.25,
+        "$description": "Max fraction of a frame that may change relative luminance by more than 10% in one flash. Conservative reading of WCAG 2.3.1."
+      }
+    },
+    "export": {
+      "formats": {
+        "$type": "string",
+        "$value": [
+          "mp4-h264",
+          "webm",
+          "gif-or-apng",
+          "poster-png"
+        ]
+      },
+      "sizes": {
+        "$type": "string",
+        "$value": [
+          "1080x1080",
+          "1920x1080",
+          "1080x1920"
+        ]
+      },
+      "loop-seam": {
+        "$type": "string",
+        "$value": "First and last frame must match; checked automatically at Gate 4."
+      }
+    },
+    "ui": {
+      "$description": "UI transitions on web/ pages, not character animation. Snapped to the 24 fps grid; direct feedback stays <= 250ms and never blocks input.",
+      "fast": {
+        "$type": "duration",
+        "$value": "125ms",
+        "$description": "3 frames. Hover, press."
+      },
+      "normal": {
+        "$type": "duration",
+        "$value": "250ms",
+        "$description": "6 frames. Toggles, persona-switch cross-fade."
+      },
+      "slow": {
+        "$type": "duration",
+        "$value": "500ms",
+        "$description": "12 frames = 1 beat. Page-level reveal only."
+      },
+      "stagger": {
+        "$type": "duration",
+        "$value": "83ms",
+        "$description": "2 frames between staggered items."
+      }
+    }
+  },
+  "card": {
+    "$description": "Mascot card radar (Section 18.7). One series per card, so no legend box: the card title names it. Stat labels stay in text ink, never the series colour.",
+    "stats": {
+      "$type": "string",
+      "$value": [
+        "heat",
+        "speed",
+        "comfort",
+        "chaos",
+        "value",
+        "fancy",
+        "wellness"
+      ]
+    },
+    "range": {
+      "$type": "number",
+      "$value": [
+        1,
+        5
+      ]
+    },
+    "radar-stroke": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "radar-fill-opacity": {
+      "$type": "number",
+      "$value": 0.25
+    },
+    "status": {
+      "$type": "string",
+      "$value": "Draft scores are design judgement, to be validated against research (Section 18.7)."
+    }
+  },
+  "locale": {
+    "$description": "Second token axis (Section 18.9). Persona controls look; locale controls props, flavour names, language lines and cultural cues. Every pack is 'validate locally' until reviewed by local collaborators.",
+    "rules": {
+      "$type": "string",
+      "$value": [
+        "no flag-colour stereotypes",
+        "no accent jokes",
+        "reviewed by local collaborators before use",
+        "English on artwork; locale lines only inside locale packs"
+      ]
+    },
+    "packs": {
+      "india": {
+        "status": "validate locally",
+        "evidenceDepth": "deepest (India-first research, Section 28)",
+        "secondaryProps": [
+          "noodle packet",
+          "masala sachet"
+        ]
+      },
+      "malaysia-singapore": {
+        "status": "validate locally",
+        "evidenceDepth": "thin",
+        "secondaryProps": [
+          "noodle packet",
+          "curry and chicken flavour cues"
+        ]
+      },
+      "australia-new-zealand": {
+        "status": "validate locally",
+        "evidenceDepth": "none in evidence log",
+        "secondaryProps": [
+          "noodle packet"
+        ]
+      },
+      "west-africa": {
+        "status": "validate locally",
+        "evidenceDepth": "thin",
+        "secondaryProps": [
+          "seasoning cube",
+          "seasoning bottle"
+        ]
+      },
+      "europe": {
+        "status": "validate locally",
+        "evidenceDepth": "thin",
+        "secondaryProps": [
+          "seasoning bottle",
+          "seasoning cube",
+          "sauce"
+        ]
+      }
+    }
+  },
+  "rivalries": [
+    {
+      "a": "riot",
+      "b": "mise",
+      "dynamic": "\"Too much\" vs \"too precious\""
+    },
+    {
+      "a": "lull",
+      "b": "riot",
+      "dynamic": "Lull politely turns Riot's volume down"
+    }
+  ],
+  "persona": {
+    "id": "riot",
+    "number": "02",
+    "slug": "02-maximalist-foodie",
+    "name": "Riot",
+    "persona": "Maximalist Foodie",
+    "nameIdea": "Flavor riot",
+    "primaryMotivation": "Flavor experimentation",
+    "job": "Turns Maggi into a personalized flavor experiment",
+    "spine": {
+      "buyer": "Self",
+      "eater": "Self + an audience",
+      "socialUnit": "Solo making, shared via feed",
+      "rhythm": "Novelty-led",
+      "gate": "\"Is this worth making and posting?\""
+    },
+    "day": {
+      "order": 5,
+      "time": "19:30",
+      "light": "Colored practical lights, phone glow"
+    },
+    "feltTime": "Two minutes of remix: the build-and-shoot window before it goes soggy",
+    "sachet": "Swaps, stacks, or replaces it with chili oil",
+    "noodleThread": "flame hair",
+    "packMechanic": {
+      "concept": "Peel-and-swap sticker sachet, deliberately misregistered print",
+      "feasibility": "medium",
+      "note": ""
+    },
+    "constraint": {
+      "rule": "Controlled clash: fixed rules for which colours may collide",
+      "why": "Chaos with a grammar",
+      "checks": {
+        "clashPairs": [
+          [
+            "#FF2E88",
+            "#B8F200"
+          ],
+          [
+            "#2B3DFF",
+            "#FF6A13"
+          ],
+          [
+            "#7A2BF5",
+            "#FFD000"
+          ],
+          [
+            "#E8231A",
+            "#00D7F0"
+          ]
+        ],
+        "maxClashColoursPerRegion": 3,
+        "misregistration": "6 units down-right at the 1024 canvas, constant",
+        "grammar": [
+          "Only the listed clash pairs may touch without an ink keyline.",
+          "Any other two colours that meet are separated by an ink keyline of the persona stroke width.",
+          "At most three clash colours plus ink and paper in any one region.",
+          "Text sits on ink, paper or a single flat colour, never across a clash seam.",
+          "Meaning is never carried by colour alone: stickers carry shape and label."
+        ]
+      }
+    },
+    "stats": {
+      "heat": 5,
+      "speed": 3,
+      "comfort": 2,
+      "chaos": 5,
+      "value": 3,
+      "fancy": 2,
+      "wellness": 1
+    },
+    "color": {
+      "ink": {
+        "$type": "color",
+        "$value": "#14101F"
+      },
+      "paper": {
+        "$type": "color",
+        "$value": "#FFF6E0"
+      },
+      "hot-pink": {
+        "$type": "color",
+        "$value": "#FF2E88"
+      },
+      "acid-green": {
+        "$type": "color",
+        "$value": "#B8F200"
+      },
+      "volt-blue": {
+        "$type": "color",
+        "$value": "#2B3DFF"
+      },
+      "tangerine": {
+        "$type": "color",
+        "$value": "#FF6A13"
+      },
+      "ultraviolet": {
+        "$type": "color",
+        "$value": "#7A2BF5"
+      },
+      "yolk": {
+        "$type": "color",
+        "$value": "#FFD000"
+      },
+      "chili": {
+        "$type": "color",
+        "$value": "#E8231A"
+      },
+      "cyan": {
+        "$type": "color",
+        "$value": "#00D7F0"
+      }
+    },
+    "role": {
+      "bg": {
+        "$type": "color",
+        "$value": "#FFF6E0"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "#FFD000"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "#14101F"
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": "#7A2BF5"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "#FF2E88"
+      },
+      "line": {
+        "$type": "color",
+        "$value": "#14101F"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "#2B3DFF"
+      },
+      "key": {
+        "$type": "color",
+        "$value": "#FF2E88"
+      },
+      "sachet-red": {
+        "$type": "color",
+        "$value": "#E8231A"
+      },
+      "sachet-yellow": {
+        "$type": "color",
+        "$value": "#FFD000"
+      }
+    },
+    "contrast": {
+      "level": "AA",
+      "pairs": [
+        {
+          "fg": "#14101F",
+          "bg": "#FFF6E0",
+          "use": "body",
+          "where": "captions, recipe steps"
+        },
+        {
+          "fg": "#14101F",
+          "bg": "#FF2E88",
+          "use": "body",
+          "where": "sticker text"
+        },
+        {
+          "fg": "#14101F",
+          "bg": "#B8F200",
+          "use": "body",
+          "where": "sticker text"
+        },
+        {
+          "fg": "#FFF6E0",
+          "bg": "#2B3DFF",
+          "use": "body",
+          "where": "sticker text"
+        },
+        {
+          "fg": "#14101F",
+          "bg": "#FF6A13",
+          "use": "body",
+          "where": "sticker text"
+        },
+        {
+          "fg": "#FFF6E0",
+          "bg": "#7A2BF5",
+          "use": "body",
+          "where": "sticker text"
+        },
+        {
+          "fg": "#14101F",
+          "bg": "#FFD000",
+          "use": "body",
+          "where": "sticker text"
+        },
+        {
+          "fg": "#14101F",
+          "bg": "#00D7F0",
+          "use": "body",
+          "where": "sticker text"
+        },
+        {
+          "fg": "#14101F",
+          "bg": "#E8231A",
+          "use": "large",
+          "where": "display words only on chili"
+        }
+      ],
+      "distinguish": [
+        {
+          "a": "#FF2E88",
+          "b": "#B8F200",
+          "why": "clash pair must still vibrate under CVD"
+        },
+        {
+          "a": "#2B3DFF",
+          "b": "#FF6A13",
+          "why": "clash pair"
+        },
+        {
+          "a": "#7A2BF5",
+          "b": "#FFD000",
+          "why": "clash pair"
+        },
+        {
+          "a": "#E8231A",
+          "b": "#00D7F0",
+          "why": "clash pair"
+        }
+      ]
+    },
+    "type": {
+      "display": {
+        "$type": "fontFamily",
+        "$value": [
+          "Bungee",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "Noto Sans",
+          "Arial",
+          "sans-serif"
+        ]
+      },
+      "text": {
+        "$type": "fontFamily",
+        "$value": [
+          "Rubik",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "Noto Sans",
+          "Arial",
+          "sans-serif"
+        ]
+      },
+      "weight": {
+        "display": {
+          "$type": "number",
+          "$value": 400
+        },
+        "text": {
+          "$type": "number",
+          "$value": 400
+        },
+        "text-strong": {
+          "$type": "number",
+          "$value": 700
+        }
+      },
+      "line-height": {
+        "display": {
+          "$type": "number",
+          "$value": 1.0
+        },
+        "text": {
+          "$type": "number",
+          "$value": 1.5
+        }
+      },
+      "tracking": {
+        "$description": "em",
+        "display": {
+          "$type": "number",
+          "$value": 0.01
+        },
+        "text": {
+          "$type": "number",
+          "$value": 0
+        },
+        "label": {
+          "$type": "number",
+          "$value": 0.05
+        }
+      },
+      "case": {
+        "display": {
+          "$type": "string",
+          "$value": "uppercase"
+        },
+        "text": {
+          "$type": "string",
+          "$value": "none"
+        }
+      },
+      "scale-ratio": {
+        "$type": "number",
+        "$value": 1.5,
+        "$description": "Steps generated by tools/build-tokens.py from brand.type.base-size."
+      },
+      "scale": {
+        "caption": {
+          "$type": "dimension",
+          "$value": "14px",
+          "$description": "Clamped from 11px to brand.type.min-size.web-caption."
+        },
+        "body": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "lead": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "h3": {
+          "$type": "dimension",
+          "$value": "36px"
+        },
+        "h2": {
+          "$type": "dimension",
+          "$value": "54px"
+        },
+        "h1": {
+          "$type": "dimension",
+          "$value": "81px"
+        },
+        "display": {
+          "$type": "dimension",
+          "$value": "122px"
+        }
+      }
+    },
+    "shape": {
+      "radius": {
+        "$type": "dimension",
+        "$value": [
+          "0px",
+          "12px",
+          "999px"
+        ]
+      },
+      "stroke": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "language": {
+        "$type": "string",
+        "$value": "Sticker die-cuts, starbursts, thick keylines, mismatched halves"
+      },
+      "cap": {
+        "$type": "string",
+        "$value": "round"
+      },
+      "angles": {
+        "rotation-max": {
+          "$type": "number",
+          "$value": 8,
+          "$description": "degrees, type and stickers"
+        }
+      }
+    },
+    "texture": {
+      "misregistration": {
+        "dx": {
+          "$type": "dimension",
+          "$value": "6px",
+          "$description": "rig units"
+        },
+        "dy": {
+          "$type": "dimension",
+          "$value": "6px",
+          "$description": "rig units"
+        },
+        "plate": {
+          "$type": "string",
+          "$value": "ink keyline plate offset from the fill plates; constant, never animated"
+        }
+      },
+      "overlap": {
+        "blend": {
+          "$type": "string",
+          "$value": "multiply"
+        },
+        "opacity": {
+          "$type": "number",
+          "$value": 0.9
+        },
+        "note": {
+          "$type": "string",
+          "$value": "risograph overlap where two fills cross"
+        }
+      },
+      "gloss": {
+        "color": {
+          "$type": "color",
+          "$value": "#FFF6E0"
+        },
+        "opacity": {
+          "$type": "number",
+          "$value": 0.6
+        },
+        "shape": {
+          "$type": "string",
+          "$value": "12-unit rounded bar at 35 degrees, top-left of each sticker"
+        }
+      }
+    },
+    "density": {
+      "$type": "number",
+      "$value": 5,
+      "$description": "See brand.density for maxProps / minNegativeSpace."
+    },
+    "iconography": {
+      "grid": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "stroke": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "cap": {
+        "$type": "string",
+        "$value": "round"
+      },
+      "fill": {
+        "$type": "string",
+        "$value": "solid"
+      },
+      "note": {
+        "$type": "string",
+        "$value": "2px hard offset shadow in ink"
+      }
+    },
+    "mascot": {
+      "concept": "A chaotic chili-noodle character with mismatched features, flame hair, stickers, and bold patterns",
+      "personality": "Loud, experimental, expressive, playful",
+      "baseShape": "teardrop chili body",
+      "silhouetteHook": "three-point flame crown + asymmetric eyes",
+      "signatureProps": [
+        "flame-hair",
+        "stickers",
+        "chili",
+        "chili-oil-bottle",
+        "phone"
+      ],
+      "heightRatio": 0.9
+    },
+    "motion": {
+      "tempo": "syncopated",
+      "idleBars": 1,
+      "amplitude": 1.4,
+      "squashStretch": 0.18,
+      "anticipationFrames": 3,
+      "accentBeats": [
+        1.5,
+        3.5
+      ],
+      "pulseHz": 2,
+      "pulseNote": "Flame pulse = one per beat (2 Hz), under the 3 per second ceiling. No large high-contrast flicker.",
+      "overshootPct": 12,
+      "staggerFrames": 1
+    },
+    "sound": {
+      "pitch": "F#4",
+      "role": "spicy sharp eleventh",
+      "palette": [
+        "sizzle",
+        "sticker pop",
+        "record-scratch accent"
+      ],
+      "asmr": false,
+      "hz": 369.99,
+      "chord": [
+        "C2",
+        "G2",
+        "E3",
+        "B3",
+        "D4",
+        "A4",
+        "F#4"
+      ]
+    },
+    "glyph": {
+      "construction": "'2' built from a flame curl with a sticker die-cut outline",
+      "numerals": "heavy, mismatched widths, offset misregistration shadow"
+    },
+    "elevation": {
+      "kind": {
+        "$type": "string",
+        "$value": "hard-offset"
+      },
+      "x": {
+        "$type": "dimension",
+        "$value": "6px"
+      },
+      "y": {
+        "$type": "dimension",
+        "$value": "6px"
+      },
+      "blur": {
+        "$type": "dimension",
+        "$value": "0px"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "#14101F"
+      },
+      "opacity": {
+        "$type": "number",
+        "$value": 1
+      },
+      "note": {
+        "$type": "string",
+        "$value": "Sticker drop: hard offset, no blur."
+      }
+    }
+  }
+}

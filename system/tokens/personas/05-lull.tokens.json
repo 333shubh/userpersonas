@@ -1,0 +1,1201 @@
+{
+  "$description": "GENERATED from system/tokens/tokens.json by tools/build-tokens.py. Do not edit. Fully resolved tokens for Lull (Midnight Recharger).",
+  "meta": {
+    "source": "system/tokens/tokens.json",
+    "sourceVersion": "0.1.0",
+    "gate": 1,
+    "status": "proposed",
+    "persona": "lull"
+  },
+  "brand": {
+    "$description": "Shared constants. Personas re-render these through their own constraint; they never redefine them (Section 6, 9).",
+    "color": {
+      "red": {
+        "$type": "color",
+        "$value": "#D42A1E",
+        "$description": "Maggi-inspired red energy. Inspired, not sampled from real packaging."
+      },
+      "yellow": {
+        "$type": "color",
+        "$value": "#FFC20E",
+        "$description": "Maggi-inspired yellow energy."
+      },
+      "ink": {
+        "$type": "color",
+        "$value": "#1C1410",
+        "$description": "Warm near-black for shared system text."
+      },
+      "paper": {
+        "$type": "color",
+        "$value": "#FFF8EC",
+        "$description": "Warm off-white shared surface."
+      },
+      "heritage-thread": {
+        "$type": "string",
+        "$value": "red-over-yellow",
+        "$description": "Two-band rule, red above yellow, each band = 1 persona stroke width, 1:1 ratio. At most once per layout. Never a flag motif (Section 6)."
+      }
+    },
+    "contrast": {
+      "level": "AA",
+      "pairs": [
+        {
+          "fg": "#1C1410",
+          "bg": "#FFF8EC",
+          "use": "body",
+          "where": "system docs, overview strip"
+        },
+        {
+          "fg": "#D42A1E",
+          "bg": "#FFF8EC",
+          "use": "body",
+          "where": "red headings on paper"
+        },
+        {
+          "fg": "#FFF8EC",
+          "bg": "#D42A1E",
+          "use": "body",
+          "where": "reversed red band"
+        },
+        {
+          "fg": "#1C1410",
+          "bg": "#FFC20E",
+          "use": "body",
+          "where": "text on yellow band"
+        }
+      ],
+      "distinguish": [
+        {
+          "a": "#D42A1E",
+          "b": "#FFC20E",
+          "why": "sachet halves and heritage thread"
+        }
+      ]
+    },
+    "space": {
+      "$description": "4-point base spacing scale shared by every persona. Stack may only use the 8-multiples.",
+      "unit": {
+        "$type": "dimension",
+        "$value": "4px"
+      },
+      "scale": {
+        "$type": "dimension",
+        "$value": [
+          "0px",
+          "4px",
+          "8px",
+          "12px",
+          "16px",
+          "24px",
+          "32px",
+          "48px",
+          "64px",
+          "96px",
+          "128px"
+        ]
+      }
+    },
+    "grid": {
+      "columns": {
+        "$type": "number",
+        "$value": 12
+      },
+      "gutter": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "margin": {
+        "$type": "dimension",
+        "$value": "48px"
+      },
+      "baseline": {
+        "$type": "dimension",
+        "$value": "8px"
+      }
+    },
+    "type": {
+      "fallback": {
+        "sans": {
+          "$type": "fontFamily",
+          "$value": [
+            "system-ui",
+            "-apple-system",
+            "Segoe UI",
+            "Roboto",
+            "Noto Sans",
+            "Arial",
+            "sans-serif"
+          ]
+        },
+        "serif": {
+          "$type": "fontFamily",
+          "$value": [
+            "Georgia",
+            "Noto Serif",
+            "Times New Roman",
+            "serif"
+          ]
+        },
+        "mono": {
+          "$type": "fontFamily",
+          "$value": [
+            "ui-monospace",
+            "Consolas",
+            "Menlo",
+            "Noto Sans Mono",
+            "monospace"
+          ]
+        }
+      },
+      "base-size": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "min-size": {
+        "$description": "Minimum type size per medium (Section 21). Packaging minimums must also meet local labelling law.",
+        "web-body": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "web-caption": {
+          "$type": "dimension",
+          "$value": "14px"
+        },
+        "app-body": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "print-body": {
+          "$type": "dimension",
+          "$value": "9pt"
+        },
+        "print-caption": {
+          "$type": "dimension",
+          "$value": "7pt"
+        },
+        "packaging-copy": {
+          "$type": "dimension",
+          "$value": "7pt"
+        },
+        "motion-1080p": {
+          "$type": "dimension",
+          "$value": "48px"
+        },
+        "sticker-512": {
+          "$type": "dimension",
+          "$value": "48px"
+        }
+      },
+      "line-height": {
+        "$description": "Defaults; personas override. Text line-height >= 1.5 satisfies WCAG 1.4.12.",
+        "display": {
+          "$type": "number",
+          "$value": 1.1
+        },
+        "text": {
+          "$type": "number",
+          "$value": 1.5
+        }
+      }
+    },
+    "touch-target": {
+      "$type": "dimension",
+      "$value": "44px",
+      "$description": "WCAG 2.5.5 target size. Nest raises this to 56px."
+    },
+    "scale-tests": {
+      "$type": "dimension",
+      "$value": [
+        "16px",
+        "32px",
+        "64px",
+        "512px"
+      ],
+      "$description": "Section 18.15 mandatory render sizes."
+    },
+    "sachet": {
+      "$description": "Shared prop (Section 18.3). Constant geometry in every world, in rig units on the 1024 canvas. Colour comes from each persona's role.sachet-red / role.sachet-yellow.",
+      "width": {
+        "$type": "dimension",
+        "$value": "160px",
+        "$description": "rig units"
+      },
+      "height": {
+        "$type": "dimension",
+        "$value": "240px",
+        "$description": "rig units; aspect 1.5"
+      },
+      "corner-radius": {
+        "$type": "dimension",
+        "$value": "8px",
+        "$description": "rig units"
+      },
+      "crimp": {
+        "$type": "string",
+        "$value": "12-unit band at top and bottom edges, serrated with 8-unit teeth"
+      },
+      "split": {
+        "$type": "string",
+        "$value": "Straight line from the left edge at 70% height to the right edge at 30% height. Upper-left region = sachet-red, lower-right = sachet-yellow."
+      },
+      "tear-notch": {
+        "$type": "string",
+        "$value": "Isosceles triangle, 16 units wide, 12 deep, cut into the right edge 24 units below the top crimp"
+      },
+      "mark": {
+        "$type": "string",
+        "$value": "Persona '2' glyph centred on the yellow region, glyph height = 40% of sachet width"
+      }
+    },
+    "two-mark": {
+      "$description": "The shared '2' convenience mark. Each persona draws its own glyph (Section 18.6) inside this construction box.",
+      "box": {
+        "$type": "string",
+        "$value": "width:height = 1:1.25, baseline at box bottom, cap height = 80% of box height"
+      },
+      "min-stroke": {
+        "$type": "number",
+        "$value": 0.125,
+        "$description": "Minimum stroke as a fraction of glyph height (= 2px at 16px)."
+      },
+      "min-counter": {
+        "$type": "number",
+        "$value": 0.25,
+        "$description": "Minimum open counter (the bowl of the 2) as a fraction of glyph width."
+      },
+      "min-legible": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$description": "Every persona '2' must read as a 2 at 16px."
+      },
+      "meaning": {
+        "$type": "string",
+        "$value": "Felt time, not a cook-time claim (Section 18.2). Any copy stating actual vs felt cook time needs Nestle review."
+      }
+    },
+    "steam-curl": {
+      "$description": "Constant across all seven worlds (Section 18.1). Sizes relative to the vessel rim width W.",
+      "wisps": {
+        "$type": "number",
+        "$value": 3
+      },
+      "heights": {
+        "$type": "string",
+        "$value": "left 0.45W, middle 0.60W, right 0.40W"
+      },
+      "spacing": {
+        "$type": "string",
+        "$value": "0.18W between wisp bases, group centred on the rim"
+      },
+      "shape": {
+        "$type": "string",
+        "$value": "S-curve with exactly 2 inflections, rising vertically, tips taper to 0"
+      },
+      "stroke": {
+        "$type": "string",
+        "$value": "persona shape.stroke with round caps (Lull: filled shapes, no stroke)"
+      }
+    },
+    "layout": {
+      "lockup-slot": {
+        "$description": "Reserved for the brand team; left empty in all work (Section 22).",
+        "position": {
+          "$type": "string",
+          "$value": "top-left, inside the grid margin"
+        },
+        "width": {
+          "$type": "string",
+          "$value": "3 of 12 grid columns"
+        },
+        "height": {
+          "$type": "string",
+          "$value": "0.5 x slot width"
+        },
+        "clear-space": {
+          "$type": "string",
+          "$value": "0.25 x slot height on all four sides"
+        }
+      }
+    },
+    "noodle-thread": {
+      "$description": "Continuous overview connector (Section 18.4).",
+      "entry-height": {
+        "$type": "number",
+        "$value": 0.62,
+        "$description": "Fraction of panel height from the top, identical at left and right edges of every panel, so panels reorder freely."
+      },
+      "stroke": {
+        "$type": "number",
+        "$value": 0.00625,
+        "$description": "Fraction of panel height (12px at 1920px)."
+      },
+      "entry-angle": {
+        "$type": "number",
+        "$value": 0,
+        "$description": "Degrees. The thread is horizontal for the first and last 4% of panel width."
+      }
+    },
+    "border-width": {
+      "hairline": {
+        "$type": "dimension",
+        "$value": "1px"
+      },
+      "ui": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "focus": {
+        "$type": "dimension",
+        "$value": "3px"
+      }
+    },
+    "focus": {
+      "$description": "WCAG 2.4.7 / 2.4.11. Every persona role.focus must reach 3:1 against role.bg and role.surface.",
+      "width": {
+        "$type": "dimension",
+        "$value": "3px"
+      },
+      "offset": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "style": {
+        "$type": "string",
+        "$value": "solid outline following the element radius"
+      }
+    },
+    "breakpoint": {
+      "$description": "For web/ (Gate 5).",
+      "mobile-max": {
+        "$type": "dimension",
+        "$value": "599px"
+      },
+      "tablet-min": {
+        "$type": "dimension",
+        "$value": "600px"
+      },
+      "desktop-min": {
+        "$type": "dimension",
+        "$value": "1024px"
+      }
+    },
+    "density": {
+      "$description": "Meaning of persona density 1-5 in a static scene: maximum distinct props and minimum negative space (fraction of frame left as plain background).",
+      "1": {
+        "maxProps": 3,
+        "minNegativeSpace": 0.6
+      },
+      "2": {
+        "maxProps": 5,
+        "minNegativeSpace": 0.5
+      },
+      "3": {
+        "maxProps": 8,
+        "minNegativeSpace": 0.4
+      },
+      "4": {
+        "maxProps": 12,
+        "minNegativeSpace": 0.3
+      },
+      "5": {
+        "maxProps": 20,
+        "minNegativeSpace": 0.15
+      }
+    }
+  },
+  "motion": {
+    "$description": "Shared motion grid (Section 20). Personas may change timing and amplitude, never the token names.",
+    "clock": {
+      "bpm": {
+        "$type": "number",
+        "$value": 120
+      },
+      "beats-per-bar": {
+        "$type": "number",
+        "$value": 4
+      },
+      "beat": {
+        "$type": "duration",
+        "$value": "500ms"
+      },
+      "bar": {
+        "$type": "duration",
+        "$value": "2000ms",
+        "$description": "One bar = the felt two minutes, compressed to 2 s."
+      }
+    },
+    "frame-rate": {
+      "primary": {
+        "$type": "number",
+        "$value": 24
+      },
+      "platform-fallback": {
+        "$type": "number",
+        "$value": 30,
+        "$description": "Only when a platform requires it."
+      },
+      "frames-per-beat": {
+        "$type": "number",
+        "$value": 12
+      },
+      "frames-per-bar": {
+        "$type": "number",
+        "$value": 48
+      }
+    },
+    "easing": {
+      "ease-in-soft": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.42,
+          0,
+          1,
+          1
+        ],
+        "$description": "Anticipation and wind-up."
+      },
+      "ease-out-pop": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ],
+        "$description": "Release with slight overshoot."
+      },
+      "ease-settle": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.22,
+          1,
+          0.36,
+          1
+        ],
+        "$description": "Damped landing. Spring equivalent in motion.spring.ease-settle for engines that support springs."
+      },
+      "ease-linear-steam": {
+        "$type": "cubicBezier",
+        "$value": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "$description": "Steam, drift, continuous rotation."
+      }
+    },
+    "spring": {
+      "ease-settle": {
+        "$type": "string",
+        "$value": "stiffness 180, damping 18, mass 1",
+        "$description": "Optional spring form of ease-settle."
+      }
+    },
+    "duration": {
+      "$description": "All clip lengths are whole bars (Section 20).",
+      "idle-loop": {
+        "$type": "duration",
+        "$value": [
+          "2000ms",
+          "4000ms"
+        ]
+      },
+      "reaction-loop": {
+        "$type": "duration",
+        "$value": "2000ms"
+      },
+      "micro-animation": {
+        "$type": "duration",
+        "$value": [
+          "1000ms",
+          "2000ms"
+        ]
+      },
+      "consumption-scene": {
+        "$type": "duration",
+        "$value": "8000ms"
+      },
+      "sound-signature": {
+        "$type": "duration",
+        "$value": "2000ms"
+      }
+    },
+    "layer-order": {
+      "$type": "string",
+      "$value": [
+        "background",
+        "environment",
+        "body",
+        "face",
+        "limbs",
+        "props",
+        "noodles-steam",
+        "foreground-type"
+      ],
+      "$description": "Back to front. SVG document order must match (see system/rig-spec.json)."
+    },
+    "safety": {
+      "max-flashes-per-second": {
+        "$type": "number",
+        "$value": 3,
+        "$description": "Hard ceiling (Section 20). Validators reject persona pulse rates at or above this."
+      },
+      "reduced-motion": {
+        "$description": "prefers-reduced-motion behaviour and the reduced variant of every clip. No autoplay with sound.",
+        "mode": {
+          "$type": "string",
+          "$value": "poster frame + opacity cross-fades only; no translate, scale, rotate, squash or parallax"
+        },
+        "crossfade": {
+          "$type": "duration",
+          "$value": "500ms"
+        },
+        "max-crossfades-per-bar": {
+          "$type": "number",
+          "$value": 1
+        }
+      },
+      "max-flash-area": {
+        "$type": "number",
+        "$value": 0.25,
+        "$description": "Max fraction of a frame that may change relative luminance by more than 10% in one flash. Conservative reading of WCAG 2.3.1."
+      }
+    },
+    "export": {
+      "formats": {
+        "$type": "string",
+        "$value": [
+          "mp4-h264",
+          "webm",
+          "gif-or-apng",
+          "poster-png"
+        ]
+      },
+      "sizes": {
+        "$type": "string",
+        "$value": [
+          "1080x1080",
+          "1920x1080",
+          "1080x1920"
+        ]
+      },
+      "loop-seam": {
+        "$type": "string",
+        "$value": "First and last frame must match; checked automatically at Gate 4."
+      }
+    },
+    "ui": {
+      "$description": "UI transitions on web/ pages, not character animation. Snapped to the 24 fps grid; direct feedback stays <= 250ms and never blocks input.",
+      "fast": {
+        "$type": "duration",
+        "$value": "125ms",
+        "$description": "3 frames. Hover, press."
+      },
+      "normal": {
+        "$type": "duration",
+        "$value": "250ms",
+        "$description": "6 frames. Toggles, persona-switch cross-fade."
+      },
+      "slow": {
+        "$type": "duration",
+        "$value": "500ms",
+        "$description": "12 frames = 1 beat. Page-level reveal only."
+      },
+      "stagger": {
+        "$type": "duration",
+        "$value": "83ms",
+        "$description": "2 frames between staggered items."
+      }
+    }
+  },
+  "card": {
+    "$description": "Mascot card radar (Section 18.7). One series per card, so no legend box: the card title names it. Stat labels stay in text ink, never the series colour.",
+    "stats": {
+      "$type": "string",
+      "$value": [
+        "heat",
+        "speed",
+        "comfort",
+        "chaos",
+        "value",
+        "fancy",
+        "wellness"
+      ]
+    },
+    "range": {
+      "$type": "number",
+      "$value": [
+        1,
+        5
+      ]
+    },
+    "radar-stroke": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "radar-fill-opacity": {
+      "$type": "number",
+      "$value": 0.25
+    },
+    "status": {
+      "$type": "string",
+      "$value": "Draft scores are design judgement, to be validated against research (Section 18.7)."
+    }
+  },
+  "locale": {
+    "$description": "Second token axis (Section 18.9). Persona controls look; locale controls props, flavour names, language lines and cultural cues. Every pack is 'validate locally' until reviewed by local collaborators.",
+    "rules": {
+      "$type": "string",
+      "$value": [
+        "no flag-colour stereotypes",
+        "no accent jokes",
+        "reviewed by local collaborators before use",
+        "English on artwork; locale lines only inside locale packs"
+      ]
+    },
+    "packs": {
+      "india": {
+        "status": "validate locally",
+        "evidenceDepth": "deepest (India-first research, Section 28)",
+        "secondaryProps": [
+          "noodle packet",
+          "masala sachet"
+        ]
+      },
+      "malaysia-singapore": {
+        "status": "validate locally",
+        "evidenceDepth": "thin",
+        "secondaryProps": [
+          "noodle packet",
+          "curry and chicken flavour cues"
+        ]
+      },
+      "australia-new-zealand": {
+        "status": "validate locally",
+        "evidenceDepth": "none in evidence log",
+        "secondaryProps": [
+          "noodle packet"
+        ]
+      },
+      "west-africa": {
+        "status": "validate locally",
+        "evidenceDepth": "thin",
+        "secondaryProps": [
+          "seasoning cube",
+          "seasoning bottle"
+        ]
+      },
+      "europe": {
+        "status": "validate locally",
+        "evidenceDepth": "thin",
+        "secondaryProps": [
+          "seasoning bottle",
+          "seasoning cube",
+          "sauce"
+        ]
+      }
+    }
+  },
+  "rivalries": [
+    {
+      "a": "lull",
+      "b": "riot",
+      "dynamic": "Lull politely turns Riot's volume down"
+    },
+    {
+      "a": "mise",
+      "b": "lull",
+      "dynamic": "A late-night truce over shared chopsticks"
+    }
+  ],
+  "persona": {
+    "id": "lull",
+    "number": "05",
+    "slug": "05-midnight-recharger",
+    "name": "Lull",
+    "persona": "Midnight Recharger",
+    "nameIdea": "Wind-down, lullaby",
+    "primaryMotivation": "Emotional decompression",
+    "job": "Emotional reward after work, study, gaming, or shifts",
+    "spine": {
+      "buyer": "Self",
+      "eater": "Self",
+      "socialUnit": "Solo",
+      "rhythm": "Habitual, tied to a need state",
+      "gate": "\"Do I need comfort right now?\""
+    },
+    "day": {
+      "order": 7,
+      "time": "00:45",
+      "light": "Blue-violet dark, single warm glow"
+    },
+    "feltTime": "Stretches it into a ritual",
+    "sachet": "Tears it slowly; the tear is part of the ritual",
+    "noodleThread": "steam",
+    "packMechanic": {
+      "concept": "Glow-in-the-dark steam ink",
+      "feasibility": "medium",
+      "note": "Special ink"
+    },
+    "constraint": {
+      "rule": "Luminance-capped dark, no pure white",
+      "why": "Easy on tired eyes",
+      "checks": {
+        "maxLuminance": 0.75,
+        "minBackgroundLuminance": 0.0,
+        "maxBackgroundLuminance": 0.03
+      },
+      "positioning": "Wind-down noodle, not an energy boost (Section 18.13). Not defined as a student who eats late (Section 17)."
+    },
+    "stats": {
+      "heat": 2,
+      "speed": 3,
+      "comfort": 5,
+      "chaos": 1,
+      "value": 3,
+      "fancy": 2,
+      "wellness": 2
+    },
+    "color": {
+      "night": {
+        "$type": "color",
+        "$value": "#121127",
+        "$description": "Background."
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "#1D1B3A",
+        "$description": "Background."
+      },
+      "raised": {
+        "$type": "color",
+        "$value": "#2A2752",
+        "$description": "Background."
+      },
+      "text": {
+        "$type": "color",
+        "$value": "#E4DDF2",
+        "$description": "Brightest colour in the world, luminance under the cap."
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": "#B3AACF"
+      },
+      "glow": {
+        "$type": "color",
+        "$value": "#FFB866",
+        "$description": "The single warm light."
+      },
+      "star": {
+        "$type": "color",
+        "$value": "#F0D58A"
+      },
+      "dusk-violet": {
+        "$type": "color",
+        "$value": "#8C7BE0"
+      },
+      "ember": {
+        "$type": "color",
+        "$value": "#E0663F"
+      }
+    },
+    "role": {
+      "bg": {
+        "$type": "color",
+        "$value": "#121127"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "#1D1B3A"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "#E4DDF2"
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": "#B3AACF"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "#FFB866"
+      },
+      "line": {
+        "$type": "color",
+        "$value": "#B3AACF"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "#FFB866"
+      },
+      "key": {
+        "$type": "color",
+        "$value": "#8C7BE0"
+      },
+      "sachet-red": {
+        "$type": "color",
+        "$value": "#E0663F"
+      },
+      "sachet-yellow": {
+        "$type": "color",
+        "$value": "#FFB866"
+      }
+    },
+    "backgrounds": [
+      "#121127",
+      "#1D1B3A",
+      "#2A2752"
+    ],
+    "contrast": {
+      "level": "AA",
+      "pairs": [
+        {
+          "fg": "#E4DDF2",
+          "bg": "#121127",
+          "use": "body",
+          "where": "body copy"
+        },
+        {
+          "fg": "#E4DDF2",
+          "bg": "#1D1B3A",
+          "use": "body",
+          "where": "cards"
+        },
+        {
+          "fg": "#B3AACF",
+          "bg": "#121127",
+          "use": "body",
+          "where": "secondary copy"
+        },
+        {
+          "fg": "#B3AACF",
+          "bg": "#2A2752",
+          "use": "body",
+          "where": "secondary copy on raised"
+        },
+        {
+          "fg": "#FFB866",
+          "bg": "#121127",
+          "use": "body",
+          "where": "warm headings"
+        },
+        {
+          "fg": "#121127",
+          "bg": "#FFB866",
+          "use": "body",
+          "where": "buttons"
+        },
+        {
+          "fg": "#8C7BE0",
+          "bg": "#121127",
+          "use": "large",
+          "where": "display only"
+        }
+      ],
+      "distinguish": [
+        {
+          "a": "#E0663F",
+          "b": "#FFB866",
+          "why": "the two sachet halves"
+        },
+        {
+          "a": "#FFB866",
+          "b": "#8C7BE0",
+          "why": "warm light vs night accents"
+        }
+      ]
+    },
+    "type": {
+      "display": {
+        "$type": "fontFamily",
+        "$value": [
+          "Quicksand",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "Noto Sans",
+          "Arial",
+          "sans-serif"
+        ]
+      },
+      "text": {
+        "$type": "fontFamily",
+        "$value": [
+          "Atkinson Hyperlegible",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "Noto Sans",
+          "Arial",
+          "sans-serif"
+        ]
+      },
+      "weight": {
+        "display": {
+          "$type": "number",
+          "$value": 600
+        },
+        "text": {
+          "$type": "number",
+          "$value": 400
+        },
+        "text-strong": {
+          "$type": "number",
+          "$value": 700
+        }
+      },
+      "line-height": {
+        "display": {
+          "$type": "number",
+          "$value": 1.2
+        },
+        "text": {
+          "$type": "number",
+          "$value": 1.65
+        }
+      },
+      "tracking": {
+        "$description": "em",
+        "display": {
+          "$type": "number",
+          "$value": 0
+        },
+        "text": {
+          "$type": "number",
+          "$value": 0.01
+        },
+        "label": {
+          "$type": "number",
+          "$value": 0.04
+        }
+      },
+      "case": {
+        "display": {
+          "$type": "string",
+          "$value": "lowercase"
+        },
+        "text": {
+          "$type": "string",
+          "$value": "none"
+        }
+      },
+      "scale-ratio": {
+        "$type": "number",
+        "$value": 1.2,
+        "$description": "Steps generated by tools/build-tokens.py from brand.type.base-size."
+      },
+      "scale": {
+        "caption": {
+          "$type": "dimension",
+          "$value": "14px",
+          "$description": "Clamped from 13px to brand.type.min-size.web-caption."
+        },
+        "body": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "lead": {
+          "$type": "dimension",
+          "$value": "19px"
+        },
+        "h3": {
+          "$type": "dimension",
+          "$value": "23px"
+        },
+        "h2": {
+          "$type": "dimension",
+          "$value": "28px"
+        },
+        "h1": {
+          "$type": "dimension",
+          "$value": "33px"
+        },
+        "display": {
+          "$type": "dimension",
+          "$value": "40px"
+        }
+      }
+    },
+    "shape": {
+      "radius": {
+        "$type": "dimension",
+        "$value": [
+          "20px",
+          "999px"
+        ]
+      },
+      "stroke": {
+        "$type": "dimension",
+        "$value": "0px",
+        "$description": "No outlines; forms are glow-edged fills."
+      },
+      "language": {
+        "$type": "string",
+        "$value": "Crescents, soft orbs, slow S-curves, star points kept small"
+      },
+      "cap": {
+        "$type": "string",
+        "$value": "round"
+      },
+      "angles": {
+        "rotation-max": {
+          "$type": "number",
+          "$value": 3,
+          "$description": "degrees"
+        }
+      }
+    },
+    "texture": {
+      "grain": {
+        "filter": {
+          "$type": "string",
+          "$value": "feTurbulence fractalNoise"
+        },
+        "baseFrequency": {
+          "$type": "number",
+          "$value": 0.8
+        },
+        "octaves": {
+          "$type": "number",
+          "$value": 1
+        },
+        "opacity": {
+          "$type": "number",
+          "$value": 0.05
+        },
+        "blend": {
+          "$type": "string",
+          "$value": "screen"
+        }
+      },
+      "bloom": {
+        "stdDeviation": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "opacity": {
+          "$type": "number",
+          "$value": 0.4
+        },
+        "color": {
+          "$type": "color",
+          "$value": "#FFB866"
+        },
+        "rule": {
+          "$type": "string",
+          "$value": "bloom on the single warm light only; one bloom source per frame"
+        }
+      }
+    },
+    "density": {
+      "$type": "number",
+      "$value": 2,
+      "$description": "See brand.density for maxProps / minNegativeSpace."
+    },
+    "iconography": {
+      "grid": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "stroke": {
+        "$type": "dimension",
+        "$value": "0px"
+      },
+      "cap": {
+        "$type": "string",
+        "$value": "round"
+      },
+      "fill": {
+        "$type": "string",
+        "$value": "soft fill"
+      },
+      "note": {
+        "$type": "string",
+        "$value": "4px glow halo at 35% opacity"
+      }
+    },
+    "mascot": {
+      "concept": "A sleepy moon-faced noodle bowl whose steam becomes stars",
+      "personality": "Cozy, dreamy, gently humorous, comforting",
+      "baseShape": "round bowl with crescent-moon face",
+      "silhouetteHook": "crescent notch cut from the head + star-tipped steam",
+      "signatureProps": [
+        "steam-stars",
+        "blanket",
+        "mug-lamp"
+      ],
+      "heightRatio": 0.74
+    },
+    "motion": {
+      "tempo": "slow breathing",
+      "idleBars": 2,
+      "amplitude": 0.6,
+      "squashStretch": 0,
+      "anticipationFrames": 12,
+      "accentBeats": [
+        1
+      ],
+      "pulseHz": 0.25,
+      "pulseNote": "Glow breathes once per 4 s idle loop.",
+      "overshootPct": 0,
+      "staggerFrames": 6
+    },
+    "sound": {
+      "pitch": "E3",
+      "role": "warm third",
+      "palette": [
+        "low hum",
+        "soft chime",
+        "whispered ASMR layer"
+      ],
+      "asmr": true,
+      "hz": 164.81,
+      "chord": [
+        "C2",
+        "G2",
+        "E3",
+        "B3",
+        "D4",
+        "A4",
+        "F#4"
+      ]
+    },
+    "glyph": {
+      "construction": "'2' formed by a crescent moon arc and a steam tail",
+      "numerals": "soft round, low contrast, wide"
+    },
+    "elevation": {
+      "kind": {
+        "$type": "string",
+        "$value": "glow"
+      },
+      "x": {
+        "$type": "dimension",
+        "$value": "0px"
+      },
+      "y": {
+        "$type": "dimension",
+        "$value": "0px"
+      },
+      "blur": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "#FFB866"
+      },
+      "opacity": {
+        "$type": "number",
+        "$value": 0.35
+      },
+      "note": {
+        "$type": "string",
+        "$value": "Only the single warm-light element glows; everything else is flat."
+      }
+    }
+  }
+}

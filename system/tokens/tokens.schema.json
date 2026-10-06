@@ -1,0 +1,430 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "maggi-persona-tokens.schema.json",
+  "title": "Maggi persona design tokens",
+  "description": "Structural schema for system/tokens/tokens.json. Semantic rules (brief fidelity, alias resolution, persona constraints, motion maths) live in tools/check-tokens.py.",
+  "type": "object",
+  "required": ["meta", "brand", "motion", "sound", "locale", "rivalries", "card", "persona"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {"type": "string"},
+    "$description": {"type": "string"},
+    "meta": {
+      "type": "object",
+      "required": ["system", "version", "gate", "status", "brief"],
+      "properties": {
+        "version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+        "gate": {"type": "integer", "minimum": 0, "maximum": 6},
+        "status": {"enum": ["proposed", "approved", "locked"]}
+      }
+    },
+    "brand": {
+      "type": "object",
+      "required": [
+        "color",
+        "contrast",
+        "space",
+        "grid",
+        "type",
+        "touch-target",
+        "scale-tests",
+        "sachet",
+        "two-mark",
+        "steam-curl",
+        "layout",
+        "noodle-thread"
+      ],
+      "properties": {
+        "color": {
+          "type": "object",
+          "required": ["red", "yellow", "ink", "paper"],
+          "patternProperties": {
+            "^(red|yellow|ink|paper)$": {"$ref": "#/$defs/colorToken"}
+          }
+        },
+        "contrast": {"$ref": "#/$defs/contrast"}
+      }
+    },
+    "motion": {
+      "type": "object",
+      "required": ["clock", "frame-rate", "easing", "duration", "layer-order", "safety", "export"],
+      "properties": {
+        "easing": {
+          "type": "object",
+          "required": ["ease-in-soft", "ease-out-pop", "ease-settle", "ease-linear-steam"],
+          "additionalProperties": false,
+          "patternProperties": {
+            "^ease-": {"$ref": "#/$defs/cubicBezierToken"}
+          }
+        }
+      }
+    },
+    "sound": {"type": "object", "required": ["chord", "tuning", "synthesis", "accessibility"]},
+    "locale": {
+      "type": "object",
+      "required": ["rules", "packs"],
+      "properties": {
+        "packs": {
+          "type": "object",
+          "required": ["india", "malaysia-singapore", "australia-new-zealand", "west-africa", "europe"],
+          "additionalProperties": {
+            "type": "object",
+            "required": ["status", "evidenceDepth", "secondaryProps"],
+            "properties": {
+              "status": {"const": "validate locally"}
+            }
+          }
+        }
+      }
+    },
+    "rivalries": {
+      "type": "object",
+      "required": ["pairs"],
+      "properties": {
+        "pairs": {
+          "type": "array",
+          "minItems": 6,
+          "items": {
+            "type": "object",
+            "required": ["a", "b", "dynamic"],
+            "properties": {
+              "a": {"$ref": "#/$defs/personaId"},
+              "b": {"$ref": "#/$defs/personaId"}
+            }
+          }
+        }
+      }
+    },
+    "card": {"type": "object", "required": ["stats", "range"]},
+    "persona": {
+      "type": "object",
+      "required": ["cram", "riot", "nest", "sprig", "lull", "stack", "mise"],
+      "additionalProperties": false,
+      "properties": {
+        "cram": {"$ref": "#/$defs/persona"},
+        "riot": {"$ref": "#/$defs/persona"},
+        "nest": {"$ref": "#/$defs/persona"},
+        "sprig": {"$ref": "#/$defs/persona"},
+        "lull": {"$ref": "#/$defs/persona"},
+        "stack": {"$ref": "#/$defs/persona"},
+        "mise": {"$ref": "#/$defs/persona"}
+      }
+    }
+  },
+  "$defs": {
+    "personaId": {"enum": ["cram", "riot", "nest", "sprig", "lull", "stack", "mise"]},
+    "alias": {"type": "string", "pattern": "^\\{[a-z0-9.\\-]+\\}$"},
+    "hexOrAlias": {"type": "string", "pattern": "^(#[0-9A-Fa-f]{6}|\\{[a-z0-9.\\-]+\\})$"},
+    "colorToken": {
+      "type": "object",
+      "required": ["$type", "$value"],
+      "properties": {
+        "$type": {"const": "color"},
+        "$value": {"$ref": "#/$defs/hexOrAlias"},
+        "$description": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "cubicBezierToken": {
+      "type": "object",
+      "required": ["$type", "$value"],
+      "properties": {
+        "$type": {"const": "cubicBezier"},
+        "$value": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {"type": "number"}
+        }
+      }
+    },
+    "contrast": {
+      "type": "object",
+      "required": ["level", "pairs", "distinguish"],
+      "additionalProperties": false,
+      "properties": {
+        "level": {"enum": ["AA", "AAA"]},
+        "pairs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["fg", "bg", "use", "where"],
+            "additionalProperties": false,
+            "properties": {
+              "fg": {"$ref": "#/$defs/hexOrAlias"},
+              "bg": {"$ref": "#/$defs/hexOrAlias"},
+              "use": {"enum": ["body", "large", "ui"]},
+              "where": {"type": "string"}
+            }
+          }
+        },
+        "distinguish": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["a", "b", "why"],
+            "additionalProperties": false,
+            "properties": {
+              "a": {"$ref": "#/$defs/hexOrAlias"},
+              "b": {"$ref": "#/$defs/hexOrAlias"},
+              "why": {"type": "string"},
+              "secondaryCue": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "stat": {"type": "integer", "minimum": 1, "maximum": 5},
+    "persona": {
+      "type": "object",
+      "required": [
+        "id",
+        "number",
+        "slug",
+        "name",
+        "persona",
+        "nameIdea",
+        "primaryMotivation",
+        "job",
+        "spine",
+        "day",
+        "feltTime",
+        "sachet",
+        "noodleThread",
+        "packMechanic",
+        "constraint",
+        "stats",
+        "color",
+        "role",
+        "contrast",
+        "type",
+        "shape",
+        "texture",
+        "density",
+        "iconography",
+        "elevation",
+        "mascot",
+        "motion",
+        "sound",
+        "glyph"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/personaId"},
+        "number": {"type": "string", "pattern": "^0[1-7]$"},
+        "slug": {"type": "string", "pattern": "^0[1-7](-[a-z]+)+$"},
+        "name": {"type": "string", "pattern": "^[A-Z][a-z]+$"},
+        "spine": {
+          "type": "object",
+          "required": ["buyer", "eater", "socialUnit", "rhythm", "gate"],
+          "additionalProperties": false,
+          "properties": {
+            "buyer": {"type": "string"},
+            "eater": {"type": "string"},
+            "socialUnit": {"type": "string"},
+            "rhythm": {"type": "string"},
+            "gate": {"type": "string"}
+          }
+        },
+        "day": {
+          "type": "object",
+          "required": ["order", "time", "light"],
+          "properties": {
+            "order": {"type": "integer", "minimum": 1, "maximum": 7},
+            "time": {"type": "string", "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"}
+          }
+        },
+        "packMechanic": {
+          "type": "object",
+          "required": ["concept", "feasibility", "note"],
+          "properties": {
+            "feasibility": {"enum": ["high", "medium", "low"]}
+          }
+        },
+        "constraint": {"type": "object", "required": ["rule", "why", "checks"]},
+        "stats": {
+          "type": "object",
+          "required": ["heat", "speed", "comfort", "chaos", "value", "fancy", "wellness"],
+          "additionalProperties": false,
+          "properties": {
+            "heat": {"$ref": "#/$defs/stat"},
+            "speed": {"$ref": "#/$defs/stat"},
+            "comfort": {"$ref": "#/$defs/stat"},
+            "chaos": {"$ref": "#/$defs/stat"},
+            "value": {"$ref": "#/$defs/stat"},
+            "fancy": {"$ref": "#/$defs/stat"},
+            "wellness": {"$ref": "#/$defs/stat"}
+          }
+        },
+        "color": {
+          "type": "object",
+          "minProperties": 2,
+          "additionalProperties": {"$ref": "#/$defs/colorToken"}
+        },
+        "contrast": {"$ref": "#/$defs/contrast"},
+        "type": {
+          "type": "object",
+          "required": ["display", "text", "weight", "line-height", "tracking", "case", "scale-ratio"],
+          "properties": {
+            "display": {"$ref": "#/$defs/fontToken"},
+            "text": {"$ref": "#/$defs/fontToken"},
+            "scale-ratio": {
+              "type": "object",
+              "properties": {
+                "$value": {"type": "number", "minimum": 1.1, "maximum": 1.7}
+              }
+            },
+            "weight": {
+              "type": "object",
+              "required": ["display", "text", "text-strong"],
+              "patternProperties": {
+                "^(display|text|text-strong)$": {
+                  "type": "object",
+                  "properties": {
+                    "$value": {"enum": [100, 200, 300, 400, 500, 600, 700, 800, 900]}
+                  }
+                }
+              }
+            },
+            "line-height": {
+              "type": "object",
+              "required": ["display", "text"],
+              "properties": {
+                "display": {
+                  "type": "object",
+                  "properties": {
+                    "$value": {"type": "number", "minimum": 0.9, "maximum": 1.4}
+                  }
+                },
+                "text": {
+                  "type": "object",
+                  "properties": {
+                    "$value": {"type": "number", "minimum": 1.5, "maximum": 1.8}
+                  }
+                }
+              }
+            },
+            "case": {
+              "type": "object",
+              "required": ["display", "text"],
+              "patternProperties": {
+                "^(display|text)$": {
+                  "type": "object",
+                  "properties": {
+                    "$value": {"enum": ["none", "uppercase", "lowercase", "small-caps"]}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "shape": {
+          "type": "object",
+          "required": ["radius", "stroke", "language", "cap", "angles"],
+          "properties": {
+            "cap": {
+              "type": "object",
+              "properties": {
+                "$value": {"enum": ["butt", "round", "square"]}
+              }
+            }
+          }
+        },
+        "density": {
+          "type": "object",
+          "properties": {
+            "$value": {"type": "integer", "minimum": 1, "maximum": 5}
+          }
+        },
+        "mascot": {
+          "type": "object",
+          "required": ["concept", "personality", "baseShape", "silhouetteHook", "signatureProps", "heightRatio"],
+          "properties": {
+            "signatureProps": {
+              "type": "array",
+              "minItems": 2,
+              "items": {"type": "string", "pattern": "^[a-z]+(-[a-z]+)*$"}
+            },
+            "heightRatio": {"type": "number", "minimum": 0.5, "maximum": 1.0}
+          }
+        },
+        "motion": {
+          "type": "object",
+          "required": [
+            "tempo",
+            "idleBars",
+            "amplitude",
+            "squashStretch",
+            "anticipationFrames",
+            "accentBeats",
+            "pulseHz",
+            "overshootPct",
+            "staggerFrames"
+          ],
+          "properties": {
+            "idleBars": {"enum": [1, 2]},
+            "amplitude": {"type": "number", "minimum": 0.1, "maximum": 2.0},
+            "squashStretch": {"type": "number", "minimum": 0, "maximum": 0.3},
+            "anticipationFrames": {"type": "integer", "minimum": 0, "maximum": 24},
+            "accentBeats": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"type": "number", "minimum": 1, "maximum": 4.99}
+            },
+            "pulseHz": {"type": "number", "minimum": 0},
+            "overshootPct": {"type": "integer", "minimum": 0, "maximum": 15},
+            "staggerFrames": {"type": "integer", "minimum": 0, "maximum": 12}
+          }
+        },
+        "sound": {
+          "type": "object",
+          "required": ["pitch", "role", "palette", "asmr"],
+          "properties": {
+            "pitch": {"enum": ["C2", "G2", "E3", "B3", "D4", "A4", "F#4"]},
+            "palette": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"type": "string"}
+            },
+            "asmr": {"type": "boolean"}
+          }
+        },
+        "glyph": {"type": "object", "required": ["construction", "numerals"]},
+        "role": {
+          "type": "object",
+          "required": ["bg", "surface", "text", "text-muted", "accent", "line", "focus", "key", "sachet-red", "sachet-yellow"],
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z-]+$": {"$ref": "#/$defs/colorToken"}
+          }
+        },
+        "elevation": {
+          "type": "object",
+          "required": ["kind"],
+          "properties": {
+            "kind": {
+              "type": "object",
+              "properties": {
+                "$value": {"enum": ["none", "hard-offset", "soft", "glow", "edge"]}
+              }
+            }
+          }
+        },
+        "iconography": {"type": "object", "required": ["grid", "stroke", "cap", "fill"]},
+        "texture": {"type": "object", "minProperties": 1}
+      }
+    },
+    "fontToken": {
+      "type": "object",
+      "required": ["$type", "$value"],
+      "properties": {
+        "$type": {"const": "fontFamily"},
+        "$value": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}
