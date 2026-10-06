@@ -1,0 +1,128 @@
+{
+  "$description": "Mascot rig specification: the contract between Claude Design (draws layered SVG) and Claude Code (animates named layers, never redraws). Human guide: system/rig-spec.md. Validated by tools/check-rig.py.",
+  "version": "0.1.0",
+  "gate": 1,
+  "status": "proposed",
+  "canvas": {
+    "viewBox": [0, 0, 1024, 1024],
+    "units": "rig units = SVG user units on the 1024 canvas",
+    "groundY": 896,
+    "centreX": 512,
+    "safeBox": [128, 128, 896, 896],
+    "heightBasis": 768,
+    "heightRule": "mascot height (rig units) = persona.mascot.heightRatio x heightBasis, feet or base resting on groundY, horizontally centred on centreX",
+    "tolerance": 0.08
+  },
+  "views": {
+    "required": ["front", "three-quarter", "side"],
+    "facing": "three-quarter and side views face screen-right",
+    "rule": "Every view of a mascot uses the identical id set, so one animation file drives any view."
+  },
+  "files": {
+    "pattern": "static/{slug}/{number}-{mascot}-rig-{view}.svg",
+    "example": "static/01-hostel-hungry/01-cram-rig-front.svg"
+  },
+  "id": {
+    "grammar": "{mascot}__{slot}[__{part}[__{subpart}]][--{state}]",
+    "regex": "^(cram|riot|nest|sprig|lull|stack|mise)__(background|environment|limbs-back|body|face|limbs|props|noodles-steam|foreground-type|rig)(__[a-z0-9]+(-[a-z0-9]+)*){0,2}(--[a-z0-9]+(-[a-z0-9]+)*)?$",
+    "rules": [
+      "Lowercase ASCII only. Hierarchy separator is a double underscore; words inside a name use single hyphens; a state suffix uses a double hyphen.",
+      "Left/right are the mascot's own left/right, written -l and -r.",
+      "Every <g> and every <path> that is animated carries an id. Unanimated decoration may be anonymous but must sit inside a named group.",
+      "Ids are identical across views and across poses of the same mascot."
+    ]
+  },
+  "slots": {
+    "$description": "Top-level <g> elements, direct children of <svg>, in exactly this document order (back to front). Matches motion.layer-order in tokens.json, plus two rig-only slots.",
+    "order": ["background", "environment", "limbs-back", "body", "face", "limbs", "props", "noodles-steam", "foreground-type", "rig"],
+    "optional": ["limbs-back"],
+    "notes": {
+      "limbs-back": "Far-side arm/leg in three-quarter and side views. Sits behind body. Not in the brief's layer order; added so turnarounds never need re-layering (Gate 1 decision).",
+      "rig": "Hidden anchor markers only (display=\"none\"). Always last."
+    }
+  },
+  "requiredParts": {
+    "$description": "Parts every mascot must provide. Path = slot/part[/subpart]. States listed must all exist as sibling groups; the first state is visible by default, others display=\"none\".",
+    "body": {"torso": [], "detail": []},
+    "face": {
+      "eye-l": [], "eye-r": [],
+      "lid-l": ["open", "half", "closed"], "lid-r": ["open", "half", "closed"],
+      "brow-l": ["neutral", "raised", "low", "worried"], "brow-r": ["neutral", "raised", "low", "worried"],
+      "mouth": ["neutral", "smile", "open", "chew", "o", "flat"]
+    },
+    "limbs": {"arm-l": [], "arm-r": [], "hand-l": [], "hand-r": []},
+    "props": {"sachet": [], "sachet__red": [], "sachet__yellow": [], "sachet__notch": [], "sachet__tear-strip": []},
+    "noodles-steam": {"steam-1": [], "steam-2": [], "steam-3": [], "noodles": []},
+    "foreground-type": {"two-mark": []}
+  },
+  "lod": {
+    "rule": "Any group whose id ends in __detail is hidden in renders at or below 64px. Recognition features (silhouetteHook) must never live in __detail.",
+    "minRecognitionStroke": 16,
+    "minRecognitionStrokeNote": "Rig units. 16 units = 1px at a 64px render (1024 / 64)."
+  },
+  "anchors": {
+    "$description": "Zero-size markers inside {mascot}__rig: <circle id=\"{mascot}__rig__{anchor}\" cx cy r=\"0\"/>. Code reads cx/cy as the transform-origin for the named part. Fixed anchors have mandatory coordinates in every view.",
+    "list": {
+      "root": {"drives": "whole mascot (bounce, squash/stretch base)", "fixed": [512, 896]},
+      "body-pivot": {"drives": "body", "placement": "centre of mass of body__torso"},
+      "head-pivot": {"drives": "face + head-mounted props", "placement": "base of the head / rim centre for vessel mascots"},
+      "eye-l": {"drives": "face__lid-l scaleY (blink)", "placement": "centre of face__eye-l"},
+      "eye-r": {"drives": "face__lid-r scaleY (blink)", "placement": "centre of face__eye-r"},
+      "mouth": {"drives": "face__mouth state swaps", "placement": "centre of face__mouth--neutral"},
+      "shoulder-l": {"drives": "limbs__arm-l rotation", "placement": "arm root on torso"},
+      "shoulder-r": {"drives": "limbs__arm-r rotation", "placement": "arm root on torso"},
+      "wrist-l": {"drives": "limbs__hand-l rotation", "placement": "arm end"},
+      "wrist-r": {"drives": "limbs__hand-r rotation", "placement": "arm end"},
+      "grip-l": {"drives": "props held in the left hand", "placement": "palm centre"},
+      "grip-r": {"drives": "props held in the right hand (sachet by default)", "placement": "palm centre"},
+      "steam-origin": {"drives": "noodles-steam group", "placement": "centre of the vessel rim"},
+      "sachet-tear": {"drives": "props__sachet__tear-strip", "placement": "inner tip of props__sachet__notch"},
+      "look-at": {"drives": "eye pupils offset target", "placement": "default gaze point, 400 units in front of the face"}
+    }
+  },
+  "expressions": {
+    "$description": "Every mascot must reach these eight expressions purely by state swaps (no redraw). Values are lid / brow / mouth states.",
+    "neutral": ["open", "neutral", "neutral"],
+    "happy": ["open", "raised", "smile"],
+    "excited": ["open", "raised", "open"],
+    "focused": ["half", "low", "flat"],
+    "content": ["half", "neutral", "smile"],
+    "surprised": ["open", "raised", "o"],
+    "tired": ["half", "worried", "flat"],
+    "sleepy": ["closed", "neutral", "neutral"]
+  },
+  "svgRules": [
+    "SVG 1.1 / 2 static, no <script>, no <foreignObject>, no embedded rasters (<image>), no external references.",
+    "No <text>: glyphs and lettering are outlined paths, except the empty brand-lockup slot rectangle (id {mascot}__foreground-type__lockup-slot) when present.",
+    "Groups may carry translate() only. No rotate/scale/skew/matrix baked into animatable groups; geometry is in final position.",
+    "Strokes stay strokes (stroke-width from persona shape.stroke). Do not expand outlines on animatable parts.",
+    "Fills and strokes use token colours only (exact hex from system/tokens/personas/*.tokens.json).",
+    "No clip-path or mask on animatable groups unless the mask itself has an id in the same slot.",
+    "One <svg> per view. Coordinates rounded to 0.5 rig units."
+  ],
+  "personaParts": {
+    "$description": "Persona-specific parts (from tokens persona.*.mascot.signatureProps plus motion needs). Each entry: slot/part[__subpart] -> states.",
+    "cram": {"body__headphones": [], "props__backpack": [], "props__fork": [], "props__phone-timer": ["idle", "ringing"], "body__cup-rim": []},
+    "riot": {"body__flame-hair__flame-1": [], "body__flame-hair__flame-2": [], "body__flame-hair__flame-3": [], "props__stickers": [], "props__chili": [], "props__chili-oil-bottle": [], "props__phone": []},
+    "nest": {"body__apron": [], "body__apron-bow": [], "props__wooden-spoon": [], "props__kettle": [], "props__small-bowl": []},
+    "sprig": {"body__sprout-leaves__leaf-l": [], "body__sprout-leaves__leaf-r": [], "props__lemon-wedge": [], "props__greens": [], "props__half-sachet": []},
+    "lull": {"face__crescent": [], "noodles-steam__steam-stars": [], "props__blanket": [], "props__mug-lamp": ["off", "glow"]},
+    "stack": {"body__block-1": [], "body__block-2": [], "body__block-3": [], "props__multipack": [], "props__calendar": [], "props__rubber-stamp": [], "body__price-tag": []},
+    "mise": {"props__chopsticks__stick-l": [], "props__chopsticks__stick-r": [], "props__finishing-oil-sachet": [], "props__garnish": [], "props__napkin": [], "body__foot": []}
+  },
+  "construction": {
+    "$description": "Front-view target proportions in rig units. Claude Design may deviate by canvas.tolerance (8%) without approval; larger changes come back to Gate review. Heights follow persona heightRatio x 768.",
+    "cram": {"height": 630, "width": 360, "baseShape": "cylinder (cup), top ellipse ry 40", "eyeDiameter": 56, "eyeSpacing": 120, "eyeY": 0.40, "hook": "headphone band: arc radius 200, apex 60 above rim; fork: 220 tall, upright in grip-r"},
+    "riot": {"height": 691, "width": 420, "baseShape": "teardrop, point up, widest at 35% from base", "eyeDiameter": [48, 72], "eyeSpacing": 150, "eyeY": 0.45, "hook": "flame crown: 3 points 160 / 220 / 140 tall, leaning 12 degrees right"},
+    "nest": {"height": 538, "width": 620, "baseShape": "dome, height:width 0.65, flat base", "eyeDiameter": 52, "eyeSpacing": 160, "eyeY": 0.42, "hook": "apron bow: two 120-wide loops visible behind the dome at 60% height"},
+    "sprig": {"height": 660, "width": 440, "baseShape": "shallow bowl 440 x 220 with head dome above", "eyeDiameter": 44, "eyeSpacing": 110, "eyeY": 0.55, "hook": "leaf pair on a 120 stem rising 280 above the head, leaves 140 x 70 at +/-35 degrees"},
+    "lull": {"height": 568, "width": 480, "baseShape": "round bowl, head circle radius 200", "eyeDiameter": 60, "eyeSpacing": 140, "eyeY": 0.48, "hook": "crescent notch: circle of 0.6 head radius offset 0.35 radius up-right; 3 steam stars of 36 diameter"},
+    "stack": {"height": 730, "width": 420, "baseShape": "3 stacked blocks: 420 x 220, 360 x 220, 300 x 200, left-aligned steps", "eyeDiameter": 48, "eyeSpacing": 130, "eyeY": 0.30, "hook": "price-tag flag 120 x 70 on a 60-unit string from the top-right corner"},
+    "mise": {"height": 768, "width": 300, "baseShape": "slim bowl 300 wide on a 140-wide foot", "eyeDiameter": 40, "eyeSpacing": 100, "eyeY": 0.38, "hook": "crossed chopsticks 520 long at 30 degrees, crossing 120 above the rim; noodle ribbon lifted 200"}
+  },
+  "silhouetteTest": {
+    "render": "union of all slots except background, environment, foreground-type, rig and any __detail group, filled #000000",
+    "size": "32px",
+    "pass": "Each of the seven is named correctly by a reviewer at a glance, and no two silhouettes overlap by more than 85% IoU after normalising to the same bounding-box height (computed at Gate 2)."
+  }
+}
