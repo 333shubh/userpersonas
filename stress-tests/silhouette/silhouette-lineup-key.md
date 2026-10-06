@@ -16,14 +16,18 @@ Order = Section 18.5 day order. Fill `#000000`, background `#FFFFFF`, no strokes
 
 ## Shared family traits (all seven)
 - Ground line y 896, every base sits on it.
-- Arms: 40-unit capsule from shoulder, 32-radius hand. Mascot-left arm always drops 85/85 units down-out.
-- Sachet: brand geometry 160 × 240, 8-unit crimp teeth top and bottom, 16 × 12 tear notch 24 below the top crimp, held in `grip-r` (screen-left in front view).
+- Arms: 40-unit capsule from the shoulder, 32-radius hand.
+- Sachet: brand geometry 160 × 240, 8-unit crimp teeth top and bottom, 16 × 12 tear notch 24 below the top crimp, held alone in `grip-r` (screen-left in front view).
 
-## Interpretations to confirm (spec conflicts or gaps)
-1. **Cram, fork + sachet both in grip-r.** rig-spec §7 puts the fork in grip-r and the handoff puts the sachet there too. Here the hand holds the sachet by its top crimp, with the fork rising 220 above the hand. If you want the fork in grip-l, it would read more clearly. Needs a decision.
-2. **Cram headphone arc r 190** (−5%, within tolerance). This keeps a gap between the earcup and the fork head at 32px.
-3. **Sprig head dome rx 180 / ry 200, stem 125.** Bowl 220 + stem 120 + 35° leaves (140 × 70) only adds up to 660 if the dome is this tall.
-4. **Nest bows above the dome.** A dome with h:w 0.65 (403 tall) plus loops 120 wide only reaches 538 if the loops rise above the dome top. The loops have punched counters.
-5. **Lull crescent notch:** circle 0.6r (120), centre 0.65r (130) from the head centre at 45° up-right. Read literally as a 0.35r offset, the notch circle would sit fully inside the head and become a hole, not a bite. Stars are Ø39 (+8%, the edge-case allowance) with fat 4-point cores so they survive at 32px.
-6. **Mise chopsticks** are 520 long at 30° from vertical and cross 120 above the rim, 30% of the way up each stick. The tops reach y 141 (height 755, −2%).
-7. **Stack**'s steps are only 60 units each (fixed by the block widths). At 32px the price-tag flag carries most of the difference from Cram, and the steps are second. This is the pair to test first.
+## Rig spec v0.1.1 changes applied
+- **Cram:** fork (220 tall, upright) moved to `grip-l`, hand raised to (800, 600) so the fork clears the earcup. The sachet hangs alone from `grip-r`.
+- **Nest:** dome h:w 0.87 (538 × 620). The 120-wide bow loops sit behind the dome and show at both sides at 60% height (y 573), with punched counters. Nothing sits on top. The sachet is raised to clear the left loop.
+- **Lull:** unchanged (notch 0.6r centred 0.65r at 45° up-right, now in the spec).
+
+## Remaining notes
+1. **Cram headphone arc r 190** (−5%, within tolerance).
+2. **Sprig head dome rx 180 / ry 200, stem 125.** Needed to reach 660 with the §7 leaf numbers.
+3. **Lull stars** Ø39 (+8%) with fat 4-point cores.
+4. **Mise chopsticks** cross 30% up each stick; the tops reach y 141.
+5. **Cram vs Stack:** Stack's steps are 60 units. At 32px the price-tag flag carries most of the difference, and Cram's fork now sits on the opposite side to Stack's tag.
+6. **Nest at 32px:** the side loops read as small ears on the dome. If they get lost in the test, the +8% allowance takes them to 130 wide.

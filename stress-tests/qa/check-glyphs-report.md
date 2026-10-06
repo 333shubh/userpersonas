@@ -54,7 +54,7 @@ Gate 1 handoff section B. Measures each persona '2' against `brand.two-mark`. Ra
 | PASS | stack: no script/image/text (outlined paths only) |  |
 | PASS | stack: fills are role.text / role.bg only | ['#14213D'] vs text #14213D, bg #F5EBD7 |
 | PASS | stack: cap height = 80% of box (y 80-400) | ink y 80-400 (cap 320 / 400 = 80%) |
-| PASS | stack: no stroke thinner than 40 units (12.5% of cap height) | largest sub-minimum stroke region ~12 units thick, 0.11 x disk area (limit 0.5); opening loses 5.8% of ink |
+| PASS | stack: no stroke thinner than 40 units (12.5% of cap height) | largest sub-minimum stroke region ~12 units thick, 0.11 x disk area (limit 0.5); opening loses 6.6% of ink |
 | PASS | stack: open counter >= 25% of ink width | 117 units vs 58 needed (ink width 232) |
 | PASS | mise: viewBox is the 1:1.25 construction box | 0 0 320 400 |
 | PASS | mise: group id mise__foreground-type__two-mark |  |
@@ -86,5 +86,5 @@ Gate 1 handoff section B. Measures each persona '2' against `brand.two-mark`. Ra
 | Nest | 320 | 0.2% | 0.01 | ~4 | 0.00 | 140 | 64 |
 | Sprig | 322 | 0.8% | 0.01 | ~4 | 0.20 | 136 | 73 |
 | Lull | 320 | 0.5% | 0.06 | ~11 | 0.00 | 101 | 70 |
-| Stack | 320 | 5.8% | 0.11 | ~12 | 0.63 | 117 | 58 |
+| Stack | 320 | 6.6% | 0.11 | ~12 | 0.63 | 117 | 58 |
 | Mise | 320 | 0.6% | 0.11 | ~12 | 0.01 | 108 | 72 |

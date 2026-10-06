@@ -53,8 +53,8 @@ G.lull=()=>{const cx=160,cy=221,r=98;const wf=a=>{const d=a-320;return Math.abs(
  for(let i=0;i<=32;i++){const t=i/32;tail.push(add([E[0]+(B[0]-E[0])*t,E[1]+(B[1]-E[1])*t],mul(pn,14*Math.sin(2*Math.PI*t))));}
  const nb=bowl.length,ew=wf(390);
  return {strokes:[S(join(bowl,tail),(t,p,i)=>i<nb?wf(160+230*i/(nb-1)):ew+(48-ew)*(i-nb+1)/32,'round'),S(line([50,374],[270,374],16),52,'round')],polys:[circle(E[0],E[1],ew/2-1)]};};
-// 06 Stack: three stacked blocks on the 8-unit grid, stencil gaps 16, square corners, butt
-G.stack=()=>({strokes:[],polys:[poly([[48,80],[272,80],[272,216],[224,216],[224,128],[96,128],[96,192],[48,192]]),poly([[192,232],[272,232],[128,336],[48,336]]),rect(48,352,232,48)]});
+// 06 Stack: three stacked blocks on the 8-unit grid, stencil gaps 16, stepped corners, butt
+G.stack=()=>({strokes:[],polys:[poly([[48,104],[72,104],[72,80],[248,80],[248,104],[272,104],[272,216],[224,216],[224,128],[96,128],[96,192],[48,192]]),poly([[192,232],[272,232],[128,336],[48,336]]),rect(48,352,232,48)]});
 // 07 Mise: high-contrast didone (40 hairline / 104 swell), ball terminal, chopstick-straight base
 G.mise=()=>{const cx=160,cy=194,r=94;const wf=a=>{const d=a-370;return Math.abs(d)<80?40+64*Math.cos(d*Math.PI/160):40;};
  const bowl=arc(cx,cy,r,175,400,72),nb=bowl.length,E=bowl[nb-1],ew=wf(400),diag=qbez(E,[150,300],[60,360],24);
