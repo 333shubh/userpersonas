@@ -33,11 +33,11 @@ Base shape + silhouette hook + arms + the sachet in `grip-r`, using the construc
 
 | Mascot | Must be visible in pure black at 32px |
 |---|---|
-| Cram | headphone arc above the cup rim; upright fork |
+| Cram | headphone arc above the cup rim; upright fork in the left hand (sachet alone in the right) |
 | Riot | three flame points, the tallest in the middle-right |
-| Nest | wide low dome with two bow loops behind |
+| Nest | tall dome (h:w 0.87) with two bow loops behind it, showing at both sides at 60% height |
 | Sprig | single leaf pair rising high above the head |
-| Lull | crescent bite out of the round head; three small star points above |
+| Lull | crescent bite out of the edge of the round head; three small star points above |
 | Stack | three-step outline; price-tag flag on its string |
 | Mise | crossed chopsticks forming an X above a slim footed bowl |
 

@@ -1,6 +1,6 @@
 {
   "$description": "Mascot rig specification: the contract between Claude Design (draws layered SVG) and Claude Code (animates named layers, never redraws). Human guide: system/rig-spec.md. Validated by tools/check-rig.py.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "gate": 1,
   "status": "proposed",
   "canvas": {
@@ -73,7 +73,7 @@
       "shoulder-r": {"drives": "limbs__arm-r rotation", "placement": "arm root on torso"},
       "wrist-l": {"drives": "limbs__hand-l rotation", "placement": "arm end"},
       "wrist-r": {"drives": "limbs__hand-r rotation", "placement": "arm end"},
-      "grip-l": {"drives": "props held in the left hand", "placement": "palm centre"},
+      "grip-l": {"drives": "props held in the left hand (Cram: fork)", "placement": "palm centre"},
       "grip-r": {"drives": "props held in the right hand (sachet by default)", "placement": "palm centre"},
       "steam-origin": {"drives": "noodles-steam group", "placement": "centre of the vessel rim"},
       "sachet-tear": {"drives": "props__sachet__tear-strip", "placement": "inner tip of props__sachet__notch"},
@@ -112,11 +112,11 @@
   },
   "construction": {
     "$description": "Front-view target proportions in rig units. Claude Design may deviate by canvas.tolerance (8%) without approval; larger changes come back to Gate review. Heights follow persona heightRatio x 768.",
-    "cram": {"height": 630, "width": 360, "baseShape": "cylinder (cup), top ellipse ry 40", "eyeDiameter": 56, "eyeSpacing": 120, "eyeY": 0.40, "hook": "headphone band: arc radius 200, apex 60 above rim; fork: 220 tall, upright in grip-r"},
+    "cram": {"height": 630, "width": 360, "baseShape": "cylinder (cup), top ellipse ry 40", "eyeDiameter": 56, "eyeSpacing": 120, "eyeY": 0.40, "hook": "headphone band: arc radius 200, apex 60 above rim; fork: 220 tall, upright in grip-l, so the sachet is alone in grip-r"},
     "riot": {"height": 691, "width": 420, "baseShape": "teardrop, point up, widest at 35% from base", "eyeDiameter": [48, 72], "eyeSpacing": 150, "eyeY": 0.45, "hook": "flame crown: 3 points 160 / 220 / 140 tall, leaning 12 degrees right"},
-    "nest": {"height": 538, "width": 620, "baseShape": "dome, height:width 0.65, flat base", "eyeDiameter": 52, "eyeSpacing": 160, "eyeY": 0.42, "hook": "apron bow: two 120-wide loops visible behind the dome at 60% height"},
+    "nest": {"height": 538, "width": 620, "baseShape": "dome, height:width 0.87 (538 tall on a 620 base), flat base", "eyeDiameter": 52, "eyeSpacing": 160, "eyeY": 0.42, "hook": "apron bow: two 120-wide loops behind the dome, protruding at both sides at 60% height (never on top)"},
     "sprig": {"height": 660, "width": 440, "baseShape": "shallow bowl 440 x 220 with head dome above", "eyeDiameter": 44, "eyeSpacing": 110, "eyeY": 0.55, "hook": "leaf pair on a 120 stem rising 280 above the head, leaves 140 x 70 at +/-35 degrees"},
-    "lull": {"height": 568, "width": 480, "baseShape": "round bowl, head circle radius 200", "eyeDiameter": 60, "eyeSpacing": 140, "eyeY": 0.48, "hook": "crescent notch: circle of 0.6 head radius offset 0.35 radius up-right; 3 steam stars of 36 diameter"},
+    "lull": {"height": 568, "width": 480, "baseShape": "round bowl, head circle radius 200", "eyeDiameter": 60, "eyeSpacing": 140, "eyeY": 0.48, "hook": "crescent notch: circle of 0.6 head radius, centred 0.65 head radius from the head centre at 45 degrees up-right, so it bites the edge (not a hole); 3 steam stars of 36 diameter"},
     "stack": {"height": 730, "width": 420, "baseShape": "3 stacked blocks: 420 x 220, 360 x 220, 300 x 200, left-aligned steps", "eyeDiameter": 48, "eyeSpacing": 130, "eyeY": 0.30, "hook": "price-tag flag 120 x 70 on a 60-unit string from the top-right corner"},
     "mise": {"height": 768, "width": 300, "baseShape": "slim bowl 300 wide on a 140-wide foot", "eyeDiameter": 40, "eyeSpacing": 100, "eyeY": 0.38, "hook": "crossed chopsticks 520 long at 30 degrees, crossing 120 above the rim; noodle ribbon lifted 200"}
   },
