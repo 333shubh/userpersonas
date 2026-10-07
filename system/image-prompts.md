@@ -14,7 +14,7 @@ For Midjourney (recommended) or ChatGPT's image tool. Built from `system/mascot-
 ## The series prompt (prefix for every figure)
 
 ```
-3D designer vinyl art toy, collectible blind-box figure, streetwear creature character: human-style body, pose and streetwear outfit with a non-human creature head and skin, head about 38% of figure height, 4-finger hands, chunky rounded sneakers, standing on a small round display base. Smooth sculpted vinyl, crisp clean edges, studio product render, three-quarter view 35 degrees off front, eye level at chest height, 85mm lens, large soft key light top-left, gentle fill from the right, rim light from behind, soft contact shadow, seamless background sweep, centred, full figure in frame, high detail, no text
+3D designer vinyl art toy, collectible blind-box figure, streetwear creature character: human-style body, pose and streetwear outfit with a non-human creature head and skin, head about 38% of figure height, 4-finger hands, chunky rounded sneakers, standing directly on the ground (no display base). Smooth sculpted vinyl, crisp clean edges, studio product render, three-quarter view 35 degrees off front, eye level at chest height, 85mm lens, large soft key light top-left, gentle fill from the right, rim light from behind, soft contact shadow, seamless background sweep, centred, full figure in frame, high detail, no text
 ```
 
 **Avoid on every prompt** (Midjourney `--no`, or "do not include" in ChatGPT): `realistic human face, child, baby, food as a head, logo, brand name, readable text, watermark, extra fingers, cultural costume`.

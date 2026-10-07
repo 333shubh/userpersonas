@@ -108,11 +108,11 @@ Stack is a **streetwear creature** figure: a box-head with a taped cardboard car
 |---|---|
 | Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
 | Style rule | Streetwear creatures: human-style proportions, attitude and outfits; creature heads, ears, horns, tails and non-human skin colours. Never an ordinary human, never a food object as a head |
-| Shared body | Shared armature for all seven: human-style torso and limbs with relaxed streetwear posture, 4-finger hands sized to hold a real MAGGI pack, chunky rounded shoes, an 8 mm round display base |
+| Shared body | Shared armature for all seven: human-style torso and limbs with relaxed streetwear posture, 4-finger hands sized to hold a real MAGGI pack, chunky rounded shoes; standing directly on the ground with a soft contact shadow (no display base) |
 | Head proportion | 38% of figure height |
 | Faces | Creature faces only (cat, devil-imp, axolotl, sprite, glow-creature, box-head): non-human skin colours, no realistic human faces, no child faces |
 | Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
-| Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
+| Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the ground. Lull and Mise use their scene light instead |
 | Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |
 | Deliverables | Per mascot: hero render, 8-view turntable sheet, 3 poses (hero with pack, sachet moment, reaction), material callout sheet; 2048x2048 PNG with alpha |
 <!-- generated:toy:end -->

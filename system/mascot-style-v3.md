@@ -25,7 +25,7 @@ Status: **current (v3.1, streetwear creatures), 2026-10-07.** Supersedes `mascot
 ## 3. The shared body (one universe)
 
 - **Head:** a creature head (ears, horns, gill-frills, glow eyes, carton), about 38% of figure height, with non-human skin colours. **Never a food object, never an ordinary human face, never a child face.**
-- **Body:** human-style torso and limbs with relaxed streetwear posture, 4-finger hands sized to hold a real MAGGI pack, chunky rounded shoes, an 8 mm round display base.
+- **Body:** human-style torso and limbs with relaxed streetwear posture, 4-finger hands sized to hold a real MAGGI pack, chunky rounded shoes. The figures stand directly on the ground with a soft contact shadow; no display base (project lead's call).
 - **Outfit:** contemporary streetwear chosen per persona. Never cultural or national dress.
 - **Pack:** each figure holds its real MAGGI pack at 1:6 scale as a separate prop; health badges are printed illegible. Cram's pack is a one-ink print.
 - **Scale:** a 15 cm figure equivalent. All seven stand on the same base height; differences come from heads and hair.
@@ -36,7 +36,7 @@ Status: **current (v3.1, streetwear creatures), 2026-10-07.** Supersedes `mascot
 |---|---|
 | Hero camera | Three-quarter view, 35° off front, eye level at chest height, 85 mm lens look |
 | Turntable | 8 views at 45° steps |
-| Studio light | Large key 45° top-left, fill at 30% from the right, rim light from behind, soft contact shadow on the base |
+| Studio light | Large key 45° top-left, fill at 30% from the right, rim light from behind, soft contact shadow on the ground |
 | Scene light | Each persona's hour (section 10 of its file); Lull and Mise always use scene light |
 | Background | Seamless sweep in the persona's `role.bg`, plus a transparent PNG |
 | Colour | Token colours only for the figure and set; the real pack keeps its own print |
