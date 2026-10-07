@@ -20,6 +20,8 @@ CHECKS = [
     ("check-rig", "Rig spec"),
     ("check-silhouettes", "Silhouette lineup (Gate 1 A)"),
     ("check-glyphs", "'2' glyphs (Gate 1 B)"),
+    ("check-artwork", "Artwork colours + safety"),
+    ("check-motion", "Motion clips"),
 ]
 
 
