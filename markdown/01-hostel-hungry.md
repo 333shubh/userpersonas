@@ -5,7 +5,7 @@
 | **Mascot** | Cram (working name, brief Section 19) |
 | **Primary motivation** | Lowest-effort filling meal |
 | **Design language** | Strict black and white, one-colour print logic: budget is the style. The project's required black-and-white, minimalistic persona. |
-| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
+| **Mascot medium** | 3D designer vinyl toy, a "streetwear creature" in a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 13:00, flat fluorescent light, hard shadows (slot 3 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -14,7 +14,7 @@
 
 ## 1. Persona name and archetype
 
-**The Hostel Hungry**, embodied by **Cram**, a monochrome noodle-cup creature with headphones, a backpack and a fork. The archetype is the resourceful student or first-jobber who lives in shared housing without a real kitchen, and for whom a meal has one job: fill the gap, cheaply, with nothing left to wash.
+**The Hostel Hungry**, embodied by **Cram**, a sleepy cat-eared streetwear creature in an oversized beanie and timetable hoodie, headphones on, fork in hand (a 3D designer vinyl figure). The archetype is the resourceful student or first-jobber who lives in shared housing without a real kitchen, and for whom a meal has one job: fill the gap, cheaply, with nothing left to wash.
 
 ## 2. Short persona summary
 
@@ -77,17 +77,17 @@ The default is the single 70 g pouch of **MAGGI 2-Minute Noodles Masala**. Cram 
 
 ## 10. Illustration scene description
 
-**13:00, a hostel-desk diorama under one flat fluorescent tube.** The Cram figure sits slumped in a C-curve on a stack of miniature notebooks, headphones on, the noodle fringe hanging over heavy printed eyes, fork raised like a pen. The real Masala pack is clamped under one arm as a one-ink print. A tiny phone timer glows on the desk ("counts it on a phone timer"). A miniature timetable is pinned to the wall at a 2° tilt. The whole set is white, black and grey: no coloured light and no coloured reflections. Density 2: at most five props, half the frame empty white sweep. Rendered from the shared hero camera, with a straight-down hard shadow from the overhead light.
+**13:00, a hostel-desk diorama under one flat fluorescent tube.** The Cram figure, a sleepy cat-eared creature in an oversized beanie and timetable hoodie, sits slumped in a C-curve on a stack of miniature notebooks, headphones on, fork raised like a pen. The real Masala pack is clamped under one arm as a one-ink print. A tiny phone timer glows on the desk ("counts it on a phone timer"). A miniature timetable is pinned to the wall at a 2° tilt. The whole set is white, black and grey: no coloured light and no coloured reflections. Density 2: half the frame empty white sweep, with a straight-down hard shadow from the overhead light.
 
-## 11. Mascot concept (3D designer toy)
+## 11. Mascot concept (3D designer toy: streetwear creature)
 
-Cram is a **3D designer vinyl figure**: a paper noodle cup for a head, lid half-peeled like a cap, on the series' shared toy body in an oversized hoodie printed with an exam timetable. It is the series' monochrome edition: matte white vinyl with black screen-printed halftone graphics, the way limited "black-and-white" art-toy runs are produced.
+Cram is a **streetwear creature** figure: a sleepy cat-eared creature whose ears poke through an oversized beanie, in a timetable-print hoodie with headphones and a backpack. It is the series' monochrome edition: matte white vinyl with black screen-printed halftone graphics.
 
 | | |
 |---|---|
 | Personality | Exhausted but resourceful, clever, always hungry |
-| Silhouette | Tall cup head; the headphone arc and an upright fork are the 32 px hooks |
-| Face | Printed heavy half-lids by default; a swappable wide-eyed face for the timer moment |
+| Silhouette | Beanie with two cat ears, headphone band and an upright fork: the 32 px hooks |
+| Face | Half-closed sleepy eyes by default; a swappable wide-eyed face for the timer moment |
 | Pose language | Slouched C-curve; quick, tired-but-sharp gestures |
 | Colour | Achromatic only: white vinyl, black print, grey screens |
 | Motion behaviour | Tired but quick: a small bob on beats 1 and 3, a slow blink, a sudden pop when the timer rings |
@@ -95,21 +95,22 @@ Cram is a **3D designer vinyl figure**: a paper noodle cup for a head, lid half-
 <!-- generated:toy:start -->
 | Toy spec | Value |
 |---|---|
-| Head (the food object) | Paper noodle cup, lid half-peeled like a cap; noodle fringe over heavy-lidded printed eyes |
-| Material | Matte white vinyl with black screen-printed halftone graphics; gloss-black headphones |
+| Head and face | Sleepy cat-eared creature: big round head, half-closed eyes, cat ears poking through an oversized beanie |
+| Material | Matte white vinyl skin with black screen-printed halftone graphics; gloss-black headphones |
 | Finish and light | Strictly achromatic: white, black and printed grey screens only, no coloured light or reflections |
-| Outfit | Oversized grey hoodie printed with an exam timetable; backpack; chunky black-and-white shoes |
-| Props | Fork, phone timer, the real Masala pack redrawn as a one-ink print |
-| Closest references | [13](../brief/references/inspo/mascots-v3/ref-13-bw-graffiti-box-figures.jpg), [09](../brief/references/inspo/mascots-v3/ref-09-zero-monochrome-elegant.jpg), [02](../brief/references/inspo/mascots-v3/ref-02-grumpy-pale-figure.jpg), [16](../brief/references/inspo/mascots-v3/ref-16-blind-box-series-sheet.jpg) |
+| Outfit | Oversized grey hoodie printed with an exam timetable; backpack; chunky black-and-white sneakers |
+| Props | Fork, phone timer, the real Masala pack as a one-ink print |
+| Closest references | [18](../brief/references/inspo/mascots-v3/ref-18-knit-hat-cat.jpg), [04](../brief/references/inspo/mascots-v3/ref-04-pink-face-camera-streetwear.jpg), [13](../brief/references/inspo/mascots-v3/ref-13-bw-graffiti-box-figures.jpg), [09](../brief/references/inspo/mascots-v3/ref-09-zero-monochrome-elegant.jpg) |
 
 **Series rules shared by all seven figures** (brand.toy)
 
 | Rule | Value |
 |---|---|
 | Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
-| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
-| Head proportion | 45% of figure height |
-| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Style rule | Streetwear creatures: human-style proportions, attitude and outfits; creature heads, ears, horns, tails and non-human skin colours. Never an ordinary human, never a food object as a head |
+| Shared body | Shared armature for all seven: human-style torso and limbs with relaxed streetwear posture, 4-finger hands sized to hold a real MAGGI pack, chunky rounded shoes, an 8 mm round display base |
+| Head proportion | 38% of figure height |
+| Faces | Creature faces only (cat, devil-imp, axolotl, sprite, glow-creature, box-head): non-human skin colours, no realistic human faces, no child faces |
 | Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
 | Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
 | Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |

@@ -403,7 +403,7 @@
       }
     },
     "toy": {
-      "$description": "Mascot medium v3 (decided 2026-10-07): a 3D designer vinyl art-toy series. One shared body = one universe; head, material and props = seven worlds. See system/mascot-style-v3.md. References: brief/references/inspo/mascots-v3/.",
+      "$description": "Mascot medium v3.1 (decided 2026-10-07): 3D designer vinyl art toys in one rule, 'streetwear creatures': human-style bodies, poses and streetwear with creature heads and skin. See system/mascot-style-v3.md. References: brief/references/inspo/mascots-v3/.",
       "medium": {
         "$type": "string",
         "$value": "3D designer vinyl toy (collectible blind-box series), rendered stills and turntables"
@@ -414,16 +414,16 @@
       },
       "head-ratio": {
         "$type": "number",
-        "$value": 0.45,
-        "$description": "Head (food object) height as a fraction of total figure height: big-head art-toy proportion."
+        "$value": 0.38,
+        "$description": "Head height as a fraction of figure height: big-head art-toy proportion."
       },
       "body": {
         "$type": "string",
-        "$value": "Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base"
+        "$value": "Shared armature for all seven: human-style torso and limbs with relaxed streetwear posture, 4-finger hands sized to hold a real MAGGI pack, chunky rounded shoes, an 8 mm round display base"
       },
       "face": {
         "$type": "string",
-        "$value": "No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it"
+        "$value": "Creature faces only (cat, devil-imp, axolotl, sprite, glow-creature, box-head): non-human skin colours, no realistic human faces, no child faces"
       },
       "outfit": {
         "$type": "string",
@@ -448,6 +448,10 @@
       "deliverables": {
         "$type": "string",
         "$value": "Per mascot: hero render, 8-view turntable sheet, 3 poses (hero with pack, sachet moment, reaction), material callout sheet; 2048x2048 PNG with alpha"
+      },
+      "style-rule": {
+        "$type": "string",
+        "$value": "Streetwear creatures: human-style proportions, attitude and outfits; creature heads, ears, horns, tails and non-human skin colours. Never an ordinary human, never a food object as a head"
       }
     }
   },
@@ -1170,8 +1174,8 @@
     "mascot": {
       "concept": "A sleepy moon-faced noodle bowl whose steam becomes stars",
       "personality": "Cozy, dreamy, gently humorous, comforting",
-      "baseShape": "round bowl with crescent-moon face",
-      "silhouetteHook": "crescent notch cut from the head + star-tipped steam",
+      "baseShape": "round dark blob creature with glowing eyes",
+      "silhouetteHook": "blanket cape over a round head, three glowing star wisps",
       "signatureProps": [
         "steam-stars",
         "blanket",
@@ -1179,9 +1183,9 @@
       ],
       "heightRatio": 0.74,
       "toy": {
-        "head": "Round moon-bowl head with a crescent bite; sleepy printed eyes",
-        "material": "Matte dusk-violet vinyl with glow-in-the-dark details (steam stars, eye shine)",
-        "finish": "Rendered in near-darkness lit by one warm lamp; glow details in the warm glow colour; nothing brighter than the luminance cap except the pack print",
+        "head": "Round dark glow-creature: smooth blob head, glowing half-moon eyes, a crescent-shaped glow mark",
+        "material": "Matte dusk-violet vinyl with glow-in-the-dark eyes and steam stars",
+        "finish": "Rendered in near-darkness lit by one warm lamp; glow in the warm glow colour; nothing brighter than the luminance cap except the pack print",
         "outfit": "Oversized hoodie and a blanket worn as a cape; soft slippers",
         "props": "Real Masala Cuppa held in both hands, steam that turns into stars",
         "references": [

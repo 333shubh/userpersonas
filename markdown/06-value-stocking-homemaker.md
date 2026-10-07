@@ -5,7 +5,7 @@
 | **Mascot** | Stack (working name, brief Section 19) |
 | **Primary motivation** | Household value and reliability |
 | **Design language** | Practical, bold shelf presence, clear value cues, household-friendly: a strict grid with stamp and price-tag logic |
-| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
+| **Mascot medium** | 3D designer vinyl toy, a "streetwear creature" in a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 10:30, neutral late-morning light, busy (slot 2 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -14,7 +14,7 @@
 
 ## 1. Persona name and archetype
 
-**The Value-Stocking Homemaker**, embodied by **Stack**, a dependable multipack-inspired pantry guardian. The archetype is the household planner who thinks in weeks, rows and servings: the person who makes sure the cupboard never runs out.
+**The Value-Stocking Homemaker**, embodied by **Stack**, a box-head streetwear figure with a taped cardboard carton head and a price tag, in a navy work jacket (a 3D designer vinyl figure). The archetype is the household planner who thinks in weeks, rows and servings: the person who makes sure the cupboard never runs out.
 
 ## 2. Short persona summary
 
@@ -77,16 +77,16 @@ Stack holds the **MAGGI 2-Minute Noodles Masala 12-pack** (840 g, 12 × 70 g; pa
 
 ## 10. Illustration scene description
 
-**10:30, a pantry diorama in neutral late-morning light.** The Stack figure stands planted beside a miniature shelf where real Masala packs sit in exact rows. One hand counts packs on its fingers; a multipack wrap with a tear-off Mon–Sun calendar leans against the shelf, one day stamped. A printed price tag hangs from the corner of its carton head. Everything aligns to the grid; only the rubber stamp is tilted −6°. Density 3: up to eight props, 40% clear space.
+**10:30, a pantry diorama in neutral late-morning light.** The Stack figure, a box-head in a navy work jacket, stands planted beside a miniature shelf where real Masala packs sit in exact rows. One hand counts packs on its fingers; a multipack wrap with a tear-off Mon–Sun calendar leans against the shelf, one day stamped. A printed price tag hangs from the corner of its carton head. Everything aligns to the grid; only the rubber stamp is tilted −6°. Density 3.
 
-## 11. Mascot concept (3D designer toy)
+## 11. Mascot concept (3D designer toy: streetwear creature)
 
-Stack is a **3D designer figure with a cardboard-box head**: a stacked multipack carton with packing tape and a printed price tag, on the shared toy body in a navy work jacket with a shelf-blue stripe. The carton is kraft-cardboard textured (corrugated edges, glossy tape), the series' most tactile material.
+Stack is a **streetwear creature** figure: a box-head with a taped cardboard carton for a head, printed square eyes and a price tag, in a navy work jacket with a shelf-blue stripe. The kraft carton is the series' most tactile material.
 
 | | |
 |---|---|
 | Personality | Organized, practical, warm, efficient |
-| Silhouette | Square carton head with stepped edges and a price-tag flag, the 32 px hooks |
+| Silhouette | Square carton head with a price-tag flag: the 32 px hooks |
 | Face | Square printed eyes; a satisfied, reliable smile stamped on the box |
 | Pose language | Planted and upright; precise counting and stacking gestures |
 | Colour | Navy, kraft, stamp red, price-tag yellow, shelf blue |
@@ -95,7 +95,7 @@ Stack is a **3D designer figure with a cardboard-box head**: a stacked multipack
 <!-- generated:toy:start -->
 | Toy spec | Value |
 |---|---|
-| Head (the food object) | Stacked multipack carton head with packing tape and a printed price tag |
+| Head and face | Box-head figure: a taped cardboard carton for a head with printed square eyes and a price tag |
 | Material | Kraft cardboard texture (corrugated edges, tape gloss) on a navy vinyl body |
 | Finish and light | Crisp, square, grid-aligned; one rubber-stamp mark |
 | Outfit | Navy work jacket with a shelf-blue stripe; boxy boots |
@@ -107,9 +107,10 @@ Stack is a **3D designer figure with a cardboard-box head**: a stacked multipack
 | Rule | Value |
 |---|---|
 | Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
-| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
-| Head proportion | 45% of figure height |
-| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Style rule | Streetwear creatures: human-style proportions, attitude and outfits; creature heads, ears, horns, tails and non-human skin colours. Never an ordinary human, never a food object as a head |
+| Shared body | Shared armature for all seven: human-style torso and limbs with relaxed streetwear posture, 4-finger hands sized to hold a real MAGGI pack, chunky rounded shoes, an 8 mm round display base |
+| Head proportion | 38% of figure height |
+| Faces | Creature faces only (cat, devil-imp, axolotl, sprite, glow-creature, box-head): non-human skin colours, no realistic human faces, no child faces |
 | Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
 | Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
 | Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |

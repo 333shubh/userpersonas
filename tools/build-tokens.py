@@ -299,9 +299,9 @@ def p_toy(r, pid):
     for n in toy["references"]:
         hit = sorted(refdir.glob(f"ref-{n:02d}-*.jpg"))
         links.append(f"[{n:02d}](../brief/references/inspo/mascots-v3/{hit[0].name})" if hit else f"{n:02d}")
-    rows = [["Head (the food object)", toy["head"]], ["Material", toy["material"]], ["Finish and light", toy["finish"]],
+    rows = [["Head and face", toy["head"]], ["Material", toy["material"]], ["Finish and light", toy["finish"]],
             ["Outfit", toy["outfit"]], ["Props", toy["props"]], ["Closest references", ", ".join(links)]]
-    shared = [["Medium", _v(series["medium"])], ["Shared body", _v(series["body"])],
+    shared = [["Medium", _v(series["medium"])], ["Style rule", _v(series["style-rule"])], ["Shared body", _v(series["body"])],
               ["Head proportion", f"{_v(series['head-ratio']):.0%} of figure height"], ["Faces", _v(series["face"])],
               ["Camera", _v(series["camera"])], ["Lighting", _v(series["lighting"])],
               ["Background", _v(series["background"])], ["Deliverables", _v(series["deliverables"])]]

@@ -5,7 +5,7 @@
 | **Mascot** | Mise (working name, brief Section 19) |
 | **Primary motivation** | Premium taste adventure |
 | **Design language** | Editorial food-magazine aesthetic, rich textures, premium typography: duotone plus one foil accent |
-| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
+| **Mascot medium** | 3D designer vinyl toy, a "streetwear creature" in a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 21:00, low warm pendant light, rich shadows (slot 6 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -14,7 +14,7 @@
 
 ## 1. Persona name and archetype
 
-**The Premium Flavor Explorer**, embodied by **Mise**, a refined noodle character with chopsticks, global flavour accents and editorial styling. The archetype is the occasional trade-up cook who treats instant noodles as a starting point for a restaurant-style bowl, and is willing to pay for it.
+**The Premium Flavor Explorer**, embodied by **Mise**, a sleek, long-limbed black-cat gentleman in a tailored oxblood coat, gold chopsticks in hand (a 3D designer vinyl figure). The archetype is the occasional trade-up cook who treats instant noodles as a starting point for a restaurant-style bowl, and is willing to pay for it.
 
 ## 2. Short persona summary
 
@@ -77,17 +77,17 @@ Mise holds **MAGGI Korean BBQ Chicken Noodles**, with **MAGGI Korean BBQ Veg** a
 
 ## 10. Illustration scene description
 
-**21:00, an editorial still-life diorama under a low warm pendant.** The Mise figure stands in an elegant S-curve, its gold-foil chopsticks lifting a single long noodle ribbon high, the one foil highlight in the frame. The real Korean BBQ Chicken pack is lit like a magazine still life on dark wood, beside miniature prep bowls of garnish and a finishing oil. Oxblood and cream with tints between them, plus the single foil accent. No costume or cultural dress: the global flavour comes from the food. Density 2: rich negative space.
+**21:00, an editorial still-life diorama under a low warm pendant.** The Mise figure, a sleek black-cat gentleman in a long oxblood coat, stands in an elegant S-curve, gold-foil chopsticks lifting a single long noodle ribbon high: the one foil highlight in the frame. The real Korean BBQ Chicken pack is lit like a magazine still life on dark wood, beside miniature prep bowls of garnish and a finishing oil. No costume or cultural dress: the global flavour comes from the food. Density 2: rich negative space.
 
-## 11. Mascot concept (3D designer toy)
+## 11. Mascot concept (3D designer toy: streetwear creature)
 
-Mise is a **3D designer vinyl figure**: a slim footed bowl head with a lifted noodle ribbon, on the shared toy body in a tailored long coat. It is made in satin oxblood vinyl with exactly one gold-foil detail, the chopsticks: the series' premium edition.
+Mise is a **streetwear creature** figure: a sleek, long-limbed black-cat gentleman with tall pointed ears and a thin tail, in a tailored long coat. Satin oxblood vinyl with exactly one gold-foil detail, the chopsticks, makes it the series' premium edition.
 
 | | |
 |---|---|
 | Personality | Curious, sophisticated, adventurous, tasteful |
-| Silhouette | Slim footed bowl head; crossed chopsticks at 30° and the lifted ribbon are the 32 px hooks |
-| Face | Calm, knowing printed eyes; a small satisfied smile |
+| Silhouette | Tall pointed ears, a long thin tail and crossed gold chopsticks: the 32 px hooks |
+| Face | Calm, knowing half-lidded eyes; long whiskers |
 | Pose language | Elegant S-curve; precise, cinematic gestures |
 | Colour | Oxblood and cream duotone with tints; one gold foil |
 | Motion behaviour | Cinematic and precise: slow, controlled moves, no squash, no overshoot |
@@ -95,7 +95,7 @@ Mise is a **3D designer vinyl figure**: a slim footed bowl head with a lifted no
 <!-- generated:toy:start -->
 | Toy spec | Value |
 |---|---|
-| Head (the food object) | Slim footed bowl head with a lifted noodle ribbon; calm, knowing printed eyes |
+| Head and face | Sleek black-cat gentleman: tall pointed ears, long whiskers, calm half-lidded eyes, thin tail |
 | Material | Satin oxblood vinyl with exactly one gold-foil detail (the chopsticks) |
 | Finish and light | Low warm pendant light, rich shadow, cream rim light |
 | Outfit | Tailored long coat in oxblood tones; sleek boots |
@@ -107,9 +107,10 @@ Mise is a **3D designer vinyl figure**: a slim footed bowl head with a lifted no
 | Rule | Value |
 |---|---|
 | Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
-| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
-| Head proportion | 45% of figure height |
-| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Style rule | Streetwear creatures: human-style proportions, attitude and outfits; creature heads, ears, horns, tails and non-human skin colours. Never an ordinary human, never a food object as a head |
+| Shared body | Shared armature for all seven: human-style torso and limbs with relaxed streetwear posture, 4-finger hands sized to hold a real MAGGI pack, chunky rounded shoes, an 8 mm round display base |
+| Head proportion | 38% of figure height |
+| Faces | Creature faces only (cat, devil-imp, axolotl, sprite, glow-creature, box-head): non-human skin colours, no realistic human faces, no child faces |
 | Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
 | Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
 | Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |

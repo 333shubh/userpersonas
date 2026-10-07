@@ -5,7 +5,7 @@
 | **Mascot** | Sprig (working name, brief Section 19) |
 | **Primary motivation** | Health-compatible indulgence |
 | **Design language** | Clean, botanical, muted earth tones, ingredient-forward: natural paper texture and a low-ink look |
-| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
+| **Mascot medium** | 3D designer vinyl toy, a "streetwear creature" in a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 07:30, cool morning daylight (slot 1 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -16,7 +16,7 @@
 
 ## 1. Persona name and archetype
 
-**The Conscious Upgrader**, embodied by **Sprig**, a calm noodle sprout or bowl character with leaves, grains and balanced proportions. The archetype is the planner who likes comfort food but wants every meal to feel like a considered choice.
+**The Conscious Upgrader**, embodied by **Sprig**, a frosted translucent sprite with a small sprout on its crown, in a relaxed linen overshirt (a 3D designer vinyl figure). The archetype is the planner who likes comfort food but wants every meal to feel like a considered choice.
 
 ## 2. Short persona summary
 
@@ -79,26 +79,26 @@ Sprig holds **MAGGI Nutri-licious Veg Atta Noodles** (the 2025 pack, 72.5 g), wi
 
 ## 10. Illustration scene description
 
-**07:30, a breakfast-table diorama in cool morning daylight.** The Sprig figure stands in balanced contrapposto, a tall sprout leaf pair rising from its frosted bowl head. Its hands drop miniature fresh greens into a bowl from above, the visual of "adding, never subtracting". The real Veg Atta pack stands beside a lemon wedge and a small dish of seeds, with any printed claims illegible. Low-saturation light, a paper-white sweep, and the translucent head glowing softly where light passes through. Density 2: at most five props.
+**07:30, a breakfast-table diorama in cool morning daylight.** The Sprig figure, a frosted translucent sprite in a linen overshirt, stands in balanced contrapposto, a small sprout on its crown. Its hands drop miniature fresh greens into a bowl from above, the visual of "adding, never subtracting". The real Veg Atta pack stands beside a lemon wedge and a dish of seeds, with any printed claims illegible. Low-saturation light on a paper-white sweep; the frosted head glows softly where light passes through. Density 2.
 
-## 11. Mascot concept (3D designer toy)
+## 11. Mascot concept (3D designer toy: streetwear creature)
 
-Sprig is a **3D designer resin figure**: a shallow bowl head in frosted translucent resin with a sprout leaf pair growing from the top, on the shared toy body in a relaxed linen overshirt. The translucent head is the series' quietest material, matching Sprig's low-ink, honest world.
+Sprig is a **streetwear creature** figure: a frosted translucent sprite with a small sprout growing from its crown, in a relaxed linen overshirt. The translucent resin is the series' quietest material, matching Sprig's low-ink, honest world.
 
 | | |
 |---|---|
 | Personality | Mindful, fresh, composed, quietly optimistic |
-| Silhouette | Shallow bowl head with one tall sprout leaf pair, the 32 px hook |
-| Face | Calm printed eyes; a small content smile |
+| Silhouette | A tall sprout leaf pair on the crown: the 32 px hook |
+| Face | Calm, clear eyes; a small content smile |
 | Pose language | Balanced and level; precise, unhurried gestures |
 | Colour | Muted leaf, olive, wheat and clay; every colour low saturation |
-| Motion behaviour | Balanced and calm: no squash, no overshoot, leaves swaying a beat behind |
+| Motion behaviour | Balanced and calm: no squash, no overshoot, the sprout swaying a beat behind |
 
 <!-- generated:toy:start -->
 | Toy spec | Value |
 |---|---|
-| Head (the food object) | Shallow bowl head with a tall sprout leaf pair growing from the top |
-| Material | Frosted translucent resin in muted leaf green, with an opaque wheat-coloured body |
+| Head and face | Frosted translucent sprite: smooth rounded head with a small sprout growing from the crown |
+| Material | Frosted translucent resin in muted leaf green, opaque wheat-coloured clothing |
 | Finish and light | Soft subsurface glow, low saturation, paper-white background |
 | Outfit | Relaxed linen overshirt; canvas shoes |
 | Props | Fresh greens, lemon wedge, the real Veg Atta pack (claims illegible) |
@@ -109,9 +109,10 @@ Sprig is a **3D designer resin figure**: a shallow bowl head in frosted transluc
 | Rule | Value |
 |---|---|
 | Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
-| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
-| Head proportion | 45% of figure height |
-| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Style rule | Streetwear creatures: human-style proportions, attitude and outfits; creature heads, ears, horns, tails and non-human skin colours. Never an ordinary human, never a food object as a head |
+| Shared body | Shared armature for all seven: human-style torso and limbs with relaxed streetwear posture, 4-finger hands sized to hold a real MAGGI pack, chunky rounded shoes, an 8 mm round display base |
+| Head proportion | 38% of figure height |
+| Faces | Creature faces only (cat, devil-imp, axolotl, sprite, glow-creature, box-head): non-human skin colours, no realistic human faces, no child faces |
 | Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
 | Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
 | Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |

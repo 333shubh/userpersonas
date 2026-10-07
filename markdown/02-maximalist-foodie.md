@@ -5,7 +5,7 @@
 | **Mascot** | Riot (working name, brief Section 19) |
 | **Primary motivation** | Flavor experimentation |
 | **Design language** | Very colourful and in-your-face: intentionally clashing, but systematically controlled. The project's required loud persona. |
-| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
+| **Mascot medium** | 3D designer vinyl toy, a "streetwear creature" in a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 19:30, coloured practical lights, phone glow (slot 5 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -14,7 +14,7 @@
 
 ## 1. Persona name and archetype
 
-**The Maximalist Foodie**, embodied by **Riot**, a chaotic chili-noodle character with mismatched features, flame hair, stickers and bold patterns. The archetype is the home experimenter who treats a pack of noodles as a base layer: something to remix, top, sauce and film.
+**The Maximalist Foodie**, embodied by **Riot**, a red devil-imp streetwear creature with spiky flame hair, small horns and sticker-covered skin, in a volt-blue puffer (a 3D designer vinyl figure). The archetype is the home experimenter who treats a pack of noodles as a base layer: something to remix, top, sauce and film.
 
 ## 2. Short persona summary
 
@@ -77,39 +77,40 @@ Riot holds **MAGGI Special Masala Noodles** ("Spicy. Yummy.") with **MAGGI Hot &
 
 ## 10. Illustration scene description
 
-**19:30, a home-counter diorama lit by coloured practical lights.** A yolk pendant pool on the left of an ultraviolet wall, a pink-and-green neon sign on an ink board, a cyan phone glow. The Riot figure leans back mid-shout, flame-noodle hair erupting, the real Special Masala pack held high and the Extra Hot pouch mid-squeeze. Miniature food flies into frame on clear acrylic rods: an egg, chips, a chili. Counter stickers read REMIX, +OIL and SHOOT. Every colour collision follows the clash grammar in section 12. Density 5, with Riot as the clear focal point.
+**19:30, a home-counter diorama lit by coloured practical lights.** A yolk pendant pool on the left of an ultraviolet wall, a pink-and-green neon sign on an ink board, a cyan phone glow. The Riot figure, a red devil-imp in a volt-blue puffer, leans back mid-shout, spiky flame hair up, the real Special Masala pack held high and the Extra Hot pouch mid-squeeze. Miniature food flies into frame on clear acrylic rods: an egg, chips, a chili. Counter stickers read REMIX, +OIL and SHOOT. Every colour collision follows the clash grammar in section 12. Density 5, with Riot as the clear focal point.
 
-## 11. Mascot concept (3D designer toy)
+## 11. Mascot concept (3D designer toy: streetwear creature)
 
-Riot is a **3D designer vinyl figure**: a glossy chili head with sculpted flame-noodle hair, on the shared toy body in a volt-blue puffer. The whole figure is covered in die-cut sticker decals, like a collector's customised toy.
+Riot is a **streetwear creature** figure: a red devil-imp with spiky flame-shaped hair and two small horns, in a volt-blue puffer, its gloss-red skin covered in die-cut sticker decals like a collector's customised toy.
 
 | | |
 |---|---|
 | Personality | Loud, experimental, expressive, playful |
-| Silhouette | Teardrop chili head; the three-point flame crown leaning right is the 32 px hook |
-| Face | Mismatched sticker eyes (one big, one small); a wide shouting mouth |
+| Silhouette | Spiky flame hair with two horns and a pointed tail: the 32 px hooks |
+| Face | Mismatched eyes (one big, one small); a wide shouting grin |
 | Pose language | Leaning back, arms flung out; syncopated |
-| Colour | Chili red body; yolk and cyan details; clash pairs only, never random |
-| Motion behaviour | Off-beat bounce, flames pulsing twice a second, big squash on reactions |
+| Colour | Chili red skin; yolk and cyan details; clash pairs only, never random |
+| Motion behaviour | Off-beat bounce, hair spiking twice a second, big squash on reactions |
 
 <!-- generated:toy:start -->
 | Toy spec | Value |
 |---|---|
-| Head (the food object) | Chili body-head with sculpted flame-noodle hair in yolk and chili; mismatched sticker eyes |
-| Material | High-gloss chili-red vinyl covered in die-cut sticker decals |
+| Head and face | Red devil-imp: spiky flame-shaped hair in yolk and chili, two small horns, mismatched eyes, wide grin |
+| Material | High-gloss chili-red vinyl skin covered in die-cut sticker decals |
 | Finish and light | Glossy with paper-gloss sticker highlights; clash colours only in the four allowed pairs |
-| Outfit | Puffer jacket in volt-blue with tangerine trim; streetwear sneakers |
+| Outfit | Volt-blue puffer jacket with tangerine trim; streetwear sneakers |
 | Props | Real Special Masala pack held high, Extra Hot sauce pouch mid-squeeze, phone |
-| Closest references | [15](../brief/references/inspo/mascots-v3/ref-15-red-devil-sticker-poster.jpg), [04](../brief/references/inspo/mascots-v3/ref-04-pink-face-camera-streetwear.jpg), [03](../brief/references/inspo/mascots-v3/ref-03-red-puffer-streetwear.jpg), [14](../brief/references/inspo/mascots-v3/ref-14-streetwear-duo.jpg) |
+| Closest references | [15](../brief/references/inspo/mascots-v3/ref-15-red-devil-sticker-poster.jpg), [01](../brief/references/inspo/mascots-v3/ref-01-black-cat-devil-sleek.jpg), [03](../brief/references/inspo/mascots-v3/ref-03-red-puffer-streetwear.jpg), [14](../brief/references/inspo/mascots-v3/ref-14-streetwear-duo.jpg) |
 
 **Series rules shared by all seven figures** (brand.toy)
 
 | Rule | Value |
 |---|---|
 | Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
-| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
-| Head proportion | 45% of figure height |
-| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Style rule | Streetwear creatures: human-style proportions, attitude and outfits; creature heads, ears, horns, tails and non-human skin colours. Never an ordinary human, never a food object as a head |
+| Shared body | Shared armature for all seven: human-style torso and limbs with relaxed streetwear posture, 4-finger hands sized to hold a real MAGGI pack, chunky rounded shoes, an 8 mm round display base |
+| Head proportion | 38% of figure height |
+| Faces | Creature faces only (cat, devil-imp, axolotl, sprite, glow-creature, box-head): non-human skin colours, no realistic human faces, no child faces |
 | Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
 | Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
 | Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |

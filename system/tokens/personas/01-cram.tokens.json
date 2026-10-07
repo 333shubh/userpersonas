@@ -403,7 +403,7 @@
       }
     },
     "toy": {
-      "$description": "Mascot medium v3 (decided 2026-10-07): a 3D designer vinyl art-toy series. One shared body = one universe; head, material and props = seven worlds. See system/mascot-style-v3.md. References: brief/references/inspo/mascots-v3/.",
+      "$description": "Mascot medium v3.1 (decided 2026-10-07): 3D designer vinyl art toys in one rule, 'streetwear creatures': human-style bodies, poses and streetwear with creature heads and skin. See system/mascot-style-v3.md. References: brief/references/inspo/mascots-v3/.",
       "medium": {
         "$type": "string",
         "$value": "3D designer vinyl toy (collectible blind-box series), rendered stills and turntables"
@@ -414,16 +414,16 @@
       },
       "head-ratio": {
         "$type": "number",
-        "$value": 0.45,
-        "$description": "Head (food object) height as a fraction of total figure height: big-head art-toy proportion."
+        "$value": 0.38,
+        "$description": "Head height as a fraction of figure height: big-head art-toy proportion."
       },
       "body": {
         "$type": "string",
-        "$value": "Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base"
+        "$value": "Shared armature for all seven: human-style torso and limbs with relaxed streetwear posture, 4-finger hands sized to hold a real MAGGI pack, chunky rounded shoes, an 8 mm round display base"
       },
       "face": {
         "$type": "string",
-        "$value": "No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it"
+        "$value": "Creature faces only (cat, devil-imp, axolotl, sprite, glow-creature, box-head): non-human skin colours, no realistic human faces, no child faces"
       },
       "outfit": {
         "$type": "string",
@@ -448,6 +448,10 @@
       "deliverables": {
         "$type": "string",
         "$value": "Per mascot: hero render, 8-view turntable sheet, 3 poses (hero with pack, sachet moment, reaction), material callout sheet; 2048x2048 PNG with alpha"
+      },
+      "style-rule": {
+        "$type": "string",
+        "$value": "Streetwear creatures: human-style proportions, attitude and outfits; creature heads, ears, horns, tails and non-human skin colours. Never an ordinary human, never a food object as a head"
       }
     }
   },
@@ -1142,8 +1146,8 @@
     "mascot": {
       "concept": "A monochrome noodle-cup student creature with headphones, a backpack, and a fork",
       "personality": "Exhausted but resourceful, clever, always hungry",
-      "baseShape": "tall cylinder (cup)",
-      "silhouetteHook": "headphone band arc over the rim + fork spike held upright",
+      "baseShape": "cat-eared creature in an oversized beanie and hoodie",
+      "silhouetteHook": "beanie with two cat ears, headphone band, upright fork",
       "signatureProps": [
         "headphones",
         "backpack",
@@ -1152,16 +1156,16 @@
       ],
       "heightRatio": 0.82,
       "toy": {
-        "head": "Paper noodle cup, lid half-peeled like a cap; noodle fringe over heavy-lidded printed eyes",
-        "material": "Matte white vinyl with black screen-printed halftone graphics; gloss-black headphones",
+        "head": "Sleepy cat-eared creature: big round head, half-closed eyes, cat ears poking through an oversized beanie",
+        "material": "Matte white vinyl skin with black screen-printed halftone graphics; gloss-black headphones",
         "finish": "Strictly achromatic: white, black and printed grey screens only, no coloured light or reflections",
-        "outfit": "Oversized grey hoodie printed with an exam timetable; backpack; chunky black-and-white shoes",
-        "props": "Fork, phone timer, the real Masala pack redrawn as a one-ink print",
+        "outfit": "Oversized grey hoodie printed with an exam timetable; backpack; chunky black-and-white sneakers",
+        "props": "Fork, phone timer, the real Masala pack as a one-ink print",
         "references": [
+          18,
+          4,
           13,
-          9,
-          2,
-          16
+          9
         ]
       }
     },
