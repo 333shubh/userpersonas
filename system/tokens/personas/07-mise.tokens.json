@@ -684,7 +684,8 @@
         "secondaryProps": [
           "seasoning cube",
           "seasoning bottle"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       },
       "europe": {
         "status": "validate locally",
@@ -693,7 +694,8 @@
           "seasoning bottle",
           "seasoning cube",
           "sauce"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       }
     }
   },
@@ -1157,6 +1159,18 @@
         "$type": "string",
         "$value": "Depth from light and shadow in the illustration, never UI shadows."
       }
+    },
+    "product": {
+      "name": "MAGGI Korean BBQ Chicken Noodles",
+      "format": "single pouch",
+      "packImage": "korean-bbq-chicken.jpg",
+      "alternative": "MAGGI Korean BBQ Veg (korean-bbq-veg.jpg) or MAGGI Cuppa Korean Spicy Cheesy (cuppa-korean-spicy-cheesy.jpg)",
+      "why": "The trade-up: Korean variants sit far above core packs on price (evidence log, Medium).",
+      "rendering": "Real dark red/black pack lit like a magazine still life; the single foil accent sits on the mascot, not the pack.",
+      "status": "real Nestle MAGGI pack (private project decision 2026-10-07)",
+      "source": "https://www.maggi.in/en/our-range/ (checked 2026-10-07)",
+      "packImageDir": "brief/references/packs/ (local only, git-ignored)",
+      "claims": "Nutrition/health badges printed on real packs stay illegible in artwork (Section 22 still applies)"
     }
   }
 }

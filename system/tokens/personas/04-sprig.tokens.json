@@ -684,7 +684,8 @@
         "secondaryProps": [
           "seasoning cube",
           "seasoning bottle"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       },
       "europe": {
         "status": "validate locally",
@@ -693,7 +694,8 @@
           "seasoning bottle",
           "seasoning cube",
           "sauce"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       }
     }
   },
@@ -1153,6 +1155,18 @@
         "$type": "string",
         "$value": "Layers separate by surface colour only."
       }
+    },
+    "product": {
+      "name": "MAGGI Nutri-licious Veg Atta Noodles (2025 pack)",
+      "format": "single pouch, 72.5 g",
+      "packImage": "veg-atta-2025.png",
+      "alternative": "MAGGI Veg Atta Noodles with Spinach (spinach-atta.png)",
+      "why": "The variant an upgrader picks; Sprig still ADDS fresh greens (Section 18.13). Needs Nestle review: the pack sits close to health positioning; render any claim copy as illegible texture.",
+      "rendering": "Real pack on natural paper light, low-ink feel.",
+      "status": "real Nestle MAGGI pack (private project decision 2026-10-07)",
+      "source": "https://www.maggi.in/en/our-range/ (checked 2026-10-07)",
+      "packImageDir": "brief/references/packs/ (local only, git-ignored)",
+      "claims": "Nutrition/health badges printed on real packs stay illegible in artwork (Section 22 still applies)"
     }
   }
 }

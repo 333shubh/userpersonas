@@ -684,7 +684,8 @@
         "secondaryProps": [
           "seasoning cube",
           "seasoning bottle"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       },
       "europe": {
         "status": "validate locally",
@@ -693,7 +694,8 @@
           "seasoning bottle",
           "seasoning cube",
           "sauce"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       }
     }
   },
@@ -1242,6 +1244,18 @@
         "$type": "string",
         "$value": "Sticker drop: hard offset, no blur."
       }
+    },
+    "product": {
+      "name": "MAGGI Special Masala Noodles ('Spicy. Yummy.')",
+      "format": "single pouch, 70 g",
+      "packImage": "special-masala.png",
+      "secondary": "MAGGI Hot & Sweet Extra Hot tomato chilli sauce (extra-hot-sauce.png) as the remix add-on",
+      "why": "Spice and remixing. Swap in the 2026 MAGGI Spicy range (Spicy Cheesy / Garlic / Manchurian) if a pack photo is supplied; it is not on the official site.",
+      "rendering": "Real pack in full colour, with Riot's misregistration and stickers slapped on top.",
+      "status": "real Nestle MAGGI pack (private project decision 2026-10-07)",
+      "source": "https://www.maggi.in/en/our-range/ (checked 2026-10-07)",
+      "packImageDir": "brief/references/packs/ (local only, git-ignored)",
+      "claims": "Nutrition/health badges printed on real packs stay illegible in artwork (Section 22 still applies)"
     }
   }
 }

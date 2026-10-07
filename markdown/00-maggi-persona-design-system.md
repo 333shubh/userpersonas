@@ -611,7 +611,7 @@ The structure is set by Section 12; the persona-specific anchors come from Secti
 
 ## 12. Guardrails (Sections 14 and 22, binding)
 
-- **Trademarks:** no real Maggi logo, packaging artwork or slogan. The brand-lockup slot stays empty.
+- **Trademarks (updated 2026-10-07, decision D11):** private design-gig project, so the real MAGGI logo and real Nestlé MAGGI packs may be used (assignments in `persona.*.product`). Brand images stay in git-ignored `brief/references/` and are never committed. No invented slogans presented as MAGGI's.
 - **Children:** no identifiable child faces; no child-directed claims; check local rules on advertising to children.
 - **Health:** no nutrition, sodium or "healthy" claims. Anything near health is marked *needs Nestlé review*. Cook-time lines are "felt time" concepts only.
 - **Reviews:** sample reviews in persona files are **synthesised composites, labelled as such**.
@@ -637,6 +637,7 @@ The structure is set by Section 12; the persona-specific anchors come from Secti
 | D8 | Stack's focus ring is ink, not shelf-blue | Shelf-blue on kraft is 2.86:1 (< 3:1) | Lighter kraft, which then weakens price-tag separation |
 | D9 | Stack's kraft darkened to `#C4A27A` | The price tag on kraft was ΔE 11 (< 15) for normal vision | A white price tag |
 | D10 | Persona key colours chosen by a 384-combination search | Best worst-case separation of all 21 pairs | Hand-picked "signature" colours (e.g. Nest red) with weaker separation |
+| D11 | Real MAGGI logo and packs allowed; mascot look moves to `system/mascot-style-v2.md` | Private design-gig project; v1 mascots read as stiff and code-built | Keep generic Maggi-inspired packs |
 
 ### 13.2 Still open in Gate 1 (Claude Design)
 

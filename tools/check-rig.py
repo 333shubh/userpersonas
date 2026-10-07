@@ -117,7 +117,8 @@ def check_svg(r, spec, path, mascot, manifest):
     rx = re.compile(spec["id"]["regex"])
     stray = sorted(i for i in present if not rx.match(i))
     r.ok(not stray, f"{rel}: every id follows the grammar", ", ".join(stray[:6]))
-    bad_tags = sorted({el.tag.replace(SVG_NS, "") for el in root.iter()} & (FORBIDDEN | {"text"}))
+    pack = {id(d) for g in root.iter() if (g.get("id") or "").endswith("__props__pack") for d in g.iter()}
+    bad_tags = sorted({el.tag.replace(SVG_NS, "") for el in root.iter() if id(el) not in pack} & (FORBIDDEN | {"text"}))
     r.ok(not bad_tags, f"{rel}: no script/image/foreignObject/text (lettering is outlined)", ", ".join(bad_tags))
     slot_el = next((el for el in root.iter() if (el.get("id") or "").endswith("__lockup-slot")), None)
     if slot_el is not None:
