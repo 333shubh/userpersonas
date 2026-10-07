@@ -55,7 +55,8 @@ def main():
     checked = 0
     # files git ignores (local third-party binaries, caches) are never committed, so naming does not apply
     try:
-        ignored = set(subprocess.run(["git", "ls-files", "--others", "--ignored", "--exclude-standard"], cwd=tk.ROOT,
+        ignored = set(subprocess.run(["git", "ls-files", "--others", "--ignored", "--exclude-standard", "--directory"],
+                                     cwd=tk.ROOT,
                                      capture_output=True, text=True, check=True).stdout.splitlines()) - {""}
     except (OSError, subprocess.CalledProcessError):
         ignored = set()
@@ -76,7 +77,7 @@ def main():
             continue
         name = path.name
         relp = rel.as_posix()
-        if relp in ignored:
+        if relp in ignored or any(relp.startswith(d) for d in ignored if d.endswith("/")) or relp + "/" in ignored:
             continue
         if path.is_dir():
             if not seg.match(name):

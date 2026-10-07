@@ -191,6 +191,111 @@ BLOCKS = {
 }
 
 
+# ---------- per-persona blocks for markdown/NN-slug.md ----------
+
+def kit(r, pid):
+    """The persona's brand kit: palette, roles, contrast, type, shape, surface, texture, icons."""
+    p = r["persona"][pid]
+    pal = tk.palette(p)
+    names = {v: k for k, v in pal.items()}
+    level = p["contrast"]["level"]
+    need = colour.WCAG[level]
+    out = [f"**Constraint (brief Section 18.12):** {p['constraint']['rule']}. *{p['constraint']['why']}.*", "",
+           "**Palette**", "",
+           md_table(["Token", "Hex", "WCAG luminance"], [[f"`{k}`", f"`{v}`", f"{colour.luminance(v):.3f}"] for k, v in pal.items()]),
+           "", "**Semantic roles** (identical keys in every persona, so components never branch per persona)", "",
+           md_table(["Role", "Colour"], [[f"`{k}`", f"`{names.get(v, v)}` {v}"] for k, v in tk.roles(p).items()]),
+           "", f"**Text contrast, target WCAG {level}** (computed, not eyeballed)", "",
+           md_table(["Pair", "Use", "Ratio", "Needs", "Result", "Where"],
+                    [[f"`{names.get(x['fg'], x['fg'])}` on `{names.get(x['bg'], x['bg'])}`", x["use"],
+                      f"{colour.contrast(x['fg'], x['bg']):.2f}:1", f"{need[x['use']]}:1",
+                      "pass" if colour.contrast(x["fg"], x["bg"]) >= need[x["use"]] else "**FAIL**", x["where"]]
+                     for x in p["contrast"]["pairs"]])]
+    t = p["type"]
+    base = tk.px(r["brand"]["type"]["base-size"]["$value"])
+    floor = tk.px(r["brand"]["type"]["min-size"]["web-caption"]["$value"])
+    ratio = t["scale-ratio"]["$value"]
+    scale = ", ".join(f"{k} {max(round(base * ratio ** n), round(floor))}px" for k, n in TYPE_STEPS.items())
+    out += ["", "**Typography**", "",
+            md_table(["Role", "Face", "Weight", "Line-height", "Tracking", "Case"],
+                     [["Display", t["display"]["$value"][0], _v(t["weight"]["display"]), _v(t["line-height"]["display"]),
+                       f"{_v(t['tracking']['display'])}em", _v(t["case"]["display"])],
+                      ["Text", t["text"]["$value"][0], f"{_v(t['weight']['text'])} / {_v(t['weight']['text-strong'])}",
+                       _v(t["line-height"]["text"]), f"{_v(t['tracking']['text'])}em", _v(t["case"]["text"])]]),
+            "", f"Scale ratio {ratio} from a 16px base: {scale}. Fallback stacks: display `{', '.join(t['display']['$value'][1:3])}, ...`; "
+            f"text `{', '.join(t['text']['$value'][1:3])}, ...`.",
+            "", "**Shape, surface, texture, icons**", "",
+            md_table(["Property", "Value"],
+                     [["Radius", ", ".join(p["shape"]["radius"]["$value"])],
+                      ["Stroke (rig units, 1024 canvas)", p["shape"]["stroke"]["$value"]],
+                      ["Cap", p["shape"]["cap"]["$value"]],
+                      ["Angles", _flat(p["shape"]["angles"])],
+                      ["Shape language", p["shape"]["language"]["$value"]],
+                      ["Elevation", _flat(p["elevation"])],
+                      ["Texture", _flat(p["texture"])],
+                      ["Icons", _flat(p["iconography"])],
+                      ["Illustration density", f"{p['density']['$value']} (brand.density: max props / min negative space)"]])]
+    return "\n".join(out)
+
+
+def frames(n):
+    return f"{n} frame" if n == 1 else f"{n} frames"
+
+
+def p_motion(r, pid):
+    mo = r["persona"][pid]["motion"]
+    rows = [["Tempo feel (Section 20)", mo["tempo"]], ["Idle loop", f"{mo['idleBars'] * 2} s ({mo['idleBars'] * 48} frames at 24 fps)"],
+            ["Amplitude multiplier", mo["amplitude"]], ["Max squash/stretch", f"{mo['squashStretch']:.0%}"],
+            ["Anticipation", frames(mo["anticipationFrames"])], ["Overshoot", f"{mo['overshootPct']}%"],
+            ["Stagger for secondary parts", frames(mo["staggerFrames"])],
+            ["Accent beats in the 4-beat bar", ", ".join(str(b) for b in mo["accentBeats"])],
+            ["Pulse", f"{mo['pulseHz']} Hz" + (f" ({mo['pulseNote']})" if mo.get("pulseNote") else "")]]
+    return md_table(["Motion token", "Value"], rows) + "\n\nEasing names are shared and fixed: `ease-in-soft`, `ease-out-pop`, `ease-settle`, `ease-linear-steam`."
+
+
+def p_stats(r, pid):
+    st = r["persona"][pid]["stats"]
+    return md_table([s.title() for s in STAT_ORDER], [[st[s] for s in STAT_ORDER]]) + \
+        "\n\n_Draft scores: design judgement (brief Section 18.7), to be validated against research._"
+
+
+def p_sound(r, pid):
+    s = r["persona"][pid]["sound"]
+    return md_table(["Pitch", "Frequency", "Role in the chord", "Sound palette", "ASMR layer"],
+                    [[s["pitch"], f"{note_hz(s['pitch'])} Hz", s["role"], ", ".join(s["palette"]), "yes" if s["asmr"] else "no"]])
+
+
+def p_pack(r, pid):
+    p = r["persona"][pid]
+    prod, pm = p["product"], p["packMechanic"]
+    rows = [["Real pack held", f"{prod['name']} ({prod['format']})"], ["Why this pack", prod["why"]],
+            ["How it is drawn", prod["rendering"]]]
+    if prod.get("alternative"):
+        rows.append(["Alternative", prod["alternative"]])
+    if prod.get("secondary"):
+        rows.append(["Secondary prop", prod["secondary"]])
+    rows += [["Pack-mechanic concept (Section 18.11)", pm["concept"]],
+             ["Feasibility (first pass)", pm["feasibility"] + (f" ({pm['note']})" if pm["note"] else "")]]
+    return md_table(["", ""], rows) + "\n\n_Pack mechanics are concepts, not product claims (Section 22)._"
+
+
+def p_spine(r, pid):
+    sp = r["persona"][pid]["spine"]
+    return md_table(["Buyer", "Eater", "Social unit", "Purchase rhythm", "The gate they must pass"],
+                    [[sp["buyer"], sp["eater"], sp["socialUnit"], sp["rhythm"], sp["gate"]]])
+
+
+def p_rivals(r, pid):
+    names = {k: v["name"] for k, v in r["persona"].items()}
+    rows = [[names[x["b"] if x["a"] == pid else x["a"]], x["dynamic"]] for x in r["rivalries"]["pairs"] if pid in (x["a"], x["b"])]
+    return md_table(["With", "Dynamic (Section 18.10)"], rows)
+
+
+PERSONA_BLOCKS = {"kit": kit, "motion": p_motion, "stats": p_stats, "sound": p_sound, "pack": p_pack,
+                  "spine": p_spine, "rivals": p_rivals}
+PERSONA_DOC_RE = re.compile(r"^(0[1-7])-[a-z-]+\.md$")
+
+
 def render():
     """Return {path: expected content} for every generated output."""
     raw = tk.load()
@@ -209,6 +314,20 @@ def render():
             return f"{m.group(1)}{BLOCKS[name](resolved)}\n{m.group(4)}"
 
         out[DOC] = BLOCK_RE.sub(fill, text)
+    by_number = {p["number"]: pid for pid, p in tk.personas(resolved)}
+    for path in sorted(DOC.parent.glob("0[1-7]-*.md")):
+        m = PERSONA_DOC_RE.match(path.name)
+        if not m:
+            continue
+        pid = by_number[m.group(1)]
+
+        def fill_p(mm, pid=pid, path=path):
+            name = mm.group(2)
+            if name not in PERSONA_BLOCKS:
+                raise KeyError(f"unknown generated block '{name}' in {path.name}")
+            return f"{mm.group(1)}{PERSONA_BLOCKS[name](resolved, pid)}\n{mm.group(4)}"
+
+        out[path] = BLOCK_RE.sub(fill_p, path.read_text(encoding="utf-8"))
     return out
 
 
