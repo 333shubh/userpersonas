@@ -16,7 +16,7 @@ Static checks for `web/live-clock/`. Visual review is done with screenshots.
 | PASS | viewport meta present (responsive) |  |
 | PASS | skip link targets <main id="main"> |  |
 | PASS | exactly one h1 | 1 |
-| PASS | every <img> has an alt attribute (set to the pack description at runtime) | 2 images |
+| PASS | every <img> has an alt attribute (set to the pack description at runtime) | 3 images |
 | PASS | time slider exposes role, value and keyboard focus |  |
 | PASS | live regions for persona changes and sound captions |  |
 | PASS | no media autoplays with sound |  |
