@@ -23,6 +23,8 @@ CHECKS = [
     ("check-artwork", "Artwork colours + safety"),
     ("check-motion", "Motion clips"),
     ("check-web", "Live-clock page"),
+    ("check-docs", "Persona Markdown files"),
+    ("check-heroes", "3D toy heroes (series lineup + silhouettes)"),
 ]
 
 

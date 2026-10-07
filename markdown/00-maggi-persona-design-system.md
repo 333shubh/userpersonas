@@ -638,6 +638,7 @@ The structure is set by Section 12; the persona-specific anchors come from Secti
 | D9 | Stack's kraft darkened to `#C4A27A` | The price tag on kraft was ΔE 11 (< 15) for normal vision | A white price tag |
 | D10 | Persona key colours chosen by a 384-combination search | Best worst-case separation of all 21 pairs | Hand-picked "signature" colours (e.g. Nest red) with weaker separation |
 | D11 | Real MAGGI logo and packs allowed; mascot look moves to `system/mascot-style-v2.md` | Private design-gig project; v1 mascots read as stiff and code-built | Keep generic Maggi-inspired packs |
+| D12 | Mascots become a 3D designer vinyl art-toy series (`system/mascot-style-v3.md`); persona constraints become toy materials | The 2D passes looked stiff; the project lead chose 20 art-toy references | Stay with 2D illustration |
 
 ### 13.2 Still open in Gate 1 (Claude Design)
 
