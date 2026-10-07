@@ -65,24 +65,24 @@ for(const k of ['cram','riot']){const m=M[k],base=`static/${m.slug}/${m.nn}-${k}
  // desk
  s+=`<path d="${rect(0,780,W,300)}" fill="${c.s10}"/>`+`<path d="${rect(0,772,W,16)}" fill="${c.ink}"/>`+`<path d="${rect(0,820,W,260)}" fill="url(#cram-halftone-10)"/>`;
  // kettle (prop 5) + hard shadow
- s+=`<path d="${poly([[1360,780],[1600,780],[1640,860],[1400,860]])}" fill="${c.s50}"/>`;
+ s+=`<path d="${poly([[1380,788],[1580,788],[1580,820],[1380,820]])}" fill="${c.s50}"/>`;
  s+=H.cs(rect(1380,560,200,220),c.s75)+H.cs(rect(1580,600,52,120),c.paper)+H.cs(rect(1420,520,120,40),c.ink)+H.cs(rect(1400,700,160,24),c.ink);
  // mascot shadow + mascot (three-quarter, focused, timer running)
  const sc=0.74,mx=440,my=788-896*sc;
- s+=`<path d="${poly([[mx+300*sc,788],[mx+760*sc,788],[mx+900*sc,872],[mx+420*sc,872]])}" fill="${c.s50}"/>`;
+ s+=`<path d="${poly([[mx+300*sc,788],[mx+700*sc,788],[mx+700*sc,820],[mx+300*sc,820]])}" fill="${c.s50}"/>`;
  s+=place(mx,my,sc,char('cram','three-quarter',{...ex('cram','focused')}));
  out['static/01-hostel-hungry/01-cram-scene.svg']=s+'</svg>\n';}
 {const W=1920,Hh=1080,c=RT,rs=H.rs;let s=svgOpen(W,Hh,'02-riot scene · 19:30 counter shoot · coloured practicals (yolk pendant, pink/green neon, cyan phone glow) · density 5 · regions: wall {ultraviolet,yolk,cyan} neon {hot-pink,acid-green} counter-top {yolk,chili} counter-front {volt-blue,tangerine}');
  s+=`<rect width="${W}" height="${Hh}" fill="${c.uv}"/>`;
  // pendant lamp + yolk light pool (ultraviolet/yolk = clash pair: touch without keyline)
- s+=`<path d="${ellipse(560,250,300,190)}" fill="${c.yolk}"/>`+`<path d="${rect(552,0,16,110)}" fill="${c.ink}"/>`+rs(()=>`M${H.P(470,190)}L${H.P(650,190)}L${H.P(610,110)}L${H.P(510,110)}Z`,c.ink,false)+`<path d="${ellipse(560,196,64,14)}" fill="${c.paper}"/>`;
+ s+=`<path d="${ellipse(200,230,200,150)}" fill="${c.yolk}"/>`+`<path d="${rect(192,0,16,110)}" fill="${c.ink}"/>`+rs(()=>`M${H.P(110,190)}L${H.P(290,190)}L${H.P(250,110)}L${H.P(150,110)}Z`,c.ink,false)+`<path d="${ellipse(200,196,64,14)}" fill="${c.paper}"/>`;
  // neon on ink board: pink/green pair
  s+=`<path d="${rect(1300,110,500,330)}" fill="${c.ink}"/>`;
  const burst=(cx,cy,ro,ri,n)=>{const p=[];for(let i=0;i<n*2;i++){const a=(-90+i*180/n)*Math.PI/180,r=i%2?ri:ro;p.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]);}return poly(p);};
  s+=`<path d="${burst(1460,275,120,72,12)}" fill="${c.pink}"/>`+`<path d="${burst(1460,275,60,36,12)}" fill="${c.green}"/>`+`<path d="${ellipse(1660,275,82,82)}" fill="none" stroke="${c.green}" stroke-width="20"/>`+`<path d="${pline([[1610,325],[1710,225]])}" fill="none" stroke="${c.pink}" stroke-width="20" stroke-linecap="round"/>`;
  // counter top (ink edge) + front face volt-blue with tangerine trim (pair)
  s+=`<path d="${rect(0,800,W,30)}" fill="${c.ink}"/>`+`<path d="${rect(0,830,W,250)}" fill="${c.blue}"/>`+`<path d="${rect(0,830,W,28)}" fill="${c.tang}"/>`;
- [[200,960,'REMIX'],[1230,970,'+OIL'],[1620,950,'2:00']].forEach(([x,y,l],i)=>{const r=i===1?62:74;s+=rs(()=>i===1?circle(x,y,r):burst(x,y,r,r*0.78,10),c.paper);s+=txt('bungee',l,x,y+9,i===1?26:22,c.ink,0.01,'middle');});
+ [[200,960,'REMIX'],[1230,970,'+OIL'],[1620,950,'SHOOT']].forEach(([x,y,l],i)=>{const r=i===1?62:74;s+=rs(()=>i===1?circle(x,y,r):burst(x,y,r,r*0.78,10),c.paper);s+=txt('bungee',l,x,y+9,i===1?26:22,c.ink,0.01,'middle');});
  // counter-top items: bowl + torn sachet (yolk/chili region)
  s+=rs(()=>`M${H.P(1180,700)}L${H.P(1500,700)}C${H.P(1500,780)} ${H.P(1420,804)} ${H.P(1340,804)}C${H.P(1260,804)} ${H.P(1180,780)} ${H.P(1180,700)}Z`,c.paper);
  s+=rs(()=>poly(H.ribbon(H.wave(1210,700,1470,694,6,2,40),26)),c.yolk);
@@ -110,17 +110,17 @@ function board(k){const m=M[k],c=m.C,W=2400,Hh=1600;let s=svgOpen(W,Hh,`${m.nn}-
  const sec=(t,x,y)=>txt(m.textB,t,x,y,24,m.ink,m.lT);
  // palette
  s+=sec('PALETTE + ROLES',80,230);
- const pal=k==='cram'?[['ink',c.ink,'text · accent · line · focus'],['paper',c.paper,'bg'],['screen-75',c.s75,'text-muted'],['screen-50',c.s50,'steam · shadow'],['screen-25',c.s25,'sachet screen'],['screen-10',c.s10,'surface']]:
+ const pal=k==='cram'?[['ink',c.ink,'text · accent\nline · focus'],['paper',c.paper,'bg'],['screen-75',c.s75,'text-muted'],['screen-50',c.s50,'steam · shadow'],['screen-25',c.s25,'sachet screen'],['screen-10',c.s10,'surface']]:
   [['ink',c.ink,'text · line · keyline'],['paper',c.paper,'bg'],['yolk',c.yolk,'surface'],['hot-pink',c.pink,'accent'],['volt-blue',c.blue,'focus'],['ultraviolet',c.uv,'text-muted'],['acid-green',c.green,'clash'],['tangerine',c.tang,'clash'],['chili',c.chili,'clash · sachet'],['cyan',c.cyan,'clash · glow']];
  const per=k==='cram'?6:5,sw=k==='cram'?216:262,sh=k==='cram'?200:110;
- pal.forEach(([n,hx,r],i)=>{const x=80+(i%per)*(sw+18),y=256+Math.floor(i/per)*(sh+116);s+=`<path d="${rect(x,y,sw,sh)}" fill="${hx}" stroke="${m.ink}" stroke-width="4"/>`+txt(m.textB,n,x,y+sh+32,22,m.ink)+txt(m.text,hx,x,y+sh+60,18,m.muted)+txt(m.text,r,x,y+sh+86,18,m.muted);});
+ pal.forEach(([n,hx,r],i)=>{const x=80+(i%per)*(sw+18),y=256+Math.floor(i/per)*(sh+116);s+=`<path d="${rect(x,y,sw,sh)}" fill="${hx}" stroke="${m.ink}" stroke-width="4"/>`+txt(m.textB,n,x,y+sh+32,22,m.ink)+txt(m.text,hx,x,y+sh+60,18,m.muted)+r.split('\n').map((ln,j)=>txt(m.text,ln,x,y+sh+86+j*24,18,m.muted)).join('');});
  if(k==='riot'){s+=sec('CLASH PAIRS · may touch without keyline',80,742);[[c.pink,c.green],[c.blue,c.tang],[c.uv,c.yolk],[c.chili,c.cyan]].forEach(([a,b],i)=>{const x=80+i*340;s+=`<path d="${rect(x,764,150,80)}" fill="${a}"/><path d="${rect(x+150,764,150,80)}" fill="${b}"/>`;});}
  else{s+=sec('ONE INK · 1-BIT HALFTONE 65 LPI @ 45°',80,742);s+=`<path d="${rect(80,764,1380,80)}" fill="url(#cram-halftone-25)"/>`;}
  // type
  const ty=930;s+=sec('TYPE',80,ty);
  s+=txt(m.disp,k==='cram'?'HOSTEL HUNGRY':'MAXIMALIST',80,ty+120,112,m.ink,m.dT);
  s+=txt(m.text,k==='cram'?'Archivo Black 400 · display · uppercase · lh 0.95 · +0.02em':'Bungee 400 · display · uppercase · lh 1.0 · +0.01em',80,ty+164,20,m.muted);
- s+=txt(m.text,k==='cram'?'1 cup. 1 sachet. All of it. Timer 2:00.':'Half sachet, chili oil, crispy onions.',80,ty+230,36,m.ink);
+ s+=txt(m.text,k==='cram'?'1 cup. 1 sachet. All of it. No ceremony.':'Half sachet, chili oil, crispy onions.',80,ty+230,36,m.ink);
  s+=txt(m.text,k==='cram'?'IBM Plex Mono 400 / 600 · text · lh 1.5 · scale 1.414':'Rubik 400 / 700 · text · lh 1.5 · scale 1.5',80,ty+266,20,m.muted);
  const steps=k==='cram'?[16,22.6,32,45.3,64,90.5]:[16,24,36,54,81];let ax=880;steps.forEach(z=>{s+=txt(m.disp,'Aa',ax,ty+266,z,m.ink);ax+=T.textW(F[m.disp],'Aa',z)+24;});
  // shape / texture / icons
@@ -139,7 +139,7 @@ function board(k){const m=M[k],c=m.C,W=2400,Hh=1600;let s=svgOpen(W,Hh,`${m.nn}-
  if(k==='cram'){const x=ax0+40,y=ay0+20,w=680,h=1040;s+=sec('APPLICATION · RECIPE CARD',ax0+40,ay0);s+=H.cs(rect(x,y+30,w,h),c.paper);
   s+=`<path d="${rect(x,y+30,w,150)}" fill="${c.ink}"/>`+txt('archivo','CRAM CUP',x+40,y+130,64,c.paper,0.02)+txt('plex','THE 13:00 METHOD',x+40,y+164,20,c.s25,0.08);
   s+=place(x+w-320,y+170,0.3,char('cram','front',ex('cram','content')));
-  [['1','Boil 280 ml water.'],['2','Noodles in. Whole sachet in.'],['3','Timer 2:00. Stir once at 1:00.'],['4','Eat. Back to the notes.']].forEach(([n,t],i)=>{const yy=y+520+i*90;s+=`<path d="${rect(x+40,yy-40,52,52)}" fill="${c.ink}"/>`+txt('plexb',n,x+66,yy-2,30,c.paper,0,'middle')+txt('plex',t,x+116,yy,28,c.ink);s+=`<path d="${rect(x+40,yy+28,w-80,2)}" fill="${c.s25}"/>`;});
+  [['1','Kettle on. Cup open.'],['2','Noodles in. Whole sachet in.'],['3','Counts it on a phone timer.'],['4','Eat. Back to the notes.']].forEach(([n,t],i)=>{const yy=y+520+i*90;s+=`<path d="${rect(x+40,yy-40,52,52)}" fill="${c.ink}"/>`+txt('plexb',n,x+66,yy-2,30,c.paper,0,'middle')+txt('plex',t,x+116,yy,28,c.ink);s+=`<path d="${rect(x+40,yy+28,w-80,2)}" fill="${c.s25}"/>`;});
   s+=`<path d="${rect(x,y+910,w,160)}" fill="url(#cram-halftone-25)"/>`+`<path d="${rect(x+40,y+950,330,72)}" fill="${c.paper}"/>`+txt('plexb','1 cup · 1 sachet',x+60,y+996,26,c.ink)+L.placeGlyph(G.cram,x+w-120,y+940,96);
   s+=txt('plex','recipe card · 680 × 1040 · one ink',ax0+40,ay0+1130,18,m.muted);}
  else{const x=ax0+20,y=ay0+50,w=720,h=900,rs=H.rs;s+=sec('APPLICATION · SOCIAL POST 4:5',ax0+20,ay0);

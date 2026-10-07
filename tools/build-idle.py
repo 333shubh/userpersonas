@@ -41,6 +41,7 @@ BOB = 10.0             # rig units of lift on an accent, per unit of persona amp
 STEAM_DRIFT = 14.0     # rig units of steam sway, per unit of persona amplitude
 FLAME_PULSE = 0.05     # Riot flame scale pulse per unit of amplitude
 POP_FRAMES = 8         # frames from accent to settled
+RENDER_TRIES, RENDER_TIMEOUT = 3, 45  # attempts per frame, seconds per attempt
 BLINK_FRAMES = ("half", "closed", "half")  # states on the 3 frames after the blink start, then open
 
 
@@ -170,12 +171,27 @@ class Idle:
 
 def render(browser, svg_path, png_path):
     # each headless instance gets its own throwaway profile, so parallel renders never share a lock
+    # an occasional headless instance hangs: kill its whole process tree and retry
     profile = png_path.with_suffix(".profile")
-    subprocess.run([browser, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
-                    "--no-first-run", "--no-default-browser-check", "--disable-extensions",
-                    f"--user-data-dir={profile}", "--default-background-color=00000000",
-                    f"--screenshot={png_path}", "--window-size=1080,1080", svg_path.as_uri()],
-                   check=True, capture_output=True, timeout=120)
+    cmd = [browser, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
+           "--no-first-run", "--no-default-browser-check", "--disable-extensions",
+           f"--user-data-dir={profile}", "--default-background-color=00000000",
+           f"--screenshot={png_path}", "--window-size=1080,1080", svg_path.as_uri()]
+    for attempt in range(RENDER_TRIES):
+        proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        try:
+            proc.wait(timeout=RENDER_TIMEOUT)
+            if proc.returncode == 0 and png_path.exists():
+                break
+        except subprocess.TimeoutExpired:
+            if sys.platform == "win32":
+                subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)], capture_output=True)
+            else:
+                proc.kill()
+            proc.wait()
+        shutil.rmtree(profile, ignore_errors=True)
+    else:
+        raise RuntimeError(f"render failed after {RENDER_TRIES} tries: {svg_path.name}")
     shutil.rmtree(profile, ignore_errors=True)
 
 

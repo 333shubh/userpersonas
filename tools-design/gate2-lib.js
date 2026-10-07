@@ -108,7 +108,7 @@ function cram(view,o={},G){
  // noodles + steam (W = 360)
  const ns=[];const W=360;[[-0.18,0.45],[0,0.6],[0.18,0.4]].forEach(([dx,hh],i)=>ns.push(part(`cram__noodles-steam__steam-${i+1}`,clr(pline(steamPts(512+dx*W,350,hh*W,14)),CR.s50))));
  ns.push(part('cram__noodles-steam__noodles',clr(pline(wave(410,368,470,372,5,1.5)),CR.paper)+clr(pline(wave(490,376,560,366,5,1.5)),CR.paper)+cs(poly(ribbon(wave(578,384,588,446,5,1),22)),CR.paper)));
- const two=part('cram__foreground-type__two-mark',G?placeGlyph(G.cram,512+fx*0.9-32*(view==='side'?0.6:1),714,80,view==='side'?0.6:1):'');
+ const two=part('cram__foreground-type__two-mark',G?placeGlyph(G.cram,512+fx*0.9-25.6*(view==='side'?0.6:1),818,64,view==='side'?0.6:1):'');
  const env=cf(rect(176,896,672,16),CR.ink);
  const wr=(s,h)=>sub(h,mul(norm(sub(h,s)),20));
  const anchors={root:[512,896],'body-pivot':[512,631],'head-pivot':[512,366],'eye-l':V.eL?V.eL.slice(0,2):[V.eR[0]+60,518],'eye-r':V.eR.slice(0,2),mouth:[mx,my],'shoulder-l':V.armL[0],'shoulder-r':V.armR[0],'wrist-l':wr(...V.armL),'wrist-r':wr(...V.armR),'grip-l':V.armL[1],'grip-r':V.armR[1],'steam-origin':[512,366],'sachet-tear':S.tip,'look-at':V.look};
@@ -164,7 +164,7 @@ function riot(view,o={},G){
  const bottle=part('riot__props__chili-oil-bottle',rs(()=>rect(bx+16,752,26,40),RT.ink)+rs(()=>rect(bx,790,58,106),RT.chili)+rs(()=>rect(bx,820,58,34),RT.yolk));
  const props=[sachet,phone,stickers,chili,bottle];
  const ns=[];const W=170,ox=566,oy=192;[[-0.18,0.45],[0,0.6],[0.18,0.4]].forEach(([dx,hh],i)=>ns.push(part(`riot__noodles-steam__steam-${i+1}`,rl(()=>pline(steamPts(ox+dx*W,oy-(i===1?0:14),hh*W,8))))));
- {const pts=[];for(let i=0;i<=24;i++){const t=i/24;pts.push([mx-4+6*Math.sin(t*Math.PI*2),my+14+110*t]);}ns.push(part('riot__noodles-steam__noodles',rs(()=>poly(ribbon(pts,34)),RT.yolk)));}
+ {const pts=[];for(let i=0;i<=24;i++){const t=i/24;pts.push([mx+30*ms+4*Math.sin(t*Math.PI*2)+10*t,my+8+50*t]);}ns.push(part('riot__noodles-steam__noodles',rs(()=>poly(ribbon(pts,34)),RT.yolk)));}
  const two=part('riot__foreground-type__two-mark',G?placeGlyph(G.riot,512+fx*0.6-38*(view==='side'?0.6:1),730,96,view==='side'?0.6:1):'');
  const env=rs(()=>ellipse(518,902,250,18),RT.ink,false);
  const wr=(s,h)=>sub(h,mul(norm(sub(h,s)),20));
