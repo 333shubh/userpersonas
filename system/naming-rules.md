@@ -97,7 +97,7 @@ Allowed extensions: `md`, `json`, `py`, `svg`, `png`, `jpg` (reference photos), 
     "stickers": ["sticker"],
     "packaging": ["pack"]
   },
-  "qualifiers": ["front", "side", "three-quarter", "back", "turnaround", "expressions", "poses", "props", "bw", "colour", "one-colour", "concept", "silent", "reduced", "poster", "captions", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+  "qualifiers": ["with-pack", "front", "side", "three-quarter", "back", "turnaround", "expressions", "poses", "props", "bw", "colour", "one-colour", "concept", "silent", "reduced", "poster", "captions", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
   "qualifiersFromRigExpressions": true,
   "freeQualifierFolders": ["stickers"],
   "reserved": {

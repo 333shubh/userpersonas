@@ -8,7 +8,7 @@ For Midjourney (recommended) or ChatGPT's image tool. Built from `system/mascot-
 2. **Style reference.** Upload refs **10, 16 and 20** (series line-ups) as the *style reference* on every prompt. This is what makes seven figures look like one collection.
 3. **Character references.** Also attach the per-mascot refs listed below as image prompts. Use them for material and attitude only, never to copy a specific toy.
 4. **Lock each figure.** When a hero render is right, use it as the *character reference* (Midjourney's omni or character reference) for that mascot's turntable and poses, so the character stays the same.
-5. **Real pack.** Generate the figure holding a **plain pack in the right colours**. AI tools garble logos and small print, so the real MAGGI pack image from `brief/references/packs/` is composited on afterwards (Claude Code can do this, or use Figma or Photoshop).
+5. **Real pack.** Generate the figure holding a **plain pack in the right colours**. AI tools garble logos and small print, so the real MAGGI pack image from `brief/references/packs/` is composited on afterwards with `tools/composite-packs.py` (measured pack corners per render, hands kept in front, relit from the render; output `NN-mascot-hero-with-pack.png`).
 6. **Check.** Drop finished renders (2048 × 2048 PNG) in the repo; the silhouette, colour and naming checks run on them.
 
 ## The series prompt (prefix for every figure)
