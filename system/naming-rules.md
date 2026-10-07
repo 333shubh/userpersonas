@@ -44,7 +44,7 @@ Inside any persona folder (`static/`, `motion/`, `glyphs/`, `cards/`, `stickers/
 
 | Folder | Allowed `{asset}` values | Typical files |
 |---|---|---|
-| `static/NN-slug/` | `rig`, `sheet`, `scene`, `board`, `panel`, `silhouette` | `01-cram-rig-front.svg`, `01-cram-sheet-turnaround.svg`, `01-cram-scene.svg`, `01-cram-board.png` |
+| `static/NN-slug/` | `rig`, `sheet`, `scene`, `board`, `panel`, `silhouette`, `hero` (3D toy hero render) | `01-cram-rig-front.svg`, `01-cram-sheet-turnaround.svg`, `01-cram-scene.svg`, `01-cram-board.png` |
 | `motion/NN-slug/` | `idle`, `reaction`, `micro`, `scene`, `poster` | `01-cram-idle-1080x1080.mp4`, `01-cram-idle-silent-1080x1080.webm`, `01-cram-idle-reduced-1080x1080.mp4`, `01-cram-idle-poster-1080x1080.png` |
 | `glyphs/NN-slug/` | `two`, `wordmark`, `numerals`, `numeral` | `01-cram-two.svg`, `01-cram-wordmark.svg`, `01-cram-numeral-7.svg` |
 | `cards/NN-slug/` | `card` | `01-cram-card-front.svg`, `01-cram-card-front-750x1050.png` |
@@ -90,7 +90,7 @@ Allowed extensions: `md`, `json`, `py`, `svg`, `png`, `jpg` (reference photos), 
     "07-premium-flavor-explorer": "mise"
   },
   "personaFolders": {
-    "static": ["rig", "sheet", "scene", "board", "panel", "silhouette"],
+    "static": ["rig", "sheet", "scene", "board", "panel", "silhouette", "hero"],
     "motion": ["idle", "reaction", "micro", "scene", "poster"],
     "glyphs": ["two", "wordmark", "numerals", "numeral"],
     "cards": ["card"],
