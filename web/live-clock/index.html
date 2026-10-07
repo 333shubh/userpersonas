@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One day, seven noodles</title>
+  <meta name="description" content="A live clock for seven MAGGI personas. Whoever's hour it is wakes up, and the whole page becomes their world.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Atkinson+Hyperlegible:wght@400;700&family=Baloo+2:wght@700&family=Barlow+Condensed:wght@800&family=Barlow:wght@400;600&family=Bungee&family=Fraunces:wght@600&family=IBM+Plex+Mono:wght@400;600&family=Karla:wght@400;700&family=Libre+Franklin:wght@400;600&family=Nunito:wght@400;800&family=Playfair+Display:ital,wght@1,400&family=Quicksand:wght@600&family=Rubik:wght@400;700&display=swap">
+  <link rel="stylesheet" href="system.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="system.js"></script>
+</head>
+<body data-persona="cram">
+  <a class="skip" href="#main">Skip to the page</a>
+
+  <header class="masthead">
+    <p class="site-name">One day, seven noodles</p>
+    <div class="masthead-actions">
+      <button type="button" class="ghost" id="back-to-now" hidden>Back to now</button>
+      <button type="button" class="ghost" id="motion-toggle" aria-pressed="false">Pause motion</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="clock"><time id="clock-time" datetime="13:00">13:00</time></p>
+        <h1 id="hero-title"><span id="hero-name">Cram</span> is awake</h1>
+        <p class="felt" id="hero-felt">Counts it on a phone timer.</p>
+        <p class="persona-line" id="hero-persona">The Hostel Hungry, here for the lowest-effort filling meal.</p>
+        <p class="hero-actions">
+          <button type="button" class="solid" id="play-note">Play Cram's note</button>
+        </p>
+      </div>
+      <figure class="hero-visual">
+        <div class="plinth">
+          <img id="hero-pack" src="assets/packs/masala-single.png" alt="" width="617" height="900">
+        </div>
+        <figcaption id="hero-pack-caption">MAGGI 2-Minute Noodles Masala</figcaption>
+      </figure>
+    </section>
+
+    <section class="day" aria-labelledby="day-title">
+      <h2 id="day-title" class="visually-hidden">The day</h2>
+      <div class="thread" id="thread">
+        <svg class="thread-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+          <path id="thread-path" class="thread-line" d="" />
+          <path id="thread-active" class="thread-line thread-active" d="" />
+        </svg>
+        <div class="thread-handle" id="thread-handle" role="slider" tabindex="0"
+             aria-label="Time of day" aria-valuemin="0" aria-valuemax="1439" aria-valuenow="780"
+             aria-valuetext="13:00, Cram's hour"></div>
+      </div>
+      <div class="cast" role="radiogroup" aria-label="Choose a mascot" id="cast"></div>
+    </section>
+
+    <section class="block" aria-labelledby="decides-title">
+      <h2 id="decides-title">Who decides</h2>
+      <div class="split">
+        <div>
+          <dl class="spine" id="spine"></dl>
+          <p class="note" id="sachet-line"></p>
+        </div>
+        <figure class="radar">
+          <svg id="radar" viewBox="-170 -160 340 320" role="img" aria-labelledby="radar-title"><title id="radar-title">Card stats</title></svg>
+          <figcaption>
+            <span class="visually-hidden">Card stats, scored 1 to 5:</span>
+            <ul class="stats" id="stats"></ul>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="looks-title">
+      <h2 id="looks-title">How it looks</h2>
+      <p class="rule" id="constraint"></p>
+      <ul class="swatches" id="swatches"></ul>
+      <h3>Every text colour, checked</h3>
+      <ul class="pairs" id="pairs"></ul>
+      <div class="specimen" id="specimen">
+        <p class="specimen-display" id="specimen-display">Cram</p>
+        <p class="specimen-text" id="specimen-text"></p>
+        <p class="note" id="specimen-faces"></p>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="moves-title">
+      <h2 id="moves-title">How it moves and sounds</h2>
+      <p id="tempo-line"></p>
+      <div class="bar" id="bar" aria-hidden="true"></div>
+      <p class="note" id="bar-note"></p>
+      <p class="sound-actions">
+        <button type="button" class="ghost" id="play-note-2">Play Cram's note</button>
+        <button type="button" class="ghost" id="play-chord">Play all seven together</button>
+      </p>
+      <p class="caption" id="sound-caption" aria-live="polite">Sound is off until you press a button.</p>
+    </section>
+
+    <section class="block" aria-labelledby="holds-title">
+      <h2 id="holds-title">What it holds</h2>
+      <div class="split">
+        <img class="pack-large" id="pack-large" src="assets/packs/masala-single.png" alt="" width="617" height="900">
+        <div>
+          <p class="pack-name" id="pack-name"></p>
+          <p class="note" id="pack-format"></p>
+          <p id="pack-why"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>A concept for a design application. Not made by, or endorsed by, Nestlé. MAGGI and its pack designs belong to Nestlé.</p>
+    <p>Pack images from <a href="https://www.maggi.in/en/our-range/">maggi.in</a>. Personas, mascots, sounds and card stats are design concepts, not research findings.</p>
+  </footer>
+
+  <div class="visually-hidden" aria-live="polite" id="announcer"></div>
+  <script src="app.js"></script>
+</body>
+</html>

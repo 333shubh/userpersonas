@@ -22,6 +22,7 @@ CHECKS = [
     ("check-glyphs", "'2' glyphs (Gate 1 B)"),
     ("check-artwork", "Artwork colours + safety"),
     ("check-motion", "Motion clips"),
+    ("check-web", "Live-clock page"),
 ]
 
 
