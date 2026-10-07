@@ -80,5 +80,5 @@ Every path in the repository checked against `system/naming-rules.md` (section 7
 | PASS | fixed folder exists: stress-tests/qa/ |  |
 | PASS | fixed folder exists: web/live-clock/ |  |
 | PASS | fixed folder exists: web/quiz/ |  |
-| PASS | every file and folder name follows the rules | 161 files |
-| INFO | files scanned | 161 |
+| PASS | every file and folder name follows the rules | 177 files |
+| INFO | files scanned | 177 |
