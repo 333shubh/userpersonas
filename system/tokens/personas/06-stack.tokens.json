@@ -684,7 +684,8 @@
         "secondaryProps": [
           "seasoning cube",
           "seasoning bottle"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       },
       "europe": {
         "status": "validate locally",
@@ -693,7 +694,8 @@
           "seasoning bottle",
           "seasoning cube",
           "sauce"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       }
     }
   },
@@ -1201,6 +1203,17 @@
         "$type": "string",
         "$value": "Stacked-box edge: solid 4px drop, no blur."
       }
+    },
+    "product": {
+      "name": "MAGGI 2-Minute Noodles Masala, 12-pack",
+      "format": "multipack, 840 g (12 x 70 g)",
+      "packImage": "masala-single.png",
+      "why": "Bulk, scheduled, price per serving. Built from the single Masala pack: stacked pouches in a multipack wrap.",
+      "rendering": "Real single packs stacked in exact rows on the 8px grid; tear-off Mon-Sun calendar concept on the wrap.",
+      "status": "real Nestle MAGGI pack (private project decision 2026-10-07)",
+      "source": "https://www.maggi.in/en/our-range/ (checked 2026-10-07)",
+      "packImageDir": "brief/references/packs/ (local only, git-ignored)",
+      "claims": "Nutrition/health badges printed on real packs stay illegible in artwork (Section 22 still applies)"
     }
   }
 }

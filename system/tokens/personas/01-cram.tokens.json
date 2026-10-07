@@ -684,7 +684,8 @@
         "secondaryProps": [
           "seasoning cube",
           "seasoning bottle"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       },
       "europe": {
         "status": "validate locally",
@@ -693,7 +694,8 @@
           "seasoning bottle",
           "seasoning cube",
           "sauce"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       }
     }
   },
@@ -1149,6 +1151,17 @@
         "$type": "string",
         "$value": "Flat print. Separate layers with a 2px ink rule, never a shadow."
       }
+    },
+    "product": {
+      "name": "MAGGI 2-Minute Noodles Masala",
+      "format": "single pouch, 70 g",
+      "packImage": "masala-single.png",
+      "why": "The default, cheapest single pack: Cram's 'all of it, fast' meal.",
+      "rendering": "Real pack layout redrawn in Cram's one ink: photocopy/halftone version of the yellow pouch (strict B&W, Section 18.12).",
+      "status": "real Nestle MAGGI pack (private project decision 2026-10-07)",
+      "source": "https://www.maggi.in/en/our-range/ (checked 2026-10-07)",
+      "packImageDir": "brief/references/packs/ (local only, git-ignored)",
+      "claims": "Nutrition/health badges printed on real packs stay illegible in artwork (Section 22 still applies)"
     }
   }
 }

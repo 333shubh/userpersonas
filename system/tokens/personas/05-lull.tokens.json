@@ -684,7 +684,8 @@
         "secondaryProps": [
           "seasoning cube",
           "seasoning bottle"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       },
       "europe": {
         "status": "validate locally",
@@ -693,7 +694,8 @@
           "seasoning bottle",
           "seasoning cube",
           "sauce"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       }
     }
   },
@@ -1196,6 +1198,17 @@
         "$type": "string",
         "$value": "Only the single warm-light element glows; everything else is flat."
       }
+    },
+    "product": {
+      "name": "MAGGI Masala Cuppa Noodles",
+      "format": "cup",
+      "packImage": "masala-cuppa.png",
+      "why": "Solo, minimal cleanup, made in the cup: the late-night ritual. Steam leaves the cup as stars.",
+      "rendering": "Real cup under the single warm glow; nothing brighter than the luminance cap except the pack's own print.",
+      "status": "real Nestle MAGGI pack (private project decision 2026-10-07)",
+      "source": "https://www.maggi.in/en/our-range/ (checked 2026-10-07)",
+      "packImageDir": "brief/references/packs/ (local only, git-ignored)",
+      "claims": "Nutrition/health badges printed on real packs stay illegible in artwork (Section 22 still applies)"
     }
   }
 }

@@ -8,6 +8,7 @@ source of the rules) and walks the repository.
 
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -52,6 +53,12 @@ def main():
     quals = qualifier_re(rules)
     personas = rules["personas"]
     checked = 0
+    # files git ignores (local third-party binaries, caches) are never committed, so naming does not apply
+    try:
+        ignored = set(subprocess.run(["git", "ls-files", "--others", "--ignored", "--exclude-standard"], cwd=tk.ROOT,
+                                     capture_output=True, text=True, check=True).stdout.splitlines()) - {""}
+    except (OSError, subprocess.CalledProcessError):
+        ignored = set()
 
     for folder in rules["requiredFolders"]:
         r.ok((tk.ROOT / folder).is_dir(), f"folder exists: {folder}/")
@@ -69,6 +76,8 @@ def main():
             continue
         name = path.name
         relp = rel.as_posix()
+        if relp in ignored:
+            continue
         if path.is_dir():
             if not seg.match(name):
                 r.add("FAIL", f"folder name: {relp}/", "must be lowercase kebab-case")

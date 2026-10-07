@@ -684,7 +684,8 @@
         "secondaryProps": [
           "seasoning cube",
           "seasoning bottle"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       },
       "europe": {
         "status": "validate locally",
@@ -693,7 +694,8 @@
           "seasoning bottle",
           "seasoning cube",
           "sauce"
-        ]
+        ],
+        "secondaryPropImage": "magic-cubes-chicken.png (MAGGI Magic Cubes, Extra Chicken)"
       }
     }
   },
@@ -1177,6 +1179,17 @@
         "$type": "number",
         "$value": 0.18
       }
+    },
+    "product": {
+      "name": "MAGGI 2-Minute Noodles Veggie Masala",
+      "format": "single pouch (top-up)",
+      "packImage": "veggie-masala.png",
+      "why": "Familiar masala with visible vegetables: the pack a parent tops up and a child says yes to. No nutrition claim is made.",
+      "rendering": "Real pack, softened edges and warm light.",
+      "status": "real Nestle MAGGI pack (private project decision 2026-10-07)",
+      "source": "https://www.maggi.in/en/our-range/ (checked 2026-10-07)",
+      "packImageDir": "brief/references/packs/ (local only, git-ignored)",
+      "claims": "Nutrition/health badges printed on real packs stay illegible in artwork (Section 22 still applies)"
     }
   }
 }
