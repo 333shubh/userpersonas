@@ -5,6 +5,7 @@
 | **Mascot** | Stack (working name, brief Section 19) |
 | **Primary motivation** | Household value and reliability |
 | **Design language** | Practical, bold shelf presence, clear value cues, household-friendly: a strict grid with stamp and price-tag logic |
+| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 10:30, neutral late-morning light, busy (slot 2 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -76,21 +77,44 @@ Stack holds the **MAGGI 2-Minute Noodles Masala 12-pack** (840 g, 12 × 70 g; pa
 
 ## 10. Illustration scene description
 
-**10:30, a busy kitchen in neutral late-morning light.** Stack stands planted and exact beside a pantry shelf where real Masala packs sit in perfect rows on an 8 px grid. One hand counts packs on its fingers; a multipack wrap with a tear-off Mon–Sun calendar leans against the shelf, one day stamped. A price-tag flag hangs from Stack's top corner on a short string. Everything aligns to the grid; only the rubber stamp is allowed its −6° tilt. Density 3: up to eight props, 40% clear space.
+**10:30, a pantry diorama in neutral late-morning light.** The Stack figure stands planted beside a miniature shelf where real Masala packs sit in exact rows. One hand counts packs on its fingers; a multipack wrap with a tear-off Mon–Sun calendar leans against the shelf, one day stamped. A printed price tag hangs from the corner of its carton head. Everything aligns to the grid; only the rubber stamp is tilted −6°. Density 3: up to eight props, 40% clear space.
 
-## 11. Mascot concept
+## 11. Mascot concept (3D designer toy)
+
+Stack is a **3D designer figure with a cardboard-box head**: a stacked multipack carton with packing tape and a printed price tag, on the shared toy body in a navy work jacket with a shelf-blue stripe. The carton is kraft-cardboard textured (corrugated edges, glossy tape), the series' most tactile material.
 
 | | |
 |---|---|
 | Personality | Organized, practical, warm, efficient |
-| Silhouette | A sturdy stack-of-packs body with stepped blocks and a price-tag flag (the 32 px hooks) |
-| Face | Square, friendly eyes; a satisfied, reliable smile |
-| Body language | Planted and upright; precise counting and stacking gestures |
-| Props | Multipack, calendar, rubber stamp, price tag |
-| Colour | Navy ink on paper, kraft cardboard, stamp red, price-tag yellow, shelf blue |
-| Typography | Barlow Condensed for price-tag headlines, Barlow for text, tabular numerals always |
-| Patterns | Ruled ledgers, stamps, corrugated kraft |
+| Silhouette | Square carton head with stepped edges and a price-tag flag, the 32 px hooks |
+| Face | Square printed eyes; a satisfied, reliable smile stamped on the box |
+| Pose language | Planted and upright; precise counting and stacking gestures |
+| Colour | Navy, kraft, stamp red, price-tag yellow, shelf blue |
 | Motion behaviour | Rhythmic and exact: an accent on every beat, small squash, crisp stops |
+
+<!-- generated:toy:start -->
+| Toy spec | Value |
+|---|---|
+| Head (the food object) | Stacked multipack carton head with packing tape and a printed price tag |
+| Material | Kraft cardboard texture (corrugated edges, tape gloss) on a navy vinyl body |
+| Finish and light | Crisp, square, grid-aligned; one rubber-stamp mark |
+| Outfit | Navy work jacket with a shelf-blue stripe; boxy boots |
+| Props | Real Masala 12-pack, tear-off Mon-Sun calendar, rubber stamp |
+| Closest references | [08](../brief/references/inspo/mascots-v3/ref-08-cardboard-box-head-suit.jpg), [10](../brief/references/inspo/mascots-v3/ref-10-blind-box-lineup-render.jpg) |
+
+**Series rules shared by all seven figures** (brand.toy)
+
+| Rule | Value |
+|---|---|
+| Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
+| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
+| Head proportion | 45% of figure height |
+| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
+| Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
+| Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |
+| Deliverables | Per mascot: hero render, 8-view turntable sheet, 3 poses (hero with pack, sachet moment, reaction), material callout sheet; 2048x2048 PNG with alpha |
+<!-- generated:toy:end -->
 
 ## 12. Visual-world design system
 
@@ -229,6 +253,8 @@ Easing names are shared and fixed: `ease-in-soft`, `ease-out-pop`, `ease-settle`
 <!-- generated:motion:end -->
 
 Stack moves like a metronome: an accent on every beat, small squash, crisp stops and exact spacing. Reaction loop: a satisfied stamp on the calendar. Micro-animation: multipacks stacking neatly into rows. Consumption scene (8 s): list checked, multipack in, rows on the shelf, four packs out, family dinner, calendar stamped.
+
+**In 3D.** The idle, reaction and scene loops are built from rendered layers of the figure (head, body, arms, props, steam) and from an 8-view turntable, keeping these exact timings. Nothing is re-modelled for motion.
 
 ## 20. Mascot card stats
 

@@ -5,6 +5,7 @@
 | **Mascot** | Lull (working name, brief Section 19) |
 | **Primary motivation** | Emotional decompression |
 | **Design language** | Dark, cozy gradients, lo-fi, glowing steam, nocturnal warmth: luminance-capped dark with no pure white |
+| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 00:45, blue-violet dark with a single warm glow (slot 7 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -76,21 +77,44 @@ Lull holds **MAGGI Masala Cuppa Noodles**: made in its own cup, nothing to wash.
 
 ## 10. Illustration scene description
 
-**00:45, a small room in blue-violet dark, one warm lamp.** Lull sinks into a C-curve on a sofa, blanket over its shoulders like a cape, holding the real Masala Cuppa in both hands at chest height. The crescent bite in its round head catches the lamp light. Steam leaves the cup and turns into three small stars, rising clear of the face. Nothing in the frame is brighter than the luminance cap except the pack's own print. Density 2: at most five props, half the frame soft darkness.
+**00:45, a small-room diorama in blue-violet dark, one warm lamp.** The Lull figure sinks into a C-curve on a miniature sofa, blanket worn as a cape, holding the real Masala Cuppa in both hands at chest height. The crescent bite in its moon-bowl head catches the lamp light. Glow-in-the-dark steam rises from the cup and turns into three small stars, clear of the face. Rendered in near-darkness: nothing brighter than the luminance cap except the pack's own print. Density 2: at most five props.
 
-## 11. Mascot concept
+## 11. Mascot concept (3D designer toy)
+
+Lull is a **3D designer vinyl figure** with glow-in-the-dark details: a round moon-bowl head with a crescent bite, on the shared toy body in an oversized hoodie with a blanket worn as a cape. The body is matte dusk-violet vinyl; the steam stars and eye shine glow in the warm glow colour, the way phosphorescent art-toy editions do.
 
 | | |
 |---|---|
 | Personality | Cozy, dreamy, gently humorous, comforting |
-| Silhouette | Round bowl with a crescent bite out of the head's edge, plus three star-tipped steam wisps (the 32 px hooks) |
-| Face | Heavy, content half-lids; a sleepy smile |
-| Body language | Sinking, curled, cradling; slow breathing rhythm |
-| Props | Steam stars, blanket, mug-lamp, the slowly torn sachet |
-| Colour | Night, surface and raised violets, soft lavender text, one warm glow, star gold, ember |
-| Typography | Quicksand in lowercase for display, Atkinson Hyperlegible for easy-on-tired-eyes text |
-| Patterns | Fine lo-fi grain, a single soft bloom |
-| Motion behaviour | Slow breathing: a 4-second idle, no squash, no overshoot, one glow pulse per loop |
+| Silhouette | Round head with a crescent bite plus three star-tipped steam wisps, the 32 px hooks |
+| Face | Heavy, content printed half-lids; a sleepy smile |
+| Pose language | Sinking, curled, cradling; slow breathing rhythm |
+| Colour | Night violets, soft lavender, one warm glow, star gold |
+| Motion behaviour | Slow breathing: a 4-second idle, no squash, one glow pulse per loop |
+
+<!-- generated:toy:start -->
+| Toy spec | Value |
+|---|---|
+| Head (the food object) | Round moon-bowl head with a crescent bite; sleepy printed eyes |
+| Material | Matte dusk-violet vinyl with glow-in-the-dark details (steam stars, eye shine) |
+| Finish and light | Rendered in near-darkness lit by one warm lamp; glow details in the warm glow colour; nothing brighter than the luminance cap except the pack print |
+| Outfit | Oversized hoodie and a blanket worn as a cape; soft slippers |
+| Props | Real Masala Cuppa held in both hands, steam that turns into stars |
+| Closest references | [11](../brief/references/inspo/mascots-v3/ref-11-dark-figures-neon-glow.jpg) |
+
+**Series rules shared by all seven figures** (brand.toy)
+
+| Rule | Value |
+|---|---|
+| Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
+| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
+| Head proportion | 45% of figure height |
+| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
+| Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
+| Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |
+| Deliverables | Per mascot: hero render, 8-view turntable sheet, 3 poses (hero with pack, sachet moment, reaction), material callout sheet; 2048x2048 PNG with alpha |
+<!-- generated:toy:end -->
 
 ## 12. Visual-world design system
 
@@ -230,6 +254,8 @@ Easing names are shared and fixed: `ease-in-soft`, `ease-out-pop`, `ease-settle`
 <!-- generated:motion:end -->
 
 Lull moves on a slow breath: one inhale and exhale per 4-second loop, with no squash and no overshoot. Reaction loop: eyes softening, a contented sigh. Micro-animation: steam turning into stars. Consumption scene (8 s): door closes, lamp on, slow sachet tear, warm cup in both hands, steam rising into stars.
+
+**In 3D.** The idle, reaction and scene loops are built from rendered layers of the figure (head, body, arms, props, steam) and from an 8-view turntable, keeping these exact timings. Nothing is re-modelled for motion.
 
 ## 20. Mascot card stats
 

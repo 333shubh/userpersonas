@@ -291,7 +291,25 @@ def p_rivals(r, pid):
     return md_table(["With", "Dynamic (Section 18.10)"], rows)
 
 
-PERSONA_BLOCKS = {"kit": kit, "motion": p_motion, "stats": p_stats, "sound": p_sound, "pack": p_pack,
+def p_toy(r, pid):
+    """3D designer-toy spec for the mascot, plus the series-wide rules it shares."""
+    toy, series = r["persona"][pid]["mascot"]["toy"], r["brand"]["toy"]
+    refdir = tk.ROOT / "brief" / "references" / "inspo" / "mascots-v3"
+    links = []
+    for n in toy["references"]:
+        hit = sorted(refdir.glob(f"ref-{n:02d}-*.jpg"))
+        links.append(f"[{n:02d}](../brief/references/inspo/mascots-v3/{hit[0].name})" if hit else f"{n:02d}")
+    rows = [["Head (the food object)", toy["head"]], ["Material", toy["material"]], ["Finish and light", toy["finish"]],
+            ["Outfit", toy["outfit"]], ["Props", toy["props"]], ["Closest references", ", ".join(links)]]
+    shared = [["Medium", _v(series["medium"])], ["Shared body", _v(series["body"])],
+              ["Head proportion", f"{_v(series['head-ratio']):.0%} of figure height"], ["Faces", _v(series["face"])],
+              ["Camera", _v(series["camera"])], ["Lighting", _v(series["lighting"])],
+              ["Background", _v(series["background"])], ["Deliverables", _v(series["deliverables"])]]
+    return (md_table(["Toy spec", "Value"], rows) + "\n\n**Series rules shared by all seven figures** (brand.toy)\n\n"
+            + md_table(["Rule", "Value"], shared))
+
+
+PERSONA_BLOCKS = {"toy": p_toy, "kit": kit, "motion": p_motion, "stats": p_stats, "sound": p_sound, "pack": p_pack,
                   "spine": p_spine, "rivals": p_rivals}
 PERSONA_DOC_RE = re.compile(r"^(0[1-7])-[a-z-]+\.md$")
 

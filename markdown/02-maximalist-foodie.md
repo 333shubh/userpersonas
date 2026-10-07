@@ -5,6 +5,7 @@
 | **Mascot** | Riot (working name, brief Section 19) |
 | **Primary motivation** | Flavor experimentation |
 | **Design language** | Very colourful and in-your-face: intentionally clashing, but systematically controlled. The project's required loud persona. |
+| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 19:30, coloured practical lights, phone glow (slot 5 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -76,21 +77,44 @@ Riot holds **MAGGI Special Masala Noodles** ("Spicy. Yummy.") with **MAGGI Hot &
 
 ## 10. Illustration scene description
 
-**19:30, home counter as a set, coloured practical lights.** A yolk-yellow pendant pool on the left of an ultraviolet wall, a pink-and-green neon sign on an ink board, a cyan phone glow. Riot leans back mid-shout, flame-noodle hair erupting, the Special Masala pack held high in one hand and a jet of extra-hot sauce from the other. Food flies into frame: an egg, chips, a chili. Counter stickers say REMIX, +OIL and SHOOT. Every colour collision follows the clash grammar in section 12. Density 5: up to twenty props, still with a clear focal point on Riot.
+**19:30, a home-counter diorama lit by coloured practical lights.** A yolk pendant pool on the left of an ultraviolet wall, a pink-and-green neon sign on an ink board, a cyan phone glow. The Riot figure leans back mid-shout, flame-noodle hair erupting, the real Special Masala pack held high and the Extra Hot pouch mid-squeeze. Miniature food flies into frame on clear acrylic rods: an egg, chips, a chili. Counter stickers read REMIX, +OIL and SHOOT. Every colour collision follows the clash grammar in section 12. Density 5, with Riot as the clear focal point.
 
-## 11. Mascot concept
+## 11. Mascot concept (3D designer toy)
+
+Riot is a **3D designer vinyl figure**: a glossy chili head with sculpted flame-noodle hair, on the shared toy body in a volt-blue puffer. The whole figure is covered in die-cut sticker decals, like a collector's customised toy.
 
 | | |
 |---|---|
 | Personality | Loud, experimental, expressive, playful |
-| Silhouette | Teardrop chili body, point up; a three-point flame crown leaning right is the 32 px hook |
-| Face | Deliberately mismatched eyes (one big, one small); a wide shouting mouth |
-| Body language | Leaning back, arms flung out, mid-reaction; syncopated rhythm |
-| Props | Flame hair, stickers, chili, chili-oil or sauce bottle, phone |
-| Colour | Chili body, yolk and cyan details; controlled clash pairs only |
-| Typography | Bungee for stacked sticker headlines, Rubik for captions |
-| Patterns | Stickers, starbursts, risograph overlap, misregistered ink plate |
-| Motion behaviour | Syncopated bounce on the off-beats; flames pulse twice a second; big squash on reactions |
+| Silhouette | Teardrop chili head; the three-point flame crown leaning right is the 32 px hook |
+| Face | Mismatched sticker eyes (one big, one small); a wide shouting mouth |
+| Pose language | Leaning back, arms flung out; syncopated |
+| Colour | Chili red body; yolk and cyan details; clash pairs only, never random |
+| Motion behaviour | Off-beat bounce, flames pulsing twice a second, big squash on reactions |
+
+<!-- generated:toy:start -->
+| Toy spec | Value |
+|---|---|
+| Head (the food object) | Chili body-head with sculpted flame-noodle hair in yolk and chili; mismatched sticker eyes |
+| Material | High-gloss chili-red vinyl covered in die-cut sticker decals |
+| Finish and light | Glossy with paper-gloss sticker highlights; clash colours only in the four allowed pairs |
+| Outfit | Puffer jacket in volt-blue with tangerine trim; streetwear sneakers |
+| Props | Real Special Masala pack held high, Extra Hot sauce pouch mid-squeeze, phone |
+| Closest references | [15](../brief/references/inspo/mascots-v3/ref-15-red-devil-sticker-poster.jpg), [04](../brief/references/inspo/mascots-v3/ref-04-pink-face-camera-streetwear.jpg), [03](../brief/references/inspo/mascots-v3/ref-03-red-puffer-streetwear.jpg), [14](../brief/references/inspo/mascots-v3/ref-14-streetwear-duo.jpg) |
+
+**Series rules shared by all seven figures** (brand.toy)
+
+| Rule | Value |
+|---|---|
+| Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
+| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
+| Head proportion | 45% of figure height |
+| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
+| Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
+| Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |
+| Deliverables | Per mascot: hero render, 8-view turntable sheet, 3 poses (hero with pack, sachet moment, reaction), material callout sheet; 2048x2048 PNG with alpha |
+<!-- generated:toy:end -->
 
 ## 12. Visual-world design system
 
@@ -239,6 +263,8 @@ Easing names are shared and fixed: `ease-in-soft`, `ease-out-pop`, `ease-settle`
 <!-- generated:motion:end -->
 
 Riot never lands on the beat. Accents fall on the off-beats (the "and" after 1 and 3), with the biggest squash in the system and a 12% overshoot. Reaction loop: a full-body shout with flames spiking. Micro-animation: a sticker popping onto the pack. Consumption scene (8 s): hack spotted, sauce jet, egg drop, three-cut film, reaction bite.
+
+**In 3D.** The idle, reaction and scene loops are built from rendered layers of the figure (head, body, arms, props, steam) and from an 8-view turntable, keeping these exact timings. Nothing is re-modelled for motion.
 
 ## 20. Mascot card stats
 

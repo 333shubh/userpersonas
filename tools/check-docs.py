@@ -20,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).parent / "lib"))
 import tokens as tk  # noqa: E402
 from report import Report  # noqa: E402
 
-BLOCKS = ("kit", "spine", "motion", "stats", "sound", "pack", "rivals")
+BLOCKS = ("toy", "kit", "spine", "motion", "stats", "sound", "pack", "rivals")
 HEALTH = re.compile(r"\b(healthy|healthier|nutritious|guilt[- ]free|low[- ]sodium|high[- ]protein|high[- ]fibre|"
                     r"source of (fibre|iron|protein)|goodness of iron|weight[- ]loss|superfood|wholesome)\b", re.I)
 RULE_CONTEXT = re.compile(r"claim|needs nestl|section 22|illegible|guardrail", re.I)

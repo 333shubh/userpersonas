@@ -1,6 +1,6 @@
 # Mascot style v2: direction brief
 
-Status: **proposed, 2026-10-07**. Replaces the look of the v1 mascots (geometric, code-built). It keeps everything else: palettes, persona constraints, rig ids and anchors, motion grid, sound and naming. Claude Design proposes, the project lead approves, then Claude Code locks the approved proportions into `rig-spec.json` (v0.2).
+Status: **superseded by `mascot-style-v3.md` (3D designer-toy series), 2026-10-07.** Kept for history. Replaces the look of the v1 mascots (geometric, code-built). It keeps everything else: palettes, persona constraints, rig ids and anchors, motion grid, sound and naming. Claude Design proposes, the project lead approves, then Claude Code locks the approved proportions into `rig-spec.json` (v0.2).
 
 ## 1. Stance
 

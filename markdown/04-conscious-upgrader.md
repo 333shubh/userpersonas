@@ -5,6 +5,7 @@
 | **Mascot** | Sprig (working name, brief Section 19) |
 | **Primary motivation** | Health-compatible indulgence |
 | **Design language** | Clean, botanical, muted earth tones, ingredient-forward: natural paper texture and a low-ink look |
+| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 07:30, cool morning daylight (slot 1 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -78,21 +79,44 @@ Sprig holds **MAGGI Nutri-licious Veg Atta Noodles** (the 2025 pack, 72.5 g), wi
 
 ## 10. Illustration scene description
 
-**07:30, kitchen table in cool morning daylight.** Sprig stands in balanced contrapposto, a sprout leaf pair rising from its head at ±35°. Leafy hands drop fresh greens into a bowl from above, the visual of "adding, never subtracting". The real Veg Atta pack stands beside a lemon wedge and a small dish of seeds, with any printed claims drawn as illegible texture. Everything sits level on natural paper with a light fibre texture. Density 2: at most five props, half the frame calm and empty.
+**07:30, a breakfast-table diorama in cool morning daylight.** The Sprig figure stands in balanced contrapposto, a tall sprout leaf pair rising from its frosted bowl head. Its hands drop miniature fresh greens into a bowl from above, the visual of "adding, never subtracting". The real Veg Atta pack stands beside a lemon wedge and a small dish of seeds, with any printed claims illegible. Low-saturation light, a paper-white sweep, and the translucent head glowing softly where light passes through. Density 2: at most five props.
 
-## 11. Mascot concept
+## 11. Mascot concept (3D designer toy)
+
+Sprig is a **3D designer resin figure**: a shallow bowl head in frosted translucent resin with a sprout leaf pair growing from the top, on the shared toy body in a relaxed linen overshirt. The translucent head is the series' quietest material, matching Sprig's low-ink, honest world.
 
 | | |
 |---|---|
 | Personality | Mindful, fresh, composed, quietly optimistic |
-| Silhouette | Shallow bowl body with a dome head; one tall sprout leaf pair is the 32 px hook |
-| Face | Calm, clear eyes; a small content smile |
-| Body language | Balanced and level; precise, unhurried gestures |
-| Props | Sprout leaves, lemon wedge, greens, the half-used sachet |
-| Colour | Muted leaf, olive, wheat and clay on natural paper; terracotta and mustard as the sachet pair |
-| Typography | Fraunces for soft serif headlines, Karla for clear text, small-caps labels |
-| Patterns | Leaf ovals, grain seeds, paper fibre |
-| Motion behaviour | Balanced and calm: no squash, no overshoot, slow settles |
+| Silhouette | Shallow bowl head with one tall sprout leaf pair, the 32 px hook |
+| Face | Calm printed eyes; a small content smile |
+| Pose language | Balanced and level; precise, unhurried gestures |
+| Colour | Muted leaf, olive, wheat and clay; every colour low saturation |
+| Motion behaviour | Balanced and calm: no squash, no overshoot, leaves swaying a beat behind |
+
+<!-- generated:toy:start -->
+| Toy spec | Value |
+|---|---|
+| Head (the food object) | Shallow bowl head with a tall sprout leaf pair growing from the top |
+| Material | Frosted translucent resin in muted leaf green, with an opaque wheat-coloured body |
+| Finish and light | Soft subsurface glow, low saturation, paper-white background |
+| Outfit | Relaxed linen overshirt; canvas shoes |
+| Props | Fresh greens, lemon wedge, the real Veg Atta pack (claims illegible) |
+| Closest references | [12](../brief/references/inspo/mascots-v3/ref-12-frosted-translucent-figure.jpg), [20](../brief/references/inspo/mascots-v3/ref-20-series-of-five-figures.jpg) |
+
+**Series rules shared by all seven figures** (brand.toy)
+
+| Rule | Value |
+|---|---|
+| Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
+| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
+| Head proportion | 45% of figure height |
+| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
+| Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
+| Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |
+| Deliverables | Per mascot: hero render, 8-view turntable sheet, 3 poses (hero with pack, sachet moment, reaction), material callout sheet; 2048x2048 PNG with alpha |
+<!-- generated:toy:end -->
 
 ## 12. Visual-world design system
 
@@ -232,6 +256,8 @@ Easing names are shared and fixed: `ease-in-soft`, `ease-out-pop`, `ease-settle`
 <!-- generated:motion:end -->
 
 Sprig moves with restraint: no squash, no overshoot, a balanced 4-second idle where the leaves sway a beat behind the body. Reaction loop: a calm, satisfied nod. Micro-animation: greens drifting down into the bowl. Consumption scene (8 s): morning light, pack opened, half sachet, greens added, first unhurried bite.
+
+**In 3D.** The idle, reaction and scene loops are built from rendered layers of the figure (head, body, arms, props, steam) and from an 8-view turntable, keeping these exact timings. Nothing is re-modelled for motion.
 
 ## 20. Mascot card stats
 

@@ -5,6 +5,7 @@
 | **Mascot** | Mise (working name, brief Section 19) |
 | **Primary motivation** | Premium taste adventure |
 | **Design language** | Editorial food-magazine aesthetic, rich textures, premium typography: duotone plus one foil accent |
+| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 21:00, low warm pendant light, rich shadows (slot 6 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -76,21 +77,44 @@ Mise holds **MAGGI Korean BBQ Chicken Noodles**, with **MAGGI Korean BBQ Veg** a
 
 ## 10. Illustration scene description
 
-**21:00, a dark editorial set under a low warm pendant.** Mise stands in an elegant S-curve, a slim bowl on a foot, chopstick arms lifting a single long noodle ribbon high. The ribbon catches the one foil highlight in the frame. The real Korean BBQ Chicken pack is lit like a magazine still life on dark wood, beside small prep bowls of garnish and a finishing oil. The palette is oxblood and cream, with tints between them, plus a single foil accent. No costume or cultural dress: the global flavour comes from the food. Density 2: at most five props, rich negative space.
+**21:00, an editorial still-life diorama under a low warm pendant.** The Mise figure stands in an elegant S-curve, its gold-foil chopsticks lifting a single long noodle ribbon high, the one foil highlight in the frame. The real Korean BBQ Chicken pack is lit like a magazine still life on dark wood, beside miniature prep bowls of garnish and a finishing oil. Oxblood and cream with tints between them, plus the single foil accent. No costume or cultural dress: the global flavour comes from the food. Density 2: rich negative space.
 
-## 11. Mascot concept
+## 11. Mascot concept (3D designer toy)
+
+Mise is a **3D designer vinyl figure**: a slim footed bowl head with a lifted noodle ribbon, on the shared toy body in a tailored long coat. It is made in satin oxblood vinyl with exactly one gold-foil detail, the chopsticks: the series' premium edition.
 
 | | |
 |---|---|
 | Personality | Curious, sophisticated, adventurous, tasteful |
-| Silhouette | A slim, poised bowl on a 140-wide foot; crossed chopsticks at 30° and a lifted ribbon are the 32 px hooks |
-| Face | Calm, knowing eyes; a small satisfied smile |
-| Body language | Elegant S-curve; precise, cinematic gestures |
-| Props | Chopsticks, finishing-oil sachet, garnish, napkin |
-| Colour | Oxblood and cream duotone with tints; one foil accent |
-| Typography | Playfair Display italic for display, Libre Franklin for text, small-caps kickers |
-| Patterns | Long diagonals, ribbons, editorial columns, heavy uncoated paper |
+| Silhouette | Slim footed bowl head; crossed chopsticks at 30° and the lifted ribbon are the 32 px hooks |
+| Face | Calm, knowing printed eyes; a small satisfied smile |
+| Pose language | Elegant S-curve; precise, cinematic gestures |
+| Colour | Oxblood and cream duotone with tints; one gold foil |
 | Motion behaviour | Cinematic and precise: slow, controlled moves, no squash, no overshoot |
+
+<!-- generated:toy:start -->
+| Toy spec | Value |
+|---|---|
+| Head (the food object) | Slim footed bowl head with a lifted noodle ribbon; calm, knowing printed eyes |
+| Material | Satin oxblood vinyl with exactly one gold-foil detail (the chopsticks) |
+| Finish and light | Low warm pendant light, rich shadow, cream rim light |
+| Outfit | Tailored long coat in oxblood tones; sleek boots |
+| Props | Gold-foil chopsticks lifting a noodle ribbon, the real Korean BBQ Chicken pack, small garnish bowls |
+| Closest references | [01](../brief/references/inspo/mascots-v3/ref-01-black-cat-devil-sleek.jpg), [19](../brief/references/inspo/mascots-v3/ref-19-angel-pink-spikes.jpg), [09](../brief/references/inspo/mascots-v3/ref-09-zero-monochrome-elegant.jpg) |
+
+**Series rules shared by all seven figures** (brand.toy)
+
+| Rule | Value |
+|---|---|
+| Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
+| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
+| Head proportion | 45% of figure height |
+| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
+| Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
+| Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |
+| Deliverables | Per mascot: hero render, 8-view turntable sheet, 3 poses (hero with pack, sachet moment, reaction), material callout sheet; 2048x2048 PNG with alpha |
+<!-- generated:toy:end -->
 
 ## 12. Visual-world design system
 
@@ -226,6 +250,8 @@ Easing names are shared and fixed: `ease-in-soft`, `ease-out-pop`, `ease-settle`
 <!-- generated:motion:end -->
 
 Mise moves like a slow camera dolly: long, controlled arcs, no squash, no overshoot, every secondary part arriving four frames late. Reaction loop: a satisfied, poised nod. Micro-animation: chopsticks lifting a single noodle ribbon with a light sweep. Consumption scene (8 s): prep bowls, broth, ribbon lift, oil thread, plated bowl in pendant light.
+
+**In 3D.** The idle, reaction and scene loops are built from rendered layers of the figure (head, body, arms, props, steam) and from an 8-view turntable, keeping these exact timings. Nothing is re-modelled for motion.
 
 ## 20. Mascot card stats
 

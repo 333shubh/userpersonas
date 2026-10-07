@@ -5,6 +5,7 @@
 | **Mascot** | Cram (working name, brief Section 19) |
 | **Primary motivation** | Lowest-effort filling meal |
 | **Design language** | Strict black and white, one-colour print logic: budget is the style. The project's required black-and-white, minimalistic persona. |
+| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 13:00, flat fluorescent light, hard shadows (slot 3 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -76,21 +77,44 @@ The default is the single 70 g pouch of **MAGGI 2-Minute Noodles Masala**. Cram 
 
 ## 10. Illustration scene description
 
-**13:00, hostel desk, flat fluorescent tube overhead.** Shadows fall straight down and hard. Cram sits slumped in a C-curve on a stack of notebooks; headphones on, noodle fringe over tired eyes, fork raised like a pen. The real Masala pack is clamped under one arm, redrawn in one ink as a photocopy-style halftone. A phone timer glows on the desk ("counts it on a phone timer"). A timetable is pasted to the wall at a 2° tilt with two staple marks. Density 2: at most five props, at least half the frame empty paper. Everything is black, white and halftone screens of the same ink.
+**13:00, a hostel-desk diorama under one flat fluorescent tube.** The Cram figure sits slumped in a C-curve on a stack of miniature notebooks, headphones on, the noodle fringe hanging over heavy printed eyes, fork raised like a pen. The real Masala pack is clamped under one arm as a one-ink print. A tiny phone timer glows on the desk ("counts it on a phone timer"). A miniature timetable is pinned to the wall at a 2° tilt. The whole set is white, black and grey: no coloured light and no coloured reflections. Density 2: at most five props, half the frame empty white sweep. Rendered from the shared hero camera, with a straight-down hard shadow from the overhead light.
 
-## 11. Mascot concept
+## 11. Mascot concept (3D designer toy)
+
+Cram is a **3D designer vinyl figure**: a paper noodle cup for a head, lid half-peeled like a cap, on the series' shared toy body in an oversized hoodie printed with an exam timetable. It is the series' monochrome edition: matte white vinyl with black screen-printed halftone graphics, the way limited "black-and-white" art-toy runs are produced.
 
 | | |
 |---|---|
 | Personality | Exhausted but resourceful, clever, always hungry |
-| Silhouette | Tall noodle-cup body; the headphone arc over the rim and an upright fork are the 32 px hooks |
-| Face | Heavy half-lids by default; wakes up wide-eyed when the timer rings |
-| Body language | Slouched C-curve; quick, tired-but-sharp gestures |
-| Props | Headphones, backpack, fork, phone timer, the sachet used all at once |
-| Colour | One ink only; halftone screens for shade |
-| Typography | Archivo Black for shouting, IBM Plex Mono for the timetable voice |
-| Patterns | Ruled paper, timetable grid, 1-bit halftone |
-| Motion behaviour | Tired but quick: a small bob on beats 1 and 3, a slow blink, then a sudden pop when the timer rings |
+| Silhouette | Tall cup head; the headphone arc and an upright fork are the 32 px hooks |
+| Face | Printed heavy half-lids by default; a swappable wide-eyed face for the timer moment |
+| Pose language | Slouched C-curve; quick, tired-but-sharp gestures |
+| Colour | Achromatic only: white vinyl, black print, grey screens |
+| Motion behaviour | Tired but quick: a small bob on beats 1 and 3, a slow blink, a sudden pop when the timer rings |
+
+<!-- generated:toy:start -->
+| Toy spec | Value |
+|---|---|
+| Head (the food object) | Paper noodle cup, lid half-peeled like a cap; noodle fringe over heavy-lidded printed eyes |
+| Material | Matte white vinyl with black screen-printed halftone graphics; gloss-black headphones |
+| Finish and light | Strictly achromatic: white, black and printed grey screens only, no coloured light or reflections |
+| Outfit | Oversized grey hoodie printed with an exam timetable; backpack; chunky black-and-white shoes |
+| Props | Fork, phone timer, the real Masala pack redrawn as a one-ink print |
+| Closest references | [13](../brief/references/inspo/mascots-v3/ref-13-bw-graffiti-box-figures.jpg), [09](../brief/references/inspo/mascots-v3/ref-09-zero-monochrome-elegant.jpg), [02](../brief/references/inspo/mascots-v3/ref-02-grumpy-pale-figure.jpg), [16](../brief/references/inspo/mascots-v3/ref-16-blind-box-series-sheet.jpg) |
+
+**Series rules shared by all seven figures** (brand.toy)
+
+| Rule | Value |
+|---|---|
+| Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
+| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
+| Head proportion | 45% of figure height |
+| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
+| Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
+| Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |
+| Deliverables | Per mascot: hero render, 8-view turntable sheet, 3 poses (hero with pack, sachet moment, reaction), material callout sheet; 2048x2048 PNG with alpha |
+<!-- generated:toy:end -->
 
 ## 12. Visual-world design system
 
@@ -225,6 +249,8 @@ Easing names are shared and fixed: `ease-in-soft`, `ease-out-pop`, `ease-settle`
 <!-- generated:motion:end -->
 
 Cram moves like someone running on four hours of sleep who is still faster than everyone else: a short anticipation, a sharp pop, then stillness. The reaction loop is the timer ringing, eyes snapping open. Micro-animation: the fork stabbing the noodles. Consumption scene (8 s): alarm, kettle click, whole sachet in, fork, back to the notes.
+
+**In 3D.** The idle, reaction and scene loops are built from rendered layers of the figure (head, body, arms, props, steam) and from an 8-view turntable, keeping these exact timings. Nothing is re-modelled for motion.
 
 ## 20. Mascot card stats
 

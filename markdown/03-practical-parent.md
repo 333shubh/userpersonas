@@ -5,6 +5,7 @@
 | **Mascot** | Nest (working name, brief Section 19) |
 | **Primary motivation** | Kid-approved convenience |
 | **Design language** | Warm, rounded, friendly, storybook-like: no sharp corners, large touch targets |
+| **Mascot medium** | 3D designer vinyl toy, part of a seven-figure collectible series (system/mascot-style-v3.md) |
 | **Hour of the day** | 16:15, warm afternoon sun (slot 4 of 7) |
 | **Status** | Gate 3 draft. Personas, reviews, scores and pack mechanics are design concepts, not research findings. |
 | **Source of truth** | Every colour, face, size and timing in the generated tables comes from `system/tokens/tokens.json`. Do not edit between `generated` markers. |
@@ -76,21 +77,46 @@ Nest holds **MAGGI 2-Minute Noodles Veggie Masala**: familiar masala with visibl
 
 ## 10. Illustration scene description
 
-**16:15, family kitchen, warm afternoon sun through the window.** Nest stands in a calm S-curve, apron bow loops showing at both sides of its rounded dome. One hand steadies a light-blue kettle; the other offers a small bowl toward a **toy-scale hand reaching up from the frame edge**: no child face, no child figure, only the hand. The real Veggie Masala pack sits on the counter. Everything is rounded: plates, table edge, steam. Density 3: up to eight props, at least 40% calm space.
+**16:15, a family-kitchen diorama in warm afternoon sun.** The Nest figure stands in a calm S-curve, apron bows showing at both sides of its woven noodle-nest head. One hand steadies a light-blue kettle; the other offers a small bowl toward a **toy-scale hand reaching up from the edge of the set**: no child face, no child figure, only the hand. The real Veggie Masala pack sits on the counter. Every surface is rounded. Density 3: up to eight props, 40% calm space. Warm diffuse light, no hard edges in the shadows.
 
-## 11. Mascot concept
+## 11. Mascot concept (3D designer toy)
+
+Nest is a **3D designer vinyl figure**: a round noodle-nest head woven like yarn, on the shared toy body in a knit apron over a soft cardigan. It is made in soft-touch matte vinyl with an airbrushed cream-to-peach gradient, the gentlest finish in the series.
 
 | | |
 |---|---|
 | Personality | Caring, dependable, calm, slightly busy |
-| Silhouette | Tall dome (height to width 0.87) with apron-bow loops behind it at 60% height; no points anywhere |
-| Face | Soft eyes, rosy cheeks, a reassuring smile |
-| Body language | Unhurried S-curve; offering, steadying, measuring gestures |
-| Props | Apron, wooden spoon, kettle, small bowl, the carefully measured sachet |
+| Silhouette | Tall dome head with apron-bow loops at the sides; no points anywhere |
+| Face | Soft printed eyes, rosy cheeks, a reassuring smile |
+| Pose language | Unhurried S-curve; offering, steadying, measuring gestures |
 | Colour | Warm cream and honey with tomato, peach, sky and sage |
-| Typography | Baloo 2 for warm headlines, Nunito for friendly text |
-| Patterns | Soft crayon edges, rounded pebble shapes, gentle paper grain |
 | Motion behaviour | Smooth and reassuring: a slow 4-second idle, small overshoot, never a jolt |
+
+**Child safety.** No child figures or faces anywhere in the toy line or its scenes; children appear only as toy-scale hands.
+
+<!-- generated:toy:start -->
+| Toy spec | Value |
+|---|---|
+| Head (the food object) | Round noodle-nest dome woven like yarn, apron-bow loops at the sides |
+| Material | Soft-touch matte vinyl with an airbrushed cream-to-peach gradient |
+| Finish and light | Rounded everywhere, no sharp edges; warm diffuse light |
+| Outfit | Knit apron over a soft cardigan; rounded clogs |
+| Props | Wooden spoon, light-blue kettle, small bowl, the real Veggie Masala pack |
+| Closest references | [06](../brief/references/inspo/mascots-v3/ref-06-pastel-gradient-creatures.jpg), [17](../brief/references/inspo/mascots-v3/ref-17-vanow-cute-series.jpg), [18](../brief/references/inspo/mascots-v3/ref-18-knit-hat-cat.jpg) |
+
+**Series rules shared by all seven figures** (brand.toy)
+
+| Rule | Value |
+|---|---|
+| Medium | 3D designer vinyl toy (collectible blind-box series), rendered stills and turntables |
+| Shared body | Shared armature for all seven: compact torso, short limbs with soft elbow/knee bends, 4-finger mitten hands sized to hold a real MAGGI pack, chunky rounded shoes, 8 mm round display base |
+| Head proportion | 45% of figure height |
+| Faces | No human faces. The head is the food object itself (cup, chili, nest, sprout bowl, moon bowl, multipack, footed bowl) with eyes and mouth printed or sculpted on it |
+| Camera | Hero: three-quarter view, 35 degrees off front, eye level at chest height, 85 mm lens look. Turntable: 8 views at 45 degree steps |
+| Lighting | Soft studio: large key 45 degrees top-left, fill at 30% from right, rim light from behind, soft contact shadow on the base. Lull and Mise use their scene light instead |
+| Background | Seamless sweep in the persona role.bg colour; transparent-background PNG exported alongside |
+| Deliverables | Per mascot: hero render, 8-view turntable sheet, 3 poses (hero with pack, sachet moment, reaction), material callout sheet; 2048x2048 PNG with alpha |
+<!-- generated:toy:end -->
 
 ## 12. Visual-world design system
 
@@ -232,6 +258,8 @@ Easing names are shared and fixed: `ease-in-soft`, `ease-out-pop`, `ease-settle`
 <!-- generated:motion:end -->
 
 Nest moves like a steady hand: smooth arcs, gentle settles, nothing sudden. Reaction loop: a warm nod and a small hop of relief. Micro-animation: the kettle pour. Consumption scene (8 s): school bag dropped, kettle on, measured sachet, a small hand reaching up, a quiet sip of tea.
+
+**In 3D.** The idle, reaction and scene loops are built from rendered layers of the figure (head, body, arms, props, steam) and from an 8-view turntable, keeping these exact timings. Nothing is re-modelled for motion.
 
 ## 20. Mascot card stats
 
