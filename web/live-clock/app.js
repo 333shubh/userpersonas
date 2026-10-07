@@ -1,322 +1,258 @@
-/* One day, seven noodles: whoever's hour it is wakes up, and the page becomes their world.
-   Data comes from system.js (generated from tokens.json). One state: the minute of the day. */
+// Seven ways to eat one packet: the live page.
+// Persona data comes from system.js (generated from tokens.json by tools/build-web.py).
 (function () {
   "use strict";
-
   const S = window.SYSTEM;
-  const P = S.personas; // sorted by start time
-  const DAY = 1440;
+  const P = S.personas.slice().sort((a, b) => a.order - b.order);
+  const byId = Object.fromEntries(P.map((p) => [p.id, p]));
   const $ = (id) => document.getElementById(id);
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const store = {
-    get(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
-    set(k, v) { try { window.localStorage.setItem(k, v); } catch (e) { /* storage unavailable */ } },
-  };
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const root = document.documentElement;
 
-  const toMin = (hhmm) => { const [h, m] = hhmm.split(":").map(Number); return h * 60 + m; };
-  const fmt = (min) => `${String(Math.floor(min / 60)).padStart(2, "0")}:${String(min % 60).padStart(2, "0")}`;
-  const starts = P.map((p) => toMin(p.time));
-
-  function personaAt(min) {
-    let idx = P.length - 1; // before the first start, the last persona's window wraps past midnight
-    for (let i = 0; i < P.length; i++) if (min >= starts[i]) idx = i;
-    return idx;
+  const toMin = (t) => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
+  const fmt = (m) => `${String(Math.floor(m / 60) % 24).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+  const starts = P.map((p) => ({ id: p.id, start: toMin(p.time) })).sort((a, b) => a.start - b.start);
+  // each persona owns the hours from its time until the next persona's time (wrapping past midnight)
+  function whoAt(min) {
+    let owner = starts[starts.length - 1].id;
+    for (const s of starts) if (s.start <= min) owner = s.id;
+    return owner;
   }
-  const nowMinutes = () => { const d = new Date(); return d.getHours() * 60 + d.getMinutes(); };
+  function torn(seed, amp = 1.2) {
+    const pts = [];
+    const j = (k) => (((seed * 31 + k * 17) % 11) - 5) / 5 * amp;
+    let k = 0;
+    for (let x = 0; x <= 100; x += 4) pts.push(`${x}% ${amp + j(k++)}%`);
+    for (let y = 4; y <= 100; y += 4) pts.push(`${100 - amp - j(k++)}% ${y}%`);
+    for (let x = 96; x >= 0; x -= 4) pts.push(`${x}% ${100 - amp - j(k++)}%`);
+    for (let y = 96; y > 0; y -= 4) pts.push(`${amp + j(k++)}% ${y}%`);
+    return `polygon(${pts.join(",")})`;
+  }
+  document.querySelectorAll("[data-torn]").forEach((el) => { el.style.clipPath = torn(+el.dataset.torn, .9); });
 
-  const state = { minute: nowMinutes(), live: true, idx: -1 };
+  // ---------- hero line-up ----------
+  const lineup = $("lineup");
+  P.forEach((p, i) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<button type="button" aria-label="Swap the page to ${p.name}'s world, ${p.persona}, ${p.time}">
+      <img src="${p.mascotImage}" alt="" style="--delay:${i * 160}ms;--amp:${p.motion.amplitude}"></button>`;
+    li.querySelector("button").addEventListener("click", (ev) => { choose(p.id, "lineup", ev); $("world").scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth" }); });
+    lineup.appendChild(li);
+  });
 
-  /* ---------- URL: ?at=HH:MM or ?mascot=riot ---------- */
-  (function readUrl() {
-    const q = new URLSearchParams(window.location.search);
-    const at = q.get("at"), mascot = q.get("mascot");
-    if (at && /^\d{2}:\d{2}$/.test(at) && toMin(at) < DAY) { state.minute = toMin(at); state.live = false; }
-    else if (mascot) {
-      const i = P.findIndex((p) => p.id === mascot);
-      if (i >= 0) { state.minute = starts[i]; state.live = false; }
+  // ---------- tabs ----------
+  const tabs = $("tabs");
+  P.forEach((p) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "tab";
+    b.id = `tab-${p.id}`;
+    b.setAttribute("role", "tab");
+    b.setAttribute("aria-controls", "world");
+    b.innerHTML = `<img src="${p.mascotImage}" alt=""><span>${p.time} ${p.name}</span>`;
+    b.addEventListener("click", (ev) => choose(p.id, "tab", ev));
+    tabs.appendChild(b);
+  });
+  tabs.addEventListener("keydown", (e) => {
+    const i = P.findIndex((p) => p.id === document.body.dataset.persona);
+    const n = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+    if (n) { e.preventDefault(); const next = P[(i + n + P.length) % P.length]; choose(next.id, "tab"); $(`tab-${next.id}`).focus(); }
+  });
+
+  // ---------- day strip ----------
+  const strip = $("day-strip");
+  P.forEach((p, i) => {
+    const li = document.createElement("li");
+    const r = p.roles;
+    li.innerHTML = `<button type="button" class="day-card" style="--c-bg:${r.bg};--c-text:${r.text};--c-accent:${["cram", "mise"].includes(p.id) ? r.text : r.accent};--r:${(i % 2 ? 1.6 : -1.6)}deg;--torn:${torn(i + 40, .8)}">
+      <span class="dc-time">${p.time}</span><span class="dc-name">${p.name}</span><span class="dc-mot">${p.persona}. ${p.motivation}.</span>
+      <img src="${p.mascotImage}" alt="${p.name}, the ${p.persona} mascot"></button>`;
+    li.querySelector("button").addEventListener("click", (ev) => { choose(p.id, "strip", ev); $("world").scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth" }); });
+    strip.appendChild(li);
+  });
+
+  // ---------- dial ----------
+  const dial = $("dial"), thumb = $("dial-thumb"), marks = $("dial-marks");
+  starts.forEach((s) => {
+    const pct = (s.start / 1440) * 100;
+    marks.insertAdjacentHTML("beforeend", `<i style="left:${pct}%"></i><span style="left:${pct}%">${byId[s.id].name}</span>`);
+  });
+  let minute = 0, live = true;
+  function setMinute(m, source) {
+    minute = ((Math.round(m) % 1440) + 1440) % 1440;
+    thumb.style.left = `${(minute / 1440) * 100}%`;
+    $("dial-time").textContent = fmt(minute);
+    const id = whoAt(minute);
+    dial.setAttribute("aria-valuenow", String(minute));
+    dial.setAttribute("aria-valuetext", `${fmt(minute)}, ${byId[id].name}'s hour`);
+    if (id !== document.body.dataset.persona || source === "init") render(id, source);
+  }
+  function stopLive() { live = false; $("live-toggle").setAttribute("aria-pressed", "false"); }
+  function fromPointer(e) {
+    const r = dial.getBoundingClientRect();
+    return Math.max(0, Math.min(1439, ((e.clientX - r.left) / r.width) * 1440));
+  }
+  dial.addEventListener("pointerdown", (e) => {
+    stopLive(); dial.setPointerCapture(e.pointerId); setMinute(fromPointer(e), "dial");
+    const move = (ev) => setMinute(fromPointer(ev), "dial");
+    const up = () => { dial.removeEventListener("pointermove", move); dial.removeEventListener("pointerup", up); };
+    dial.addEventListener("pointermove", move); dial.addEventListener("pointerup", up);
+  });
+  dial.addEventListener("keydown", (e) => {
+    const step = { ArrowRight: 15, ArrowUp: 15, ArrowLeft: -15, ArrowDown: -15, PageUp: 60, PageDown: -60 }[e.key];
+    if (step !== undefined) { e.preventDefault(); stopLive(); setMinute(minute + step, "dial"); }
+    if (e.key === "Home") { e.preventDefault(); stopLive(); setMinute(0, "dial"); }
+    if (e.key === "End") { e.preventDefault(); stopLive(); setMinute(1439, "dial"); }
+  });
+  $("live-toggle").addEventListener("click", () => {
+    live = !live;
+    $("live-toggle").setAttribute("aria-pressed", String(live));
+    if (live) tickClock(true);
+  });
+
+  // ---------- choose and render a world ----------
+  const animating = () => !reduced.matches && !root.classList.contains("motion-paused");
+  // a circle of the new world's colour grows from where you clicked, then the page swaps under it
+  function choose(id, source, ev) {
+    stopLive();
+    const go = () => { setMinute(toMin(byId[id].time), source); render(id, source); };
+    if (!ev || !animating() || id === document.body.dataset.persona) return go();
+    const w = $("wipe");
+    w.style.background = byId[id].roles.bg;
+    w.style.setProperty("--wx", `${ev.clientX || innerWidth / 2}px`);
+    w.style.setProperty("--wy", `${ev.clientY || innerHeight / 2}px`);
+    w.classList.remove("go"); void w.offsetWidth; w.classList.add("go");
+    setTimeout(go, 300);
+    w.addEventListener("animationend", () => w.classList.remove("go"), { once: true });
+  }
+
+  // ---------- ticker: the seven sachet habits ----------
+  const tickerHtml = P.map((p) => `<span>${p.name} <i>${p.sachet.toLowerCase()}</i></span>`).join("");
+  $("ticker").innerHTML = tickerHtml + tickerHtml;
+
+  // ---------- sticker pack: slap stickers onto the world ----------
+  const slaps = $("slaps");
+  function renderTray(p) {
+    $("tray").innerHTML = p.stickers.map((src, i) =>
+      `<button type="button" data-src="${src}" aria-label="Slap ${p.name} sticker ${i + 1} on the world"><img src="${src}" alt=""></button>`).join("");
+  }
+  $("tray").addEventListener("click", (ev) => {
+    const b = ev.target.closest("button"); if (!b) return;
+    const img = document.createElement("img");
+    const rot = Math.round(Math.random() * 40 - 20);
+    img.src = b.dataset.src; img.alt = "";
+    img.style.left = `${8 + Math.random() * 78}%`; img.style.top = `${6 + Math.random() * 62}%`;
+    img.style.setProperty("--rot", `${rot}deg`); img.style.transform = `rotate(${rot}deg)`;
+    slaps.appendChild(img);
+    while (slaps.children.length > 14) slaps.firstChild.remove();
+    $("announce").textContent = "Sticker added.";
+  });
+  $("tray-clear").addEventListener("click", () => { slaps.innerHTML = ""; $("announce").textContent = "All stickers peeled off."; });
+
+  // ---------- the deck: seven flip cards ----------
+  const deck = $("deck");
+  P.forEach((p, i) => {
+    const li = document.createElement("li");
+    li.style.setProperty("--fan", `${(i - 3) * 5}deg`);
+    li.style.setProperty("--lift", `${Math.abs(i - 3) * 14}px`);
+    li.innerHTML = `<button type="button" class="flip" aria-pressed="false" aria-label="${p.name} card: flip to see stats">
+      <img class="front" src="${p.cardFront}" alt="${p.name} collectible card, ${p.persona}, ${p.time}">
+      <img class="back" src="${p.cardBack}" alt="${p.name} card back: stats ${Object.entries(p.stats).map(([k, x]) => `${k} ${x}`).join(", ")}"></button>`;
+    const b = li.querySelector("button");
+    b.addEventListener("click", () => b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true")));
+    deck.appendChild(li);
+  });
+  function render(id, source) {
+    const p = byId[id];
+    const changed = document.body.dataset.persona !== id;
+    document.body.dataset.persona = id;
+    document.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", String(t.id === `tab-${id}`)));
+    document.querySelectorAll(".tab").forEach((t) => t.setAttribute("tabindex", t.id === `tab-${id}` ? "0" : "-1"));
+    $("w-bigname").textContent = p.name;
+    $("w-time").textContent = p.time;
+    $("w-light").textContent = p.light;
+    $("w-name").textContent = p.name;
+    $("w-persona").textContent = p.persona;
+    $("w-mot").textContent = `Wants: ${p.motivation.toLowerCase()}`;
+    $("w-gate").textContent = `The gate: ${p.spine.gate}`;
+    $("w-sachet").textContent = p.sachet;
+    $("w-felt").textContent = p.feltTime;
+    const product = p.product.name.replace("MAGGI ", "").split(" (")[0].split(",")[0];
+    $("w-scene-cap").textContent = `${p.time}, ${product}`;
+    const img = $("w-mascot");
+    img.src = p.mascotImage;
+    img.alt = `${p.name}, the ${p.persona} mascot, holding ${p.product.name}`;
+    if (changed && !reduced.matches && !root.classList.contains("motion-paused")) {
+      img.classList.remove("swap-in"); void img.offsetWidth; img.classList.add("swap-in");
     }
-  })();
-
-  function writeUrl() {
-    const url = new URL(window.location.href);
-    url.searchParams.delete("mascot");
-    if (state.live) url.searchParams.delete("at"); else url.searchParams.set("at", fmt(state.minute));
-    window.history.replaceState(null, "", url);
+    $("w-scene").src = p.sceneImage;
+    $("w-scene").alt = `${p.name} eating ${p.product.name} at ${p.time}`;
+    $("w-pack").src = p.product.image;
+    $("w-pack").alt = `${p.product.name} pack`;
+    const roles = p.roles;
+    const cols = [roles.bg, roles.surface, roles.text, roles.accent, roles.key, roles["sachet-red"], roles["sachet-yellow"]]
+      .filter((c, i, a) => a.findIndex((x) => x.toUpperCase() === c.toUpperCase()) === i).slice(0, 6);
+    $("w-spines").innerHTML = cols.map((c, i) => `<i style="background:${c};height:${60 + ((i * 37) % 5) * 10}%" title="${c}"></i>`).join("");
+    if (changed || source === "init") { renderTray(p); if (changed && source !== "init") slaps.innerHTML = ""; }
+    if (changed && source !== "init") $("announce").textContent = `Now showing ${p.name}'s world: ${p.persona}, ${p.time}.`;
+    if (soundOn && changed && source !== "init") playNote(p);
   }
 
-  /* ---------- the noodle thread ---------- */
-  const W = 1440, MID = 52;
-  const xOf = (min) => (min / DAY) * W;
-  const waveY = (x) => MID + 9 * Math.sin(x / 38) + 4 * Math.sin(x / 11);
-  function pathBetween(x0, x1) {
-    let d = `M${x0.toFixed(1)} ${waveY(x0).toFixed(1)}`;
-    for (let x = x0 + 6; x < x1; x += 6) d += `L${x.toFixed(1)} ${waveY(x).toFixed(1)}`;
-    return d + `L${x1.toFixed(1)} ${waveY(x1).toFixed(1)}`;
+  // ---------- clock ----------
+  function tickClock(force) {
+    const d = new Date();
+    const m = d.getHours() * 60 + d.getMinutes();
+    $("now-time").textContent = fmt(m);
+    $("now-who").textContent = `it's ${byId[whoAt(m)].name}'s hour`;
+    if (live || force) setMinute(m, force === "init" ? "init" : "clock");
   }
+  tickClock("init");
+  setInterval(() => tickClock(false), 30000);
 
-  function drawThread() {
-    $("thread-path").setAttribute("d", pathBetween(0, W));
-    // knots and hour ticks are HTML, so they stay round and legible however the SVG stretches
-    const t = $("thread");
-    t.querySelectorAll(".thread-knot, .thread-tick").forEach((el) => el.remove());
-    P.forEach((p, i) => {
-      const k = document.createElement("span");
-      k.className = "thread-knot";
-      k.style.left = `${(starts[i] / DAY) * 100}%`;
-      k.style.top = `${(waveY(xOf(starts[i])) / 120) * 100}%`;
-      t.appendChild(k);
+  // ---------- parallax ----------
+  document.querySelectorAll(".layer").forEach((el) => el.style.setProperty("--d", el.dataset.depth || "0"));
+  let raf = 0;
+  window.addEventListener("pointermove", (e) => {
+    if (reduced.matches || root.classList.contains("motion-paused")) return;
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      root.style.setProperty("--px", ((e.clientX / innerWidth) - .5).toFixed(3));
+      root.style.setProperty("--py", ((e.clientY / innerHeight) - .5).toFixed(3));
     });
-    [0, 6, 12, 18, 24].forEach((h) => { // neutral hour ticks; names and times live on the cast chips
-      const tick = document.createElement("span");
-      tick.className = "thread-tick";
-      tick.style.left = `${(h / 24) * 100}%`;
-      tick.dataset.edge = h === 0 ? "start" : h === 24 ? "end" : "";
-      tick.textContent = `${String(h).padStart(2, "0")}:00`;
-      t.appendChild(tick);
-    });
-  }
+  });
+  const beat = parseInt(getComputedStyle(document.body).getPropertyValue("--beat")) || 500;
+  root.style.setProperty("--beat-ms", `${beat}ms`);
 
-  function windowRange(i) {
-    const a = starts[i], b = i + 1 < P.length ? starts[i + 1] : starts[0] + DAY;
-    return [a, b];
+  // ---------- motion pause (WCAG 2.2.2) ----------
+  const mt = $("motion-toggle");
+  function setPaused(on) {
+    root.classList.toggle("motion-paused", on);
+    mt.setAttribute("aria-pressed", String(on));
+    mt.textContent = on ? "Play motion" : "Pause motion";
+    if (on) { root.style.setProperty("--px", 0); root.style.setProperty("--py", 0); }
+    try { localStorage.setItem("motion-paused", on ? "1" : "0"); } catch (e) { /* storage unavailable */ }
   }
+  mt.addEventListener("click", () => setPaused(!root.classList.contains("motion-paused")));
+  try { if (localStorage.getItem("motion-paused") === "1") setPaused(true); } catch (e) { /* storage unavailable */ }
 
-  function drawActive() {
-    const [a, b] = windowRange(state.idx);
-    let d = pathBetween(xOf(a), xOf(Math.min(b, DAY)));
-    if (b > DAY) d += " " + pathBetween(0, xOf(b - DAY)); // the window that wraps past midnight
-    $("thread-active").setAttribute("d", d);
-    const h = $("thread-handle");
-    const x = (state.minute / DAY) * 100;
-    h.style.left = `${x}%`;
-    h.style.top = `${(waveY(xOf(state.minute)) / 120) * 100}%`;
-    h.dataset.time = fmt(state.minute);
-    h.setAttribute("aria-valuenow", state.minute);
-    h.setAttribute("aria-valuetext", `${fmt(state.minute)}, ${P[state.idx].name}'s hour`);
+  // ---------- sound: each persona's note from the shared chord, off by default ----------
+  let soundOn = false, ctx = null;
+  const st = $("sound-toggle");
+  st.addEventListener("click", () => {
+    soundOn = !soundOn;
+    st.setAttribute("aria-pressed", String(soundOn));
+    st.textContent = soundOn ? "Sound on" : "Play its note";
+    if (soundOn) playNote(byId[document.body.dataset.persona]);
+    else $("sound-caption").textContent = "";
+  });
+  function playNote(p) {
+    try {
+      ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+      const t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = "sine"; o.frequency.value = p.sound.hz;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.18, t + .06); g.gain.exponentialRampToValueAtTime(.0001, t + 2);
+      o.connect(g).connect(ctx.destination); o.start(t); o.stop(t + 2.05);
+    } catch (e) { /* audio unavailable: caption still shows */ }
+    $("sound-caption").textContent = `${p.name} plays ${p.sound.pitch}: ${p.sound.palette.join(", ")}.`;
   }
-
-  /* ---------- cast (mascot switcher) ---------- */
-  function buildCast() {
-    const cast = $("cast");
-    P.forEach((p, i) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "cast-chip";
-      b.setAttribute("role", "radio");
-      b.dataset.index = i;
-      b.innerHTML = `<img src="${p.product.image}" alt="" width="40" height="56"><span><strong>${p.name}</strong><span>${p.time}</span></span>`;
-      b.addEventListener("click", () => pin(starts[i]));
-      b.addEventListener("keydown", (e) => {
-        const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
-        if (!step) return;
-        e.preventDefault();
-        const j = (i + step + P.length) % P.length;
-        pin(starts[j]);
-        cast.children[j].focus();
-      });
-      cast.appendChild(b);
-    });
-  }
-
-  function syncCast() {
-    [...$("cast").children].forEach((b, i) => {
-      const on = i === state.idx;
-      b.setAttribute("aria-checked", on ? "true" : "false");
-      b.tabIndex = on ? 0 : -1;
-    });
-  }
-
-  /* ---------- content ---------- */
-  const text = (id, s) => { $(id).textContent = s; };
-
-  function radar(p) {
-    const keys = ["heat", "speed", "comfort", "chaos", "value", "fancy", "wellness"];
-    const R = 120, n = keys.length;
-    const pt = (i, v) => { const a = -Math.PI / 2 + (2 * Math.PI * i) / n; return [Math.cos(a) * R * v / 5, Math.sin(a) * R * v / 5]; };
-    let s = '<title id="radar-title">' + `${p.name}'s card stats` + "</title>";
-    for (let r = 1; r <= 5; r++) s += `<polygon class="radar-ring" points="${keys.map((_, i) => pt(i, r).join(",")).join(" ")}"/>`;
-    keys.forEach((k, i) => {
-      const [x, y] = pt(i, 5);
-      s += `<line class="radar-axis" x1="0" y1="0" x2="${x}" y2="${y}"/>`;
-      const [lx, ly] = pt(i, 6.1);
-      const anchor = Math.abs(lx) < 8 ? "middle" : lx > 0 ? "start" : "end";
-      s += `<text class="radar-label" x="${lx}" y="${ly + 4}" text-anchor="${anchor}">${k[0].toUpperCase() + k.slice(1)}</text>`;
-    });
-    s += `<polygon class="radar-shape" points="${keys.map((k, i) => pt(i, p.stats[k]).join(",")).join(" ")}"/>`;
-    $("radar").innerHTML = s;
-    $("stats").innerHTML = keys.map((k) => `<li><span>${k[0].toUpperCase() + k.slice(1)}</span><strong>${p.stats[k]}</strong></li>`).join("");
-  }
-
-  const NEED = { AA: { body: 4.5, large: 3, ui: 3 }, AAA: { body: 7, large: 4.5, ui: 3 } };
-  function lum(hex) {
-    const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
-      .map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
-    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
-  }
-  const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
-  const USE = { body: "body text", large: "large text", ui: "icons and outlines" };
-
-  function looks(p) {
-    text("constraint", `${p.constraint.rule}. ${p.constraint.why}.`);
-    $("swatches").innerHTML = Object.entries(p.palette).map(([name, hex]) =>
-      `<li><div class="swatch-chip" style="background:${hex}"></div><strong>${name}</strong><span>${hex}</span></li>`).join("");
-    $("pairs").innerHTML = p.pairs.map((x) => {
-      const r = ratio(x.fg, x.bg), need = NEED[p.level][x.use], ok = r >= need;
-      return `<li><span class="pair-sample" style="color:${x.fg};background:${x.bg}">Aa</span>` +
-        `<span>${x.fgName} on ${x.bgName}, for ${USE[x.use]} (${x.where})</span>` +
-        `<span class="pair-result">${ok ? "✓" : "✕"} ${r.toFixed(2)}:1 ${ok ? "passes" : "fails"} ${p.level}</span></li>`;
-    }).join("");
-    text("specimen-display", p.name);
-    text("specimen-text", p.job + ".");
-    text("specimen-faces", `${p.type.display} for display, ${p.type.text} for text, scale ratio ${p.type.ratio}.`);
-  }
-
-  function moves(p) {
-    text("tempo-line", `${p.name} moves ${p.motion.tempo}, on the shared 120 BPM clock: one bar is the felt two minutes, squeezed into two seconds.`);
-    const accents = p.motion.accentBeats;
-    $("bar").innerHTML = Array.from({ length: 8 }, (_, i) => {
-      const beat = 1 + i / 2;
-      return `<span class="bar-cell${i % 2 === 0 ? " beat" : ""}${accents.includes(beat) ? " accent" : ""}" data-i="${i}"></span>`;
-    }).join("");
-    const named = accents.map((b) => (Number.isInteger(b) ? `beat ${b}` : `the off-beat after ${Math.floor(b)}`));
-    text("bar-note", `Filled cells are ${p.name}'s accents: ${named.join(" and ")}.`);
-    const label = `Play ${p.name}'s note`;
-    text("play-note", label); text("play-note-2", label);
-  }
-
-  function holds(p) {
-    ["hero-pack", "pack-large"].forEach((id) => {
-      const img = $(id);
-      img.src = p.product.image;
-      img.alt = `${p.name} holds a pack of ${p.product.name}`;
-    });
-    text("hero-pack-caption", p.product.name);
-    text("pack-name", p.product.name);
-    text("pack-format", p.product.format);
-    text("pack-why", p.product.why);
-  }
-
-  function hero(p) {
-    text("clock-time", fmt(state.minute));
-    $("clock-time").setAttribute("datetime", fmt(state.minute));
-    text("hero-name", p.name);
-    text("hero-felt", p.feltTime + ".");
-    text("hero-persona", `The ${p.persona}, here for ${p.motivation.charAt(0).toLowerCase() + p.motivation.slice(1)}.`);
-    const sp = p.spine;
-    $("spine").innerHTML = [["Buys it", sp.buyer], ["Eats it", sp.eater], ["Eats with", sp.socialUnit], ["Buys how", sp.rhythm], ["Has to pass", sp.gate]]
-      .map(([k, val]) => `<dt>${k}</dt><dd>${val}</dd>`).join("");
-    text("sachet-line", `With the sachet: ${p.sachet.charAt(0).toLowerCase() + p.sachet.slice(1)}.`);
-  }
-
-  /* ---------- render ---------- */
-  function render(announce) {
-    const idx = personaAt(state.minute);
-    const changed = idx !== state.idx;
-    const apply = () => {
-      state.idx = idx;
-      const p = P[idx];
-      document.body.dataset.persona = p.id;
-      hero(p);
-      if (changed) { radar(p); looks(p); moves(p); holds(p); syncCast(); }
-      drawActive();
-      $("back-to-now").hidden = state.live;
-    };
-    if (changed && state.idx !== -1 && document.startViewTransition && !reduceMotion.matches) {
-      document.startViewTransition(apply);
-    } else {
-      apply();
-    }
-    if (changed && announce) text("announcer", `${P[idx].name}'s hour. The page is now ${P[idx].name}'s world.`);
-  }
-
-  function pin(min) {
-    state.minute = ((Math.round(min) % DAY) + DAY) % DAY;
-    state.live = false;
-    render(true);
-    writeUrl();
-  }
-
-  /* ---------- dragging and keys on the thread ---------- */
-  function minuteFromPointer(e) {
-    const r = $("thread").getBoundingClientRect();
-    const f = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
-    return Math.min(DAY - 1, Math.round((f * DAY) / 5) * 5);
-  }
-  function bindThread() {
-    const t = $("thread");
-    t.addEventListener("pointerdown", (e) => {
-      t.setPointerCapture(e.pointerId);
-      pin(minuteFromPointer(e));
-      $("thread-handle").focus({ preventScroll: true });
-    });
-    t.addEventListener("pointermove", (e) => { if (t.hasPointerCapture(e.pointerId)) pin(minuteFromPointer(e)); });
-    $("thread-handle").addEventListener("keydown", (e) => {
-      const m = state.minute;
-      const next = {
-        ArrowRight: m + 15, ArrowUp: m + 15, ArrowLeft: m - 15, ArrowDown: m - 15,
-        PageUp: starts[(state.idx + 1) % P.length], PageDown: starts[(state.idx - 1 + P.length) % P.length],
-        Home: 0, End: DAY - 1,
-      }[e.key];
-      if (next === undefined) return;
-      e.preventDefault();
-      pin(e.shiftKey && e.key.startsWith("Arrow") ? m + (next - m) * 4 : next);
-    });
-  }
-
-  /* ---------- sound (Web Audio, only on a press) ---------- */
-  let audio = null;
-  const VOICE = { cram: "square", riot: "sawtooth", nest: "triangle", sprig: "sine", lull: "sine", stack: "square", mise: "triangle" };
-  function note(p, at, dur) {
-    audio = audio || new (window.AudioContext || window.webkitAudioContext)();
-    const o = audio.createOscillator(), g = audio.createGain();
-    o.type = VOICE[p.id];
-    o.frequency.value = p.sound.hz;
-    const t0 = audio.currentTime + at, peak = VOICE[p.id] === "sine" || VOICE[p.id] === "triangle" ? 0.22 : 0.07;
-    g.gain.setValueAtTime(0, t0);
-    g.gain.linearRampToValueAtTime(peak, t0 + 0.02);
-    g.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
-    o.connect(g).connect(audio.destination);
-    o.start(t0); o.stop(t0 + dur + 0.05);
-  }
-  function playhead(beats) {
-    if (reduceMotion.matches) return;
-    const cells = [...$("bar").children];
-    cells.forEach((c, i) => setTimeout(() => {
-      cells.forEach((x) => x.classList.remove("now"));
-      c.classList.add("now");
-      if (i === cells.length - 1) setTimeout(() => c.classList.remove("now"), 250);
-    }, i * (60000 / S.bpm) / 2));
-  }
-  function playNote() {
-    const p = P[state.idx];
-    note(p, 0, 2);
-    playhead();
-    text("sound-caption", `Playing ${p.name}'s note: ${p.sound.pitch}, ${p.sound.hz} Hz, for one bar (2 seconds).`);
-  }
-  function playChord() {
-    const byPitch = [...P].sort((a, b) => a.sound.hz - b.sound.hz);
-    byPitch.forEach((p, i) => note(p, i * 0.25, 4 - i * 0.25));
-    text("sound-caption", `Playing all seven, lowest first: ${byPitch.map((p) => `${p.name} ${p.sound.pitch}`).join(", ")}. Together they make the noodle chord.`);
-  }
-
-  /* ---------- motion pause (WCAG 2.2.2) ---------- */
-  function setPaused(paused) {
-    document.body.classList.toggle("motion-paused", paused);
-    $("motion-toggle").setAttribute("aria-pressed", paused ? "true" : "false");
-    $("motion-toggle").textContent = paused ? "Play motion" : "Pause motion";
-    store.set("motion-paused", paused ? "1" : "0");
-  }
-
-  /* ---------- start ---------- */
-  drawThread();
-  buildCast();
-  bindThread();
-  render(false);
-  setPaused(store.get("motion-paused") === "1");
-  $("motion-toggle").addEventListener("click", () => setPaused(!document.body.classList.contains("motion-paused")));
-  $("back-to-now").addEventListener("click", () => { state.live = true; state.minute = nowMinutes(); render(true); writeUrl(); });
-  $("play-note").addEventListener("click", playNote);
-  $("play-note-2").addEventListener("click", playNote);
-  $("play-chord").addEventListener("click", playChord);
-  setInterval(() => { if (state.live) { state.minute = nowMinutes(); render(true); } }, 15000);
 })();

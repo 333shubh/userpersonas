@@ -196,6 +196,36 @@
           "$type": "number",
           "$value": 1.5
         }
+      },
+      "editorial": {
+        "$description": "Shared editorial layer for the overview board and the system PDF (project lead, 2026-10-07; references brief/references/inspo/layout-v2/): one heading face for the title, every mascot name and the hours; one content face; one hand face for notes and captions only.",
+        "display": {
+          "$type": "fontFamily",
+          "$value": [
+            "Climate Crisis",
+            "Impact",
+            "system-ui",
+            "sans-serif"
+          ]
+        },
+        "text": {
+          "$type": "fontFamily",
+          "$value": [
+            "Bricolage Grotesque",
+            "system-ui",
+            "-apple-system",
+            "Segoe UI",
+            "sans-serif"
+          ]
+        },
+        "hand": {
+          "$type": "fontFamily",
+          "$value": [
+            "Permanent Marker",
+            "Comic Sans MS",
+            "cursive"
+          ]
+        }
       }
     },
     "touch-target": {
@@ -1230,6 +1260,17 @@
       "source": "https://www.maggi.in/en/our-range/ (checked 2026-10-07)",
       "packImageDir": "brief/references/packs/ (local only, git-ignored)",
       "claims": "Nutrition/health badges printed on real packs stay illegible in artwork (Section 22 still applies)"
+    },
+    "stickers": {
+      "$description": "Chat sticker reactions (brief Section 18.15): short words in the persona's voice, project lead's design copy 2026-10-07. No health claims, no dares.",
+      "reactions": {
+        "$type": "string",
+        "$value": [
+          "+greens",
+          "half sachet",
+          "fresh add"
+        ]
+      }
     }
   }
 }

@@ -1,6 +1,9 @@
 """Composite each mascot's real MAGGI pack onto the plain pack in its 3D hero render.
 
-    python tools/composite-packs.py [mascot ...] [--masks]
+    python tools/composite-packs.py [mascot ...] [--scene] [--masks]
+
+Without --scene it works on the hero renders (NN-mascot-hero.png -> NN-mascot-hero-with-pack.png);
+with --scene on the eating scenes (NN-mascot-scene.png -> NN-mascot-scene-with-pack.png).
 
 For each mascot (measured layout below), and for each pack it holds:
   1. mask = the measured pack outline, minus hand ellipses, minus pixels coloured unlike the plain pack
@@ -38,6 +41,8 @@ PACKS = tk.ROOT / "brief" / "references" / "packs"
 #   rotate: degrees counter-clockwise applied to the real pack first (Stack's packs lie on their side)
 #   src_box: pixel box of the real pack image to use (for images without transparency); default the opaque area
 #   badge: area of the real pack image (fractions x0, y0, x1, y1) holding the nutrition badges; default lower-left
+#   visible: polygon of the pack's visible part, used instead of colour exclusion where the hand or sleeve
+#            in front has the same colour as the pack (Cram: white pack, white glove, white knit sleeve)
 #   light: "colour" multiplies the print by the render's own light colour (Lull's warm lamp); default is
 #          luminance only, which keeps the real pack's print colours under the neutral studio light
 LAYOUT = {
@@ -61,11 +66,43 @@ LAYOUT = {
                  src_box=(28, 118, 340, 478), badge=(0.0, 0.82, 0.75, 1.0)),
 }
 
+# Eating scenes (system/scene-prompts.md), measured the same way.
+SCENES = {
+    "cram": dict(quads=[[(1057, 489), (1191, 529), (1130, 699), (996, 659)]], hands=[],
+                 visible=[(1057, 489), (1191, 529), (1166, 590), (1135, 578), (1100, 590), (1060, 606), (1017, 602)]),
+    "riot": dict(quads=[[(1235, 642), (1427, 645), (1400, 868), (1206, 868)]], hands=[], sample=(1320, 750), tol=70),
+    # Nest's pack lies flat on the counter, top edge away from the camera
+    "nest": dict(quads=[[(845, 790), (985, 832), (915, 915), (710, 865)]], hands=[], hsv=(30, 58, 0.45)),
+    "sprig": dict(quads=[[(930, 470), (1076, 470), (1068, 640), (919, 640)]], hands=[], sample=(1000, 560), tol=50),
+    "lull": dict(quads=[[(713, 528), (838, 528), (820, 632), (730, 632)]], hands=[(830, 597, 30, 42)], sample=(760, 580), tol=70,
+                 warp="rows", rows=(250, 725), span=(0.0, 0.72), light="colour", badge=(0.13, 0.69, 0.31, 0.84)),
+    # Stack's shelf: the 12 packs in plain view (9 on the top shelf, 3 on the middle shelf), lying on their sides
+    "stack": dict(quads=[
+        [(865, 258), (1080, 258), (1080, 305), (865, 305)],
+        [(1062, 258), (1292, 258), (1292, 305), (1062, 305)],
+        [(1268, 258), (1482, 258), (1482, 305), (1268, 305)],
+        [(865, 302), (1080, 302), (1080, 350), (865, 350)],
+        [(1062, 302), (1292, 302), (1292, 350), (1062, 350)],
+        [(1268, 302), (1482, 302), (1482, 350), (1268, 350)],
+        [(865, 348), (1080, 348), (1080, 398), (865, 398)],
+        [(1062, 348), (1292, 348), (1292, 398), (1062, 398)],
+        [(1268, 348), (1482, 348), (1482, 398), (1268, 398)],
+        [(845, 488), (1085, 488), (1085, 542), (845, 542)],
+        [(845, 540), (1085, 540), (1085, 590), (845, 590)],
+        [(845, 590), (1085, 590), (1085, 640), (845, 640)],
+    ], hands=[], hsv=(34, 56, 0.45), rotate=90),
+    "mise": dict(quads=[[(980, 604), (1163, 606), (1156, 833), (967, 832)]], hands=[(1190, 770, 42, 70)], sample=(1060, 720), tol=45,
+                 src_box=(28, 118, 340, 478), badge=(0.0, 0.82, 0.75, 1.0)),
+}
+
 
 def pack_mask(im, quad, cfg):
     """Pack outline, minus hand ellipses, minus pixels coloured unlike the plain pack (frills, noodles)."""
     w, h = im.size
     mask = Image.new("L", (w, h))
+    if "visible" in cfg:
+        ImageDraw.Draw(mask).polygon(cfg["visible"], fill=255)
+        return mask
     ImageDraw.Draw(mask).polygon(quad, fill=255)
     px = im.load()
     mp = mask.load()
@@ -147,18 +184,18 @@ def real_pack(p, pid, cfg):
     return pack
 
 
-def composite(pid, save_masks=False):
+def composite(pid, save_masks=False, kind="hero"):
     res = tk.resolve_all(tk.load())
     p = res["persona"][pid]
-    hero = tk.ROOT / "static" / p["slug"] / f"{p['number']}-{pid}-hero.png"
+    hero = tk.ROOT / "static" / p["slug"] / f"{p['number']}-{pid}-{kind}.png"
     im = Image.open(hero).convert("RGB")
-    cfg = LAYOUT[pid]
+    cfg = (SCENES if kind == "scene" else LAYOUT)[pid]
     masks = [pack_mask(im, q, cfg) for q in cfg["quads"]]
     union = masks[0]
     for m in masks[1:]:
         union = Image.composite(m, union, m)
     if save_masks:
-        union.save(tk.ROOT / "stress-tests" / "qa" / f"pack-mask-{pid}.png")
+        union.save(tk.ROOT / "stress-tests" / "qa" / f"pack-mask-{pid}{'-scene' if kind == 'scene' else ''}.png")
     pack = real_pack(p, pid, cfg)
     # relight. Default: render luminance inside the masks, normalised to its median (same factor per channel).
     # "colour": each render channel over the 95th-percentile brightest channel value inside the masks, so the
@@ -195,16 +232,19 @@ def composite(pid, save_masks=False):
         relit = Image.merge("RGB", out_ch)
         paste_mask = Image.composite(warped.getchannel("A"), Image.new("L", im.size), mask).filter(ImageFilter.GaussianBlur(0.8))
         out.paste(relit, (0, 0), paste_mask)
-    dst = hero.with_name(f"{p['number']}-{pid}-hero-with-pack.png")
+    if pid == "cram":
+        out = out.convert("L").convert("RGB")   # strict black and white for delivery
+    dst = hero.with_name(f"{p['number']}-{pid}-{kind}-with-pack.png")
     out.save(dst)
     return dst, len(cfg["quads"]), sum(1 for v in union.get_flattened_data() if v)
 
 
 def main(argv):
     save = "--masks" in argv
-    ids = [a for a in argv if not a.startswith("--")] or list(LAYOUT)
+    kind = "scene" if "--scene" in argv else "hero"
+    ids = [a for a in argv if not a.startswith("--")] or list(SCENES if kind == "scene" else LAYOUT)
     for pid in ids:
-        dst, nq, n = composite(pid, save)
+        dst, nq, n = composite(pid, save, kind)
         print(f"{pid}: {nq} pack(s), mask {n} px -> {dst.relative_to(tk.ROOT).as_posix()}")
     return 0
 

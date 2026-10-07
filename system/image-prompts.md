@@ -39,7 +39,7 @@ Add the line for each mascot after the series prompt.
 
 ## After the hero render
 
-Use the approved hero as the character reference, keep the series prompt and the mascot line, and swap the ending:
+The full per-mascot prompts for the turntable sheets and the two poses are in `system/pose-prompts.md`. The short version: use the approved hero as the character reference, keep the series prompt and the mascot line, and swap the ending:
 
 | Output | Replace "three-quarter view…" with |
 |---|---|
