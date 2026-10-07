@@ -44,14 +44,14 @@ Inside any persona folder (`static/`, `motion/`, `glyphs/`, `cards/`, `stickers/
 
 | Folder | Allowed `{asset}` values | Typical files |
 |---|---|---|
-| `static/NN-slug/` | `rig`, `sheet`, `scene`, `board`, `panel`, `silhouette`, `hero` (3D toy hero render) | `01-cram-rig-front.svg`, `01-cram-sheet-turnaround.svg`, `01-cram-scene.svg`, `01-cram-board.png` |
+| `static/NN-slug/` | `rig`, `sheet`, `scene`, `board`, `panel`, `silhouette`, `hero` (3D toy hero render), `pose` (3D toy pose render) | `01-cram-rig-front.svg`, `01-cram-sheet-turnaround.svg`, `01-cram-scene.svg`, `01-cram-board.png` |
 | `motion/NN-slug/` | `idle`, `reaction`, `micro`, `scene`, `poster` | `01-cram-idle-1080x1080.mp4`, `01-cram-idle-silent-1080x1080.webm`, `01-cram-idle-reduced-1080x1080.mp4`, `01-cram-idle-poster-1080x1080.png` |
 | `glyphs/NN-slug/` | `two`, `wordmark`, `numerals`, `numeral` | `01-cram-two.svg`, `01-cram-wordmark.svg`, `01-cram-numeral-7.svg` |
 | `cards/NN-slug/` | `card` | `01-cram-card-front.svg`, `01-cram-card-front-750x1050.png` |
 | `stickers/NN-slug/` | `sticker` | `02-riot-sticker-shock-512x512.png` |
 | `packaging/NN-slug/` | `pack` | `06-stack-pack-concept.png` |
 
-Qualifiers (enforced, except in `stickers/` where the reaction word is free kebab-case): `front`, `side`, `three-quarter`, `back`, `turnaround`, `expressions`, `poses`, `props`, `bw`, `colour`, `one-colour`, `concept`, `silent`, `reduced`, `poster`, `captions`, plus any expression name from `system/rig-spec.json` and numerals `0`–`9`. Sticker reactions use any kebab word.
+Qualifiers (enforced, except in `stickers/` where the reaction word is free kebab-case): `with-pack`, `sachet`, `reaction`, `front`, `side`, `three-quarter`, `back`, `turnaround`, `expressions`, `poses`, `props`, `bw`, `colour`, `one-colour`, `concept`, `silent`, `reduced`, `poster`, `captions`, plus any expression name from `system/rig-spec.json` and numerals `0`–`9`. Sticker reactions use any kebab word.
 
 ## 5. SVG ids
 
@@ -90,14 +90,14 @@ Allowed extensions: `md`, `json`, `py`, `svg`, `png`, `jpg` (reference photos), 
     "07-premium-flavor-explorer": "mise"
   },
   "personaFolders": {
-    "static": ["rig", "sheet", "scene", "board", "panel", "silhouette", "hero"],
+    "static": ["rig", "sheet", "scene", "board", "panel", "silhouette", "hero", "pose"],
     "motion": ["idle", "reaction", "micro", "scene", "poster"],
     "glyphs": ["two", "wordmark", "numerals", "numeral"],
     "cards": ["card"],
     "stickers": ["sticker"],
     "packaging": ["pack"]
   },
-  "qualifiers": ["with-pack", "front", "side", "three-quarter", "back", "turnaround", "expressions", "poses", "props", "bw", "colour", "one-colour", "concept", "silent", "reduced", "poster", "captions", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+  "qualifiers": ["with-pack", "sachet", "reaction", "front", "side", "three-quarter", "back", "turnaround", "expressions", "poses", "props", "bw", "colour", "one-colour", "concept", "silent", "reduced", "poster", "captions", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
   "qualifiersFromRigExpressions": true,
   "freeQualifierFolders": ["stickers"],
   "reserved": {
