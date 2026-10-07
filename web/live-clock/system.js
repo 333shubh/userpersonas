@@ -160,7 +160,7 @@ window.SYSTEM = {
     "name": "MAGGI Masala Cuppa Noodles",
     "format": "cup",
     "why": "Solo, minimal cleanup, made in the cup: the late-night ritual. Steam leaves the cup as stars.",
-    "image": "assets/packs/masala-cuppa.png",
+    "image": "assets/packs/masala-cuppa.webp",
     "oneInk": false
    },
    "mascot": {
@@ -316,7 +316,7 @@ window.SYSTEM = {
     "name": "MAGGI Nutri-licious Veg Atta Noodles (2025 pack)",
     "format": "single pouch, 72.5 g",
     "why": "The variant an upgrader picks; Sprig still ADDS fresh greens (Section 18.13). Needs Nestle review: the pack sits close to health positioning; render any claim copy as illegible texture.",
-    "image": "assets/packs/veg-atta-2025.png",
+    "image": "assets/packs/veg-atta-2025.webp",
     "oneInk": false
    },
    "mascot": {
@@ -473,7 +473,7 @@ window.SYSTEM = {
     "name": "MAGGI 2-Minute Noodles Masala, 12-pack",
     "format": "multipack, 840 g (12 x 70 g)",
     "why": "Bulk, scheduled, price per serving. Built from the single Masala pack: stacked pouches in a multipack wrap.",
-    "image": "assets/packs/masala-single.png",
+    "image": "assets/packs/masala-single.webp",
     "oneInk": false
    },
    "mascot": {
@@ -609,7 +609,7 @@ window.SYSTEM = {
     "name": "MAGGI 2-Minute Noodles Masala",
     "format": "single pouch, 70 g",
     "why": "The default, cheapest single pack: Cram's 'all of it, fast' meal.",
-    "image": "assets/packs/masala-single.png",
+    "image": "assets/packs/masala-single.webp",
     "oneInk": true
    },
    "mascot": {
@@ -764,7 +764,7 @@ window.SYSTEM = {
     "name": "MAGGI 2-Minute Noodles Veggie Masala",
     "format": "single pouch (top-up)",
     "why": "Familiar masala with visible vegetables: the pack a parent tops up and a child says yes to. No nutrition claim is made.",
-    "image": "assets/packs/veggie-masala.png",
+    "image": "assets/packs/veggie-masala.webp",
     "oneInk": false
    },
    "mascot": {
@@ -940,7 +940,7 @@ window.SYSTEM = {
     "name": "MAGGI Special Masala Noodles ('Spicy. Yummy.')",
     "format": "single pouch, 70 g",
     "why": "Spice and remixing. Swap in the 2026 MAGGI Spicy range (Spicy Cheesy / Garlic / Manchurian) if a pack photo is supplied; it is not on the official site.",
-    "image": "assets/packs/special-masala.png",
+    "image": "assets/packs/special-masala.webp",
     "oneInk": false
    },
    "mascot": {
@@ -1084,7 +1084,7 @@ window.SYSTEM = {
     "name": "MAGGI Korean BBQ Chicken Noodles",
     "format": "single pouch",
     "why": "The trade-up: Korean variants sit far above core packs on price (evidence log, Medium).",
-    "image": "assets/packs/korean-bbq-chicken.png",
+    "image": "assets/packs/korean-bbq-chicken.webp",
     "oneInk": false
    },
    "mascot": {

@@ -69,7 +69,7 @@ Defined in `system/rig-spec.md`. Grammar: `{mascot}__{slot}[__{part}[__{subpart}
 | `locale/` | folders: `india`, `malaysia-singapore`, `australia-new-zealand`, `west-africa`, `europe`; files kebab-case |
 | `stress-tests/` | folders: `scale`, `silhouette`, `colour-blind`, `one-colour`, `qa`; files kebab-case |
 
-Allowed extensions: `md`, `json`, `py`, `svg`, `png`, `jpg` (reference photos), `pdf`, `mp4`, `webm`, `gif`, `apng`, `wav`, `mp3`, `vtt`, `html`, `css`, `js`, `txt`.
+Allowed extensions: `md`, `json`, `py`, `svg`, `png`, `jpg` (reference photos), `webp` (web images), `pdf`, `mp4`, `webm`, `gif`, `apng`, `wav`, `mp3`, `vtt`, `html`, `css`, `js`, `txt`.
 
 ## 7. Machine rules
 
@@ -77,7 +77,7 @@ Allowed extensions: `md`, `json`, `py`, `svg`, `png`, `jpg` (reference photos), 
 {
   "exempt": ["README.md", "CLAUDE.md", "claude.md", "LICENSE", ".gitkeep", ".gitignore", ".gitattributes", ".editorconfig"],
   "ignoreDirs": [".git", ".claude", "__pycache__"],
-  "extensions": ["md", "json", "py", "svg", "png", "jpg", "pdf", "mp4", "webm", "gif", "apng", "wav", "mp3", "vtt", "html", "css", "js", "txt"],
+  "extensions": ["md", "json", "py", "svg", "png", "jpg", "webp", "pdf", "mp4", "webm", "gif", "apng", "wav", "mp3", "vtt", "html", "css", "js", "txt"],
   "compoundExtensions": ["tokens.json", "schema.json"],
   "segment": "^[a-z0-9]+(-[a-z0-9]+)*$",
   "personas": {
